@@ -42,7 +42,7 @@
 
     main { max-width: 1000px; width: 100%; margin: 32px auto; padding: 0 20px; flex: 1; }
 
-    /* 活潑分頁設計 */
+    /* 分頁設計 */
     .nav-tabs { display: flex; gap: 12px; margin-bottom: 28px; overflow-x: auto; padding-bottom: 4px; }
     .tab-btn { background: white; border: 1px solid var(--border); color: var(--text-muted); padding: 10px 20px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
     .tab-btn:hover { background: #f8fafc; color: var(--text-main); }
@@ -95,28 +95,28 @@
 <body>
 
   <header>
-    <div class="logo"><i class="fa-solid fa-brain"></i> Enterprise Vocab AI</div>
+    <div class="logo"><i class="fa-solid fa-brain"></i> Oxford 5000 Vocab AI</div>
     <div style="display: flex; align-items: center; gap: 12px;">
-      <span class="enterprise-badge"><i class="fa-solid fa-crown mr-1"></i> 企業版授權 (10,000+ 庫)</span>
-      <span id="header-level-tag" style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Level 1 (初階核心)</span>
+      <span class="enterprise-badge"><i class="fa-solid fa-book-open mr-1"></i> Oxford 5000 庫</span>
+      <span id="header-level-tag" style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Level 1 (基礎核心)</span>
     </div>
   </header>
 
   <main>
-    <!-- 活潑選單頁籤 -->
+    <!-- 分頁導航 -->
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchTab('study')"><i class="fa-solid fa-layer-group"></i> 智慧卡牌學習</button>
       <button class="tab-btn" onclick="switchTab('quiz')"><i class="fa-solid fa-bolt"></i> 互動隨機測驗</button>
-      <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-building-shield"></i> 企業團隊戰情室</button>
-      <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-database"></i> 萬字資料庫檢索 (<span id="db-count-label">10,000</span>)</button>
+      <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-building-shield"></i> 學習戰情室</button>
+      <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-database"></i> 完整清單檢索 (<span id="db-count-label">載入中...</span>)</button>
     </div>
 
     <!-- 1. 智慧卡牌學習區 -->
     <div id="view-study" class="view active">
       <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
         <div>
-          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">今日 10 張 AI 動態隨機單字卡</h2>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">結合情境例句與發音記憶，自動適應您的職務與字彙等級。</p>
+          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">今日 10 張 Oxford 5000 隨機單字卡</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">從真實 Oxford 5000 資料庫動態抽取，適應您的字彙等級。</p>
         </div>
         <button class="btn" onclick="loadStudyCards()"><i class="fa-solid fa-rotate"></i> 重新隨機抽取 10 字</button>
       </div>
@@ -129,7 +129,7 @@
         <div id="quiz-start-screen">
           <div style="font-size: 3rem; color: var(--primary); margin-bottom: 16px;"><i class="fa-solid fa-rocket"></i></div>
           <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">準備好進行戰力評估了嗎？</h2>
-          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">系統將從 10,000+ 題庫隨機抽取 10 道高頻測驗題。得分大於 80% 自動晉升難度，低於 50% 自動調降補強！</p>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">系統將從 Oxford 5000 題庫隨機抽取 10 道高頻測驗題。</p>
           <button class="btn" onclick="startQuiz()" style="font-size: 1.1rem; padding: 14px 32px;">開始智能測驗</button>
         </div>
 
@@ -138,7 +138,7 @@
             <span id="quiz-progress-text">題目 1 / 10</span>
             <span class="enterprise-badge" id="quiz-lvl-badge">Level 1</span>
           </div>
-          <div class="quiz-word-display" id="quiz-word-el">Algorithm</div>
+          <div class="quiz-word-display" id="quiz-word-el">Loading...</div>
           <div class="options-grid" id="quiz-options-container"></div>
         </div>
 
@@ -152,26 +152,26 @@
       </div>
     </div>
 
-    <!-- 3. 企業團隊戰情室 -->
+    <!-- 3. 學習戰情室 -->
     <div id="view-enterprise" class="view">
       <div class="enterprise-grid">
         <div class="stat-card">
-          <div style="color: var(--text-muted); font-size: 0.85rem;">企業總授權席位</div>
-          <div class="stat-num">500 席</div>
+          <div style="color: var(--text-muted); font-size: 0.85rem;">已載入資料庫總數</div>
+          <div class="stat-num" id="stat-total-words">0</div>
         </div>
         <div class="stat-card">
-          <div style="color: var(--text-muted); font-size: 0.85rem;">已啟用成員數</div>
-          <div class="stat-num">342 人</div>
+          <div style="color: var(--text-muted); font-size: 0.85rem;">已完成測驗次數</div>
+          <div class="stat-num" id="stat-quiz-count">0</div>
         </div>
         <div class="stat-card">
-          <div style="color: var(--text-muted); font-size: 0.85rem;">部門平均正確率</div>
-          <div class="stat-num">86.4%</div>
+          <div style="color: var(--text-muted); font-size: 0.85rem;">平均答對正確率</div>
+          <div class="stat-num" id="stat-avg-acc">0%</div>
         </div>
       </div>
 
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-          <h3 style="font-size: 1.15rem; font-weight: 800;"><i class="fa-solid fa-chart-line mr-2 text-indigo-600"></i> 部門學習成效與歷程紀錄</h3>
+          <h3 style="font-size: 1.15rem; font-weight: 800;"><i class="fa-solid fa-chart-line mr-2 text-indigo-600"></i> 個人學習歷程與測驗紀錄</h3>
           <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="clearHistory()"><i class="fa-solid fa-trash-can"></i> 清除歷史</button>
         </div>
         <div style="overflow-x: auto;">
@@ -193,18 +193,18 @@
       </div>
     </div>
 
-    <!-- 4. 萬字資料庫檢索 -->
+    <!-- 4. 單字庫檢索 -->
     <div id="view-database" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-          <h3 style="font-size: 1.15rem; font-weight: 800;">10,000+ 企業核心單字完整索引庫</h3>
+          <h3 style="font-size: 1.15rem; font-weight: 800;">Oxford 5000 核心單字完整檢索</h3>
           <div style="display: flex; gap: 10px;">
-            <input type="text" id="db-search-input" placeholder="搜尋單字或中文..." oninput="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
+            <input type="text" id="db-search-input" placeholder="搜尋單字..." oninput="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
             <select id="db-level-select" onchange="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
               <option value="all">全部等級</option>
               <option value="1">Level 1 (基礎)</option>
               <option value="2">Level 2 (進階)</option>
-              <option value="3">Level 3 (高階商用/技術)</option>
+              <option value="3">Level 3 (高階)</option>
             </select>
           </div>
         </div>
@@ -213,9 +213,9 @@
             <thead>
               <tr>
                 <th>英文單字</th>
-                <th>中文釋義</th>
+                <th>參考釋義 / 級別</th>
                 <th>難度級別</th>
-                <th>企業/生活例句</th>
+                <th>例句應用</th>
               </tr>
             </thead>
             <tbody id="db-tbody">
@@ -229,82 +229,66 @@
 
   <script>
     /* ==========================================
-       真正載入 10,000+ 筆單字的完整資料庫引擎
+       非同步讀取真實的 Oxford 5000.txt 檔案引擎
        ========================================== */
-    const coreVocabList = [
-      { word: "apple", meaning: "蘋果", level: 1, example: "Eat an apple daily for better health." },
-      { word: "book", meaning: "書籍、預訂", level: 1, example: "We need to book a conference room." },
-      { word: "strategy", meaning: "策略、戰略", level: 1, example: "Our Q3 business strategy focuses on growth." },
-      { word: "market", meaning: "市場、行銷", level: 1, example: "Expanding into the overseas market." },
-      { word: "budget", meaning: "預算", level: 1, example: "The marketing budget was approved." },
-      { word: "client", meaning: "客戶、委託人", level: 1, example: "Meeting with our key corporate client." },
-      { word: "project", meaning: "專案、計畫", level: 1, example: "The project is on schedule." },
-      { word: "quality", meaning: "品質、優質", level: 1, example: "We never compromise on product quality." },
-      { word: "schedule", meaning: "行程表、時間表", level: 1, example: "Please check your schedule for tomorrow." },
-      { word: "solution", meaning: "解決方案", level: 1, example: "Finding an efficient software solution." },
-      { word: "negotiation", meaning: "談判、協商", level: 2, example: "The contract negotiation took three hours." },
-      { word: "efficiency", meaning: "效率、效能", level: 2, example: "Upgrading machines to improve production efficiency." },
-      { word: "infrastructure", meaning: "基礎設施", level: 2, example: "Investing in cloud infrastructure." },
-      { word: "benchmark", meaning: "基準、效能評測", level: 2, example: "Setting a new industry benchmark." },
-      { word: "collaboration", meaning: "合作、協同作業", level: 2, example: "Cross-department collaboration is vital." },
-      { word: "comprehensive", meaning: "全面的、綜合的", level: 2, example: "A comprehensive factory audit report." },
-      { word: "logistics", meaning: "物流、後勤", level: 2, example: "Managing international supply chain logistics." },
-      { word: "optimization", meaning: "最佳化", level: 2, example: "Process optimization reduced scrap rates." },
-      { word: "productivity", meaning: "生產力", level: 2, example: "Employee productivity increased by 15%." },
-      { word: "transparent", meaning: "透明的、公開的", level: 2, example: "Maintaining transparent financial records." },
-      { word: "algorithm", meaning: "演算法", level: 3, example: "Developing an advanced automation algorithm." },
-      { word: "bureaucracy", meaning: "官僚主義、繁文縟節", level: 3, example: "Streamlining operations to reduce bureaucracy." },
-      { word: "contingency", meaning: "應變措施、意外事故", level: 3, example: "Always prepare a contingency plan for risks." },
-      { word: "dichotomy", meaning: "二分法、對立", level: 3, example: "The dichotomy between theory and practice." },
-      { word: "elucidate", meaning: "闡明、解釋", level: 3, example: "Can you elucidate the new compliance policy?" },
-      { word: "fluctuation", meaning: "波動、起伏", level: 3, example: "Monitoring currency exchange rate fluctuations." },
-      { word: "galvanize", meaning: "激勵、通電電鍍", level: 3, example: "The speech galvanized the entire engineering team." },
-      { word: "hierarchical", meaning: "階層式的", level: 3, example: "A traditional hierarchical management structure." },
-      { word: "innovative", meaning: "創新的", level: 3, example: "Introducing innovative manufacturing methods." },
-      { word: "juxtaposition", meaning: "並置、並列", level: 3, example: "The juxtaposition of old and new technologies." }
-    ];
+    let masterVocabDB = [];
 
-    // 動態擴充至完整 10,000+ 筆企業級實戰單字庫
-    const masterVocabDB = [...coreVocabList];
-    const prefixes = ["enterprise", "global", "smart", "digital", "advanced", "core", "strategic", "prime", "pro", "synergy"];
-    const suffixes = ["system", "network", "module", "platform", "solution", "protocol", "engine", "service", "framework", "portal"];
-    const meaningsCN = ["企業系統", "全球化網路", "智慧模組", "數位平台", "先進解決方案", "核心協定", "策略引擎", "優質服務", "專業框架", "入口門戶"];
-    const examples = [
-      "Optimizing the core operational workflow for high performance.",
-      "Ensuring seamless integration across multiple enterprise nodes.",
-      "Deploying secure infrastructure to support scalable growth.",
-      "Analyzing real-time metrics through advanced automation tools."
-    ];
-
-    let counter = masterVocabDB.length + 1;
-    for (let i = 0; i < 1000; i++) {
-      for (let p of prefixes) {
-        if (masterVocabDB.length >= 10050) break;
-        let s = suffixes[i % suffixes.length];
-        let lvl = (counter % 3) + 1;
-        masterVocabDB.push({
-          word: `${p}_${s}_${counter}`,
-          meaning: `${meaningsCN[i % meaningsCN.length]} #${counter}`,
-          level: lvl,
-          example: examples[counter % examples.length]
-        });
-        counter++;
-      }
-    }
-
-    // 更新介面上的總單字數量顯示
-    document.getElementById('db-count-label').innerText = masterVocabDB.length.toLocaleString();
-
-    // 應用程式狀態管理
     let appState = {
-      level: parseInt(localStorage.getItem('ent_level')) || 1,
-      history: JSON.parse(localStorage.getItem('ent_history')) || []
+      level: parseInt(localStorage.getItem('ox_level')) || 1,
+      history: JSON.parse(localStorage.getItem('ox_history')) || []
     };
 
     function updateHeaderUI() {
       const lvlMap = { 1: "Level 1 (基礎核心)", 2: "Level 2 (進階商務)", 3: "Level 3 (高階技術與高管)" };
       document.getElementById('header-level-tag').innerText = lvlMap[appState.level];
-      localStorage.setItem('ent_level', appState.level);
+      localStorage.setItem('ox_level', appState.level);
+    }
+
+    // 非同步讀取同目錄下的 Oxford 5000.txt
+    async function loadOxfordDatabase() {
+      try {
+        const response = await fetch('Oxford 5000.txt');
+        if (!response.ok) throw new Error('找不到檔案');
+        const text = await response.text();
+
+        // 依照換行切割每一行單字
+        const lines = text.split('\n');
+        masterVocabDB = [];
+
+        lines.forEach((line, index) => {
+          const cleanWord = line.trim();
+          if (cleanWord) {
+            // 自動依照順序賦予難度級別 (1, 2, 3 循環)
+            let lvl = (index % 3) + 1;
+            masterVocabDB.push({
+              word: cleanWord,
+              meaning: `Oxford 5000 核心詞彙 #${index + 1}`,
+              level: lvl,
+              example: `Example sentence for using "${cleanWord}" in professional context.`
+            });
+          }
+        });
+
+        // 更新介面數量
+        document.getElementById('db-count-label').innerText = masterVocabDB.length.toLocaleString();
+        document.getElementById('stat-total-words').innerText = masterVocabDB.length.toLocaleString();
+        
+        loadStudyCards();
+        renderDatabase();
+        renderEnterpriseHistory();
+        console.log(`成功載入 ${masterVocabDB.length} 筆真實單字！`);
+      } catch (error) {
+        console.error("載入 Oxford 5000.txt 失敗:", error);
+        // 若發生錯誤時的備用預設資料，避免畫面全空
+        masterVocabDB = [
+          { word: "abandon", meaning: "放棄、拋棄", level: 1, example: "They had to abandon the project." },
+          { word: "ability", meaning: "能力、才能", level: 1, example: "She has the ability to lead the team." }
+        ];
+        document.getElementById('db-count-label').innerText = masterVocabDB.length;
+        document.getElementById('stat-total-words').innerText = masterVocabDB.length;
+        loadStudyCards();
+        renderDatabase();
+      }
     }
 
     // 分頁切換控制
@@ -324,8 +308,10 @@
 
     // A. 隨機 10 個單字卡
     function loadStudyCards() {
+      if (masterVocabDB.length === 0) return;
       const pool = masterVocabDB.filter(item => item.level === appState.level);
-      const selected = getRandomItems(pool, 10);
+      const targetPool = pool.length >= 10 ? pool : masterVocabDB; // 若該級別不足則從全部抽
+      const selected = getRandomItems(targetPool, 10);
       const grid = document.getElementById('study-cards-grid');
       grid.innerHTML = '';
 
@@ -351,8 +337,10 @@
     let currentScore = 0;
 
     function startQuiz() {
+      if (masterVocabDB.length === 0) return;
       const pool = masterVocabDB.filter(item => item.level === appState.level);
-      quizQuestions = getRandomItems(pool, 10);
+      const targetPool = pool.length >= 10 ? pool : masterVocabDB;
+      quizQuestions = getRandomItems(targetPool, 10);
       currentQIdx = 0;
       currentScore = 0;
 
@@ -381,7 +369,7 @@
       container.innerHTML = '';
       options.forEach(opt => {
         container.innerHTML += `
-          <button class="option-btn" onclick="submitAnswer('${opt.word}', '${q.word}')">${opt.meaning}</button>
+          <button class="option-btn" onclick="submitAnswer('${opt.word}', '${q.word}')">${opt.meaning} (${opt.word})</button>
         `;
       });
     }
@@ -404,10 +392,10 @@
 
       if (pct >= 80 && appState.level < 3) {
         appState.level++;
-        feedback = `表現卓越！企業智能系統已自動將您的字彙難度提升至 Level ${appState.level} 🚀`;
+        feedback = `表現卓越！系統已自動將字彙難度提升至 Level ${appState.level} 🚀`;
       } else if (pct < 50 && appState.level > 1) {
         appState.level--;
-        feedback = `需要再加強！系統已自動將難度調降至 Level ${appState.level} 協助您扎實根基。`;
+        feedback = `需要再加強！系統已自動將難度調降至 Level ${appState.level} 扎實根基。`;
       } else {
         feedback = `表現穩定！目前維持在 Level ${appState.level} 持續精進。`;
       }
@@ -421,7 +409,8 @@
         pct: pct,
         level: oldLvl
       });
-      localStorage.setItem('ent_history', JSON.stringify(appState.history));
+      localStorage.setItem('ox_history', JSON.stringify(appState.history));
+      renderEnterpriseHistory();
     }
 
     function resetQuiz() {
@@ -431,8 +420,17 @@
 
     function renderEnterpriseHistory() {
       const tbody = document.getElementById('enterprise-history-tbody');
+      document.getElementById('stat-quiz-count').innerText = appState.history.length;
+      
+      if (appState.history.length > 0) {
+        const avg = Math.round(appState.history.reduce((acc, h) => acc + h.pct, 0) / appState.history.length);
+        document.getElementById('stat-avg-acc').innerText = avg + '%';
+      } else {
+        document.getElementById('stat-avg-acc').innerText = '0%';
+      }
+
       if (appState.history.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">尚無團隊成員測驗紀錄，請前往進行測驗。</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">尚無測驗紀錄，請前往進行測驗。</td></tr>`;
         return;
       }
 
@@ -442,33 +440,33 @@
           <td><span class="enterprise-badge">L${h.level}</span></td>
           <td style="font-weight: 700;">${h.score} / 10</td>
           <td style="color: ${h.pct >= 80 ? 'var(--success)' : 'var(--primary)'}; font-weight: 700;">${h.pct}%</td>
-          <td><span class="tag">已同步戰情室</span></td>
+          <td><span class="tag">已記錄</span></td>
         </tr>
       `).join('');
     }
 
     function clearHistory() {
-      if (confirm("確定要清除所有團隊學習歷程嗎？")) {
+      if (confirm("確定要清除所有學習歷程嗎？")) {
         appState.history = [];
-        localStorage.removeItem('ent_history');
+        localStorage.removeItem('ox_history');
         renderEnterpriseHistory();
       }
     }
 
-    // 萬字資料庫即時檢索
+    // 檢索功能
     function renderDatabase() {
       const query = document.getElementById('db-search-input').value.toLowerCase();
       const levelFilter = document.getElementById('db-level-select').value;
       const tbody = document.getElementById('db-tbody');
 
       let filtered = masterVocabDB.filter(item => {
-        const matchText = item.word.toLowerCase().includes(query) || item.meaning.includes(query);
+        const matchText = item.word.toLowerCase().includes(query) || item.meaning.toLowerCase().includes(query);
         const matchLvl = levelFilter === 'all' || item.level == levelFilter;
         return matchText && matchLvl;
       });
 
-      // 限制前端分頁渲染前 100 筆確保瀏覽順暢
-      const displayData = filtered.slice(0, 100);
+      // 為了畫面捲動順暢，前端最多顯示前 150 筆符合條件的結果
+      const displayData = filtered.slice(0, 150);
 
       if (displayData.length === 0) {
         tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 24px;">找不到符合的單字</td></tr>`;
@@ -487,8 +485,7 @@
 
     // 初始化執行
     updateHeaderUI();
-    loadStudyCards();
-    renderDatabase();
+    loadOxfordDatabase();
   </script>
 </body>
 </html>
