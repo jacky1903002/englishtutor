@@ -79,7 +79,7 @@
 
     /* 測驗區樣式 */
     .quiz-box { text-align: center; max-width: 650px; margin: 0 auto; }
-    .quiz-word-display { font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 20px 0; letter-spacing: 1px; }
+    .quiz-word-display { font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 20px 0; letter-spacing: 1px; }
     .options-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
     .option-btn { background: white; border: 1px solid var(--border); padding: 16px 20px; border-radius: 12px; color: var(--text-main); font-size: 1.05rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
     .option-btn:hover { background: #eff6ff; border-color: var(--primary); transform: translateX(4px); }
@@ -127,13 +127,13 @@
       <div id="study-cards-grid" class="card-deck-container"></div>
     </div>
 
-    <!-- 2. 互動隨機測驗區 -->
+    <!-- 2. 互動隨機測驗區 (英文題目四選一中文選項) -->
     <div id="view-quiz" class="view">
       <div class="card quiz-box">
         <div id="quiz-start-screen">
           <div style="font-size: 3rem; color: var(--primary); margin-bottom: 16px;"><i class="fa-solid fa-rocket"></i></div>
           <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">準備好進行戰力評估了嗎？</h2>
-          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">系統將從 Oxford 5000 題庫隨機抽取 10 道高頻測驗題。</p>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">系統將從 Oxford 5000 題庫隨機抽取 10 道英文單字測驗題，請從四個中文選項中選出正確解答。</p>
           <button class="btn" onclick="startQuiz()" style="font-size: 1.1rem; padding: 14px 32px;">開始智能測驗</button>
         </div>
 
@@ -142,6 +142,7 @@
             <span id="quiz-progress-text">題目 1 / 10</span>
             <span class="enterprise-badge" id="quiz-lvl-badge">Level 1</span>
           </div>
+          <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: -10px;">請選出以下英文單字的正確中文含意：</div>
           <div class="quiz-word-display" id="quiz-word-el">Loading...</div>
           <div class="options-grid" id="quiz-options-container"></div>
         </div>
@@ -197,11 +198,11 @@
       </div>
     </div>
 
-    <!-- 4. 單字庫檢索 -->
+    <!-- 4. 單字庫完整檢索 -->
     <div id="view-database" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-          <h3 style="font-size: 1.15rem; font-weight: 800;">Oxford 5000 核心單字中英對照檢索</h3>
+          <h3 style="font-size: 1.15rem; font-weight: 800;">Oxford 5000 完整單字庫中英對照檢索</h3>
           <div style="display: flex; gap: 10px;">
             <input type="text" id="db-search-input" placeholder="搜尋英文或中文..." oninput="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
             <select id="db-level-select" onchange="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
@@ -277,9 +278,8 @@
           if (cleanWord) {
             let lvl = (index % 3) + 1;
             
-            // 檢查是否有內建的中英對照，若無則自動產生專業中文釋義
             let entry = dictionaryDB[cleanWord];
-            let meaning = entry ? entry.meaning : `核心詞彙 #${index + 1} (專業商務應用)`;
+            let meaning = entry ? entry.meaning : `專業商業核心詞彙 #${index + 1}`;
             let exampleEn = entry ? entry.exampleEn : `Example sentence for using "${cleanWord}" in professional context.`;
             let exampleZh = entry ? entry.exampleZh : `在專業商務情境中運用「${cleanWord}」的實務例句。`;
 
@@ -299,7 +299,7 @@
         loadStudyCards();
         renderDatabase();
         renderEnterpriseHistory();
-        console.log(`成功載入 ${masterVocabDB.length} 筆真實單字（含中英對照）！`);
+        console.log(`成功載入 ${masterVocabDB.length} 筆完整單字庫！`);
       } catch (error) {
         console.error("載入 Oxford 5000.txt 失敗:", error);
         masterVocabDB = [
@@ -375,6 +375,7 @@
       renderQuizQuestion();
     }
 
+    // 互動隨機測驗：英文單字題目 + 四個中文選項
     function renderQuizQuestion() {
       if (currentQIdx >= quizQuestions.length) {
         finishQuiz();
@@ -392,15 +393,17 @@
 
       const container = document.getElementById('quiz-options-container');
       container.innerHTML = '';
-      options.forEach(opt => {
+      options.forEach((opt, idx) => {
         container.innerHTML += `
-          <button class="option-btn" onclick="submitAnswer('${opt.word}', '${q.word}')">${opt.meaning} (${opt.word})</button>
+          <button class="option-btn" onclick="submitAnswer('${opt.meaning.replace(/'/g, "\\'")}', '${q.meaning.replace(/'/g, "\\'")}')">
+            (${idx + 1}) ${opt.meaning}
+          </button>
         `;
       });
     }
 
-    function submitAnswer(selected, correct) {
-      if (selected === correct) currentScore++;
+    function submitAnswer(selectedMeaning, correctMeaning) {
+      if (selectedMeaning === correctMeaning) currentScore++;
       currentQIdx++;
       renderQuizQuestion();
     }
@@ -478,7 +481,7 @@
       }
     }
 
-    // 檢索功能 (中英對照表格式)
+    // 完整清單檢索 (包含全部單字庫)
     function renderDatabase() {
       const query = document.getElementById('db-search-input').value.toLowerCase();
       const levelFilter = document.getElementById('db-level-select').value;
@@ -490,7 +493,7 @@
         return matchText && matchLvl;
       });
 
-      const displayData = filtered.slice(0, 150);
+      const displayData = filtered.slice(0, 200); // 顯示前 200 筆以確保高效能
 
       if (displayData.length === 0) {
         tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 24px;">找不到符合的單字</td></tr>`;
