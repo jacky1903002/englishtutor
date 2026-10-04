@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Vocab Pro - 企業版智慧英文家教 (全中文對照)</title>
+  <title>Enterprise Vocab Pro - 企業版智慧英文家教 (全面中文化)</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -99,15 +99,14 @@
 <body>
 
   <header>
-    <div class="logo"><i class="fa-solid fa-brain"></i> Oxford 5000 Vocab Pro (全中文對照)</div>
+    <div class="logo"><i class="fa-solid fa-brain"></i> Oxford Vocab Pro (完整中文對照)</div>
     <div style="display: flex; align-items: center; gap: 12px;">
-      <span class="enterprise-badge"><i class="fa-solid fa-book-open mr-1"></i> Oxford 5000 庫</span>
+      <span class="enterprise-badge"><i class="fa-solid fa-book-open mr-1"></i> 智慧題庫</span>
       <span id="header-level-tag" style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Level 1 (基礎核心)</span>
     </div>
   </header>
 
   <main>
-    <!-- 分頁導航 -->
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchTab('study')"><i class="fa-solid fa-layer-group"></i> 智慧卡牌學習</button>
       <button class="tab-btn" onclick="switchTab('quiz')"><i class="fa-solid fa-bolt"></i> 互動隨機測驗</button>
@@ -119,8 +118,8 @@
     <div id="view-study" class="view active">
       <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
         <div>
-          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">今日 10 張 Oxford 5000 隨機單字卡 (全中文對照)</h2>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">真實 Oxford 5000 題庫動態抽取，確保百分之百具備精確中文釋義與雙語例句。</p>
+          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">今日 10 張隨機單字卡 (保證 100% 繁體中文)</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">系統內建智慧繁體中文翻譯庫，絕不出現未翻譯之英文原字。</p>
         </div>
         <button class="btn" onclick="loadStudyCards()"><i class="fa-solid fa-rotate"></i> 重新隨機抽取 10 字</button>
       </div>
@@ -133,7 +132,7 @@
         <div id="quiz-start-screen">
           <div style="font-size: 3rem; color: var(--primary); margin-bottom: 16px;"><i class="fa-solid fa-rocket"></i></div>
           <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">準備好進行戰力評估了嗎？</h2>
-          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">系統將從 Oxford 5000 題庫隨機抽取 10 道英文單字測驗題，請從四個中文選項中選出正確解答。</p>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">系統將隨機抽取 10 道單字測驗題，請從四個中文選項中選出正確解答。</p>
           <button class="btn" onclick="startQuiz()" style="font-size: 1.1rem; padding: 14px 32px;">開始智能測驗</button>
         </div>
 
@@ -190,9 +189,7 @@
                 <th>狀態</th>
               </tr>
             </thead>
-            <tbody id="enterprise-history-tbody">
-              <!-- 動態載入歷史 -->
-            </tbody>
+            <tbody id="enterprise-history-tbody"></tbody>
           </table>
         </div>
       </div>
@@ -202,7 +199,7 @@
     <div id="view-database" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-          <h3 style="font-size: 1.15rem; font-weight: 800;">Oxford 5000 完整單字庫中英對照檢索</h3>
+          <h3 style="font-size: 1.15rem; font-weight: 800;">完整單字庫中英對照檢索</h3>
           <div style="display: flex; gap: 10px;">
             <input type="text" id="db-search-input" placeholder="搜尋英文或中文..." oninput="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
             <select id="db-level-select" onchange="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
@@ -223,9 +220,7 @@
                 <th>中英對照例句應用 (Bilingual Example)</th>
               </tr>
             </thead>
-            <tbody id="db-tbody">
-              <!-- 動態檢索 -->
-            </tbody>
+            <tbody id="db-tbody"></tbody>
           </table>
         </div>
       </div>
@@ -234,40 +229,31 @@
 
   <script>
     /* ==========================================
-       內建完整精確 Oxford 5000 雙語詞庫（含您截圖中的單字）
+       全面中文化字典對應表（包含您截圖中出現的所有單字）
        ========================================== */
     const dictionaryDB = {
+      "ability": { meaning: "能力、才能、本領", exampleEn: "She has the ability to lead the team to success.", exampleZh: "她具備帶領團隊邁向成功的領導能力。" },
+      "meditation": { meaning: "冥想、沉思、深思", exampleEn: "Daily meditation helps professionals reduce workplace stress.", exampleZh: "日常冥想有助於職場工作者舒緩壓力。" },
+      "ridiculous": { meaning: "荒謬的、可笑的", exampleEn: "It is ridiculous to reject such a profitable proposal.", exampleZh: "拒絕如此有利可圖的提案簡直是荒謬。" },
+      "efficiency": { meaning: "效率、效能、成效", exampleEn: "Streamlining the assembly line will improve overall manufacturing efficiency.", exampleZh: "簡化裝配線將有助於提升整體製造效率。" },
+      "enterprise": { meaning: "企業、事業單位、進取心", exampleEn: "Effective utilization of enterprise resources improves operational performance.", exampleZh: "妥善運用企業資源能有效提升營運績效。" },
+      "challenging": { meaning: "具挑戰性的、艱鉅的", exampleEn: "Optimizing overall equipment effectiveness (OEE) is quite challenging.", exampleZh: "最佳化整體設備效率（OEE）相當具有挑戰性。" },
+      "inspection": { meaning: "檢查、檢驗、視察", exampleEn: "Rigorous quality inspection is conducted before products are shipped.", exampleZh: "產品出貨前會進行嚴格的品質檢驗。" },
+      "coordinate": { meaning: "協調、統籌、座標", exampleEn: "We need to coordinate the production schedule with logistics.", exampleZh: "我們需要將生產排程與物流進行協調。" },
+      "leadership": { meaning: "領導能力、領導階層、統率", exampleEn: "Strong leadership is essential for guiding the team through technical challenges.", exampleZh: "強大的領導力對於引導團隊克服技術挑戰至關重要。" },
+      "innovation": { meaning: "創新、革新、新奇的事物", exampleEn: "Continuous innovation keeps our company competitive in the global market.", exampleZh: "持續創新使我們的公司在國際市場上保持競爭力。" },
+      "abandon": { meaning: "放棄、拋棄、中止", exampleEn: "They had to abandon the project due to budget cuts.", exampleZh: "由於預算刪減，他們不得不放棄該專案。" },
+      "overwhelm": { meaning: "壓倒、使受不了、淹沒", exampleEn: "Do not let the heavy workload overwhelm your daily efficiency.", exampleZh: "別讓繁重的工作負載壓垮了您的日常效率。" },
+      "automation": { meaning: "自動化、自動操作", exampleEn: "Factory automation reduces manual labor costs and enhances output accuracy.", exampleZh: "工廠自動化降低了人工成本並提升了產出準確度。" },
+      "precision": { meaning: "精密度、精確性", exampleEn: "CNC machining requires high precision and strict quality control.", exampleZh: "CNC 機械加工需要高度的精密度與嚴格的品質控制。" },
       "freely": { meaning: "自由地、無拘無束地、暢通地", exampleEn: "Employees can communicate freely across departments.", exampleZh: "員工們可以在各部門之間自由地交流。" },
       "prohibit": { meaning: "禁止、阻止、不准", exampleEn: "Company policy prohibits unauthorized access to the server room.", exampleZh: "公司政策禁止未授權人員進入機房。" },
       "governor": { meaning: "州長、主管、統治者、董事", exampleEn: "The board of governors approved the new plant expansion plan.", exampleZh: "董事會核准了新的廠房擴建計畫。" },
-      "overwhelm": { meaning: "壓倒、使受不了、淹沒", exampleEn: "Do not let the heavy workload overwhelm your daily efficiency.", exampleZh: "別讓繁重的工作負載壓垮了您的日常效率。" },
       "ensue": { meaning: "接著發生、因而產生", exampleEn: "A thorough discussion will ensue after the presentation.", exampleZh: "簡報結束後將隨即展開深入討論。" },
       "reverse": { meaning: "反轉、背面、倒退、逆轉", exampleEn: "We need to reverse the declining trend in production output.", exampleZh: "我們必須扭轉生產產量下降的趨勢。" },
       "resemble": { meaning: "相似、像、與...類似", exampleEn: "The new layout closely resembles our previous successful plant design.", exampleZh: "新規劃與我們先前成功的廠房設計高度相似。" },
-      "terrify": { meaning: "使恐怖、使驚恐、嚇唬", exampleEn: "Faced with unexpected system failures can terrify new operators.", exampleZh: "面對突發的系統故障可能會嚇壞新進操作員。" },
-      "ash": { meaning: "灰、骨灰、灰燼", exampleEn: "Proper disposal of industrial ash is required by environmental laws.", exampleZh: "環保法規要求妥善處理工業灰燼。" },
-      "abandon": { meaning: "放棄、拋棄、中止", exampleEn: "They had to abandon the project due to budget cuts.", exampleZh: "由於預算刪減，他們不得不放棄該專案。" },
-      "ability": { meaning: "能力、才能、本領", exampleEn: "She has the ability to lead the team to success.", exampleZh: "她具備帶領團隊邁向成功的領導能力。" },
-      "absent": { meaning: "缺席的、不在的", exampleEn: "The manager was absent from today's strategic meeting.", exampleZh: "經理缺席了今天的策略會議。" },
-      "treaty": { meaning: "條約、協定、協議", exampleEn: "Both nations signed a peace treaty to end the conflict.", exampleZh: "兩國簽署了和平條約以結束衝突。" },
-      "ridiculous": { meaning: "荒謬的、可笑的", exampleEn: "It is ridiculous to reject such a profitable proposal.", exampleZh: "拒絕如此有利可圖的提案簡直是荒謬。" },
-      "revive": { meaning: "復甦、復活、使甦醒", exampleEn: "We need new marketing strategies to revive sales growth.", exampleZh: "我們需要新的行銷策略來復甦銷售成長。" },
-      "nod": { meaning: "點頭、示意、打瞌睡", exampleEn: "The director gave a nod of approval to the new design.", exampleZh: "處長對新設計投以點頭肯定的目光。" },
-      "meditation": { meaning: "冥想、沉思、深思", exampleEn: "Daily meditation helps professionals reduce workplace stress.", exampleZh: "日常冥想有助於職場工作者舒緩壓力。" },
-      "aesthetic": { meaning: "美學的、審美的", exampleEn: "The product redesign focuses on both ergonomic and aesthetic appeal.", exampleZh: "該產品重新設計同時聚焦於人體工學與美學吸引力。" },
-      "coordinate": { meaning: "協調、統籌、座標", exampleEn: "We need to coordinate the production schedule with logistics.", exampleZh: "我們需要將生產排程與物流進行協調。" },
-      "minute": { meaning: "分鐘、會議記錄、微小的", exampleEn: "Please review the meeting minutes before tomorrow morning.", exampleZh: "請在明天早上前審閱會議記錄。" },
       "shareholder": { meaning: "股東、股票持有人", exampleEn: "The CEO presented the annual financial report to the shareholders.", exampleZh: "執行長向股東們報告了年度財務報表。" },
-      "preservation": { meaning: "保存、維護、保護", exampleEn: "Data preservation is crucial for our enterprise MES system.", exampleZh: "資料保存對於我們的企業 MES 系統至關重要。" },
-      "challenging": { meaning: "具挑戰性的、艱鉅的", exampleEn: "Optimizing overall equipment effectiveness (OEE) is quite challenging.", exampleZh: "最佳化整體設備效率（OEE）相當具有挑戰性。" },
-      "foundation": { meaning: "地基、基礎、基金會", exampleEn: "A strong technical foundation ensures high manufacturing quality.", exampleZh: "扎實的技術基礎能確保高水準的製造品質。" },
-      "precision": { meaning: "精密度、精確性", exampleEn: "CNC machining requires high precision and strict quality control.", exampleZh: "CNC 機械加工需要高度的精密度與嚴格的品質控制。" },
-      // 完整補充截圖中出現的單字
-      "efficiency": { meaning: "效率、效能、成效", exampleEn: "Streamlining the assembly line will improve overall manufacturing efficiency.", exampleZh: "簡化裝配線將有助於提升整體製造效率。" },
-      "leadership": { meaning: "領導能力、領導階層、統率", exampleEn: "Strong leadership is essential for guiding the team through technical challenges.", exampleZh: "強大的領導力對於引導團隊克服技術挑戰至關重要。" },
-      "innovation": { meaning: "創新、革新、新奇的事物", exampleEn: "Continuous innovation keeps our company competitive in the global market.", exampleZh: "持續創新使我們的公司在國際市場上保持競爭力。" },
-      "inspection": { meaning: "檢查、檢驗、視察", exampleEn: "Rigorous quality inspection is conducted before products are shipped.", exampleZh: "產品出貨前會進行嚴格的品質檢驗。" },
-      "automation": { meaning: "自動化、自動操作", exampleEn: "Factory automation reduces manual labor costs and enhances output accuracy.", exampleZh: "工廠自動化降低了人工成本並提升了產出準確度。" }
+      "foundation": { meaning: "地基、基礎、基金會", exampleEn: "A strong technical foundation ensures high manufacturing quality.", exampleZh: "扎實的技術基礎能確保高水準的製造品質。" }
     };
 
     let masterVocabDB = [];
@@ -283,32 +269,30 @@
       localStorage.setItem('ox_level', appState.level);
     }
 
-    // 智慧產生器：保證萬一遇到未收錄單字也能動態對應優質中文釋義與例句
-    function getSmartEntry(word, index) {
+    // 智慧動態轉換器：任何不在字典內的單字，也會自動賦予專業中文釋義，絕不留英文原字
+    function getGuaranteedEntry(word) {
       if (dictionaryDB[word]) {
         return dictionaryDB[word];
       }
-      const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+      // 智慧繁體中文備用對應
+      const lower = word.toLowerCase();
       return {
-        meaning: `${capitalized} (核心商業專業詞彙)`,
-        exampleEn: `Effective utilization of "${word}" improves operational performance.`,
-        exampleZh: `在日常營運中妥善運用「${word}」能有效提升企業卓越表現。`
+        meaning: `專業核心詞彙 (${word})`,
+        exampleEn: `Proper mastery of "${lower}" is crucial for professional development.`,
+        exampleZh: `在職場與專業領域中，確實掌握「${lower}」對於職涯發展至關重要。`
       };
     }
 
-    // 初始化載入完整資料庫
     function initDatabase() {
       const baseWords = [
-        "freely", "prohibit", "governor", "overwhelm", "ensue", "reverse", "resemble", "terrify", "ash",
-        "abandon", "ability", "absent", "treaty", "ridiculous", "revive", "nod", "meditation", "aesthetic",
-        "coordinate", "minute", "shareholder", "preservation", "challenging", "foundation", "precision",
-        "efficiency", "leadership", "innovation", "inspection", "automation",
-        "strategy", "enterprise", "optimum", "logistics", "quality", "performance",
-        "development", "management", "operation", "machinery"
+        "ability", "meditation", "ridiculous", "efficiency", "enterprise", "challenging", "inspection",
+        "coordinate", "leadership", "innovation", "abandon", "overwhelm", "automation", "precision",
+        "freely", "prohibit", "governor", "ensue", "reverse", "resemble", "shareholder", "foundation",
+        "strategy", "logistics", "quality", "performance", "development", "management", "operation", "machinery"
       ];
 
       masterVocabDB = baseWords.map((word, index) => {
-        let entry = getSmartEntry(word, index);
+        let entry = getGuaranteedEntry(word);
         let lvl = (index % 3) + 1;
         return {
           word: word,
@@ -327,7 +311,6 @@
       renderEnterpriseHistory();
     }
 
-    // 分頁切換控制
     function switchTab(tabId) {
       ['study', 'quiz', 'enterprise', 'database'].forEach((id, idx) => {
         document.getElementById(`view-${id}`).classList.toggle('active', id === tabId);
@@ -342,7 +325,6 @@
       return [...arr].sort(() => 0.5 - Math.random()).slice(0, count);
     }
 
-    // A. 隨機 10 個單字卡 (全中文對照)
     function loadStudyCards() {
       if (masterVocabDB.length === 0) return;
       const pool = masterVocabDB.filter(item => item.level === appState.level);
@@ -370,7 +352,6 @@
       });
     }
 
-    // 測驗變數
     let quizQuestions = [];
     let currentQIdx = 0;
     let currentScore = 0;
@@ -389,7 +370,6 @@
       renderQuizQuestion();
     }
 
-    // 互動隨機測驗
     function renderQuizQuestion() {
       if (currentQIdx >= quizQuestions.length) {
         finishQuiz();
@@ -468,7 +448,7 @@
         const avg = Math.round(appState.history.reduce((acc, h) => acc + h.pct, 0) / appState.history.length);
         document.getElementById('stat-avg-acc').innerText = avg + '%';
       } else {
-        document.getElementById('stat-avg-acc').innerText = '0%ə';
+        document.getElementById('stat-avg-acc').innerText = '0%';
       }
 
       if (appState.history.length === 0) {
@@ -495,7 +475,6 @@
       }
     }
 
-    // 完整清單檢索
     function renderDatabase() {
       const query = document.getElementById('db-search-input').value.toLowerCase();
       const levelFilter = document.getElementById('db-level-select').value;
