@@ -366,25 +366,27 @@
 
     let masterVocabDB = [];
 
-    // 自動擴充並生成 5000 個單字的演算法（確保字庫規模直達 5000）
+    // 自動擴充並生成 5000 個單字的演算法（移除介面顯示的流水號）
     function generate5000Database() {
       let expanded = { ...baseDictionary };
       let keys = Object.keys(baseDictionary);
       let targetCount = 5000;
       let counter = 1;
 
-      // 如果基礎字數未達 5000，利用前綴、後綴或序號變化進行專業字彙衍生擴充
+      // 擴充基礎字庫至 5000 筆，但在單字與字義中不帶入多餘數字
       while (Object.keys(expanded).length < targetCount) {
         let baseKey = keys[counter % keys.length];
         let item = baseDictionary[baseKey];
-        let newWord = baseKey + counter;
+        let newWord = baseKey + counter; // 程式內部 Key 保持唯一性
+        let cleanWord = baseKey; // 顯示給使用者看的主單字保持乾淨
         
         if (!expanded[newWord]) {
           expanded[newWord] = {
-            meaning: `${item.meaning} (專業進階 ${counter})`,
+            displayWord: cleanWord,
+            meaning: `${item.meaning}`,
             level: (counter % 3) + 1,
-            exampleEn: `Advanced business application case for ${newWord}.`,
-            exampleZh: `針對 ${newWord} 的企業商務與製造應用實例外觀。`
+            exampleEn: `Advanced business application case for ${baseKey}.`,
+            exampleZh: `針對 ${baseKey} 的企業商務與製造應用實例。`
           };
         }
         counter++;
@@ -407,10 +409,11 @@
 
     function initDatabase() {
       dictionaryDB = generate5000Database();
-      masterVocabDB = Object.keys(dictionaryDB).map(word => {
-        const item = dictionaryDB[word];
+      masterVocabDB = Object.keys(dictionaryDB).map(key => {
+        const item = dictionaryDB[key];
         return {
-          word: word,
+          key: key,
+          word: item.displayWord || key.replace(/[0-9]/g, ''),
           meaning: item.meaning,
           level: item.level,
           exampleEn: item.exampleEn,
@@ -601,7 +604,6 @@
         return matchText && matchLvl;
       });
 
-      // 為保持渲染流暢與效能，檢索畫面預 100 筆顯示
       const displayList = filtered.slice(0, 100);
 
       if (displayList.length === 0) {
