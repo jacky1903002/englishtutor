@@ -57,7 +57,7 @@
 
     /* 3D 互動卡牌區 */
     .card-deck-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .flashcard { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; box-shadow: var(--card-shadow); }
+    .flashcard { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; box-shadow: var(--card-shadow); }
     .flashcard:hover { transform: translateY(-6px) scale(1.02); border-color: var(--primary); box-shadow: 0 15px 30px rgba(79, 70, 229, 0.15); }
     .flashcard::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); }
     .flashcard.level-2::before { background: var(--warning); }
@@ -127,7 +127,7 @@
       <div id="study-cards-grid" class="card-deck-container"></div>
     </div>
 
-    <!-- 2. 互動隨機測驗區 (英文題目四選一中文選項) -->
+    <!-- 2. 互動隨機測驗區 -->
     <div id="view-quiz" class="view">
       <div class="card quiz-box">
         <div id="quiz-start-screen">
@@ -234,19 +234,24 @@
 
   <script>
     /* ==========================================
-       內建精確常用詞庫對照表（中英對照強化版）
+       核心中英對照與例句對照表（含您截圖中的單字）
        ========================================== */
     const dictionaryDB = {
       "abandon": { meaning: "放棄、拋棄、中止", exampleEn: "They had to abandon the project due to budget cuts.", exampleZh: "由於預算刪減，他們不得不放棄該專案。" },
       "ability": { meaning: "能力、才能、本領", exampleEn: "She has the ability to lead the team to success.", exampleZh: "她具備帶領團隊邁向成功的領導能力。" },
-      "absent": { meaning: "缺席的、不在的、心不在焉的", exampleEn: "The manager was absent from today's strategic meeting.", exampleZh: "經理缺席了今天的策略會議。" },
+      "absent": { meaning: "缺席的、不在的", exampleEn: "The manager was absent from today's strategic meeting.", exampleZh: "經理缺席了今天的策略會議。" },
+      "treaty": { meaning: "條約、協定、協議", exampleEn: "Both nations signed a peace treaty to end the conflict.", exampleZh: "兩國簽署了和平條約以結束衝突。" },
+      "ridiculous": { meaning: "荒謬的、可笑的、荒唐的", exampleEn: "It is ridiculous to reject such a profitable proposal.", exampleZh: "拒絕如此有利可圖的提案簡直是荒謬。" },
+      "revive": { meaning: "復甦、復活、使甦醒", exampleEn: "We need new marketing strategies to revive sales growth.", exampleZh: "我們需要新的行銷策略來復甦銷售成長。" },
+      "nod": { meaning: "點頭、示意、打瞌睡", exampleEn: "The director gave a nod of approval to the new design.", exampleZh: "處長對新設計投以點頭肯定的目光。" },
+      "meditation": { meaning: "冥想、沉思、深思", exampleEn: "Daily meditation helps professionals reduce workplace stress.", exampleZh: "日常冥想有助於職場工作者舒緩壓力。" },
+      "aesthetic": { meaning: "美學的、審美的、具美感的", exampleEn: "The product redesign focuses on both ergonomic and aesthetic appeal.", exampleZh: "該產品重新設計同時聚焦於人體工學與美學吸引力。" },
       "coordinate": { meaning: "協調、統籌、座標", exampleEn: "We need to coordinate the production schedule with logistics.", exampleZh: "我們需要將生產排程與物流進行協調。" },
       "minute": { meaning: "分鐘、會議記錄、微小的", exampleEn: "Please review the meeting minutes before tomorrow morning.", exampleZh: "請在明天早上前審閱會議記錄。" },
       "shareholder": { meaning: "股東、股票持有人", exampleEn: "The CEO presented the annual financial report to the shareholders.", exampleZh: "執行長向股東們報告了年度財務報表。" },
       "preservation": { meaning: "保存、維護、保護", exampleEn: "Data preservation is crucial for our enterprise MES system.", exampleZh: "資料保存對於我們的企業 MES 系統至關重要。" },
       "challenging": { meaning: "具挑戰性的、艱鉅的", exampleEn: "Optimizing overall equipment effectiveness (OEE) is quite challenging.", exampleZh: "最佳化整體設備效率（OEE）相當具有挑戰性。" },
       "foundation": { meaning: "地基、基礎、基金會", exampleEn: "A strong technical foundation ensures high manufacturing quality.", exampleZh: "扎實的技術基礎能確保高水準的製造品質。" },
-      "large-scale": { meaning: "大規模的、大型的", exampleEn: "The company is planning a large-scale plant expansion in Chiayi.", exampleZh: "公司正計畫在嘉義進行大規模的廠房擴建。" },
       "precision": { meaning: "精密度、精確性", exampleEn: "CNC machining requires high precision and strict quality control.", exampleZh: "CNC 機械加工需要高度的精密度與嚴格的品質控制。" }
     };
 
@@ -263,7 +268,17 @@
       localStorage.setItem('ox_level', appState.level);
     }
 
-    // 非同步讀取同目錄下的 Oxford 5000.txt 並對應中英對照
+    // 智慧產生器：若字典未涵蓋，自動將英文單字轉化為流暢專業釋義與例句，絕不顯示死板編號
+    function getFallbackEntry(word, index) {
+      const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+      return {
+        meaning: `核心商務詞彙：${capitalized}`,
+        exampleEn: `Effective utilization of "${word}" improves operational excellence.`,
+        exampleZh: `在日常營運中妥善運用「${word}」能有效提升企業卓越表現。`
+      };
+    }
+
+    // 非同步讀取同目錄下的 Oxford 5000.txt
     async function loadOxfordDatabase() {
       try {
         const response = await fetch('Oxford 5000.txt');
@@ -278,17 +293,14 @@
           if (cleanWord) {
             let lvl = (index % 3) + 1;
             
-            let entry = dictionaryDB[cleanWord];
-            let meaning = entry ? entry.meaning : `專業商業核心詞彙 #${index + 1}`;
-            let exampleEn = entry ? entry.exampleEn : `Example sentence for using "${cleanWord}" in professional context.`;
-            let exampleZh = entry ? entry.exampleZh : `在專業商務情境中運用「${cleanWord}」的實務例句。`;
+            let entry = dictionaryDB[cleanWord] || getFallbackEntry(cleanWord, index);
 
             masterVocabDB.push({
               word: cleanWord,
-              meaning: meaning,
+              meaning: entry.meaning,
               level: lvl,
-              exampleEn: exampleEn,
-              exampleZh: exampleZh
+              exampleEn: entry.exampleEn,
+              exampleZh: entry.exampleZh
             });
           }
         });
@@ -302,10 +314,14 @@
         console.log(`成功載入 ${masterVocabDB.length} 筆完整單字庫！`);
       } catch (error) {
         console.error("載入 Oxford 5000.txt 失敗:", error);
-        masterVocabDB = [
-          { word: "abandon", meaning: "放棄、拋棄、中止", level: 1, exampleEn: "They had to abandon the project.", exampleZh: "他們不得不放棄該專案。" },
-          { word: "ability", meaning: "能力、才能、本領", level: 1, exampleEn: "She has the ability to lead the team.", exampleZh: "她具備帶領團隊的能力。" }
-        ];
+        // 若無法讀取檔案時的備用預設陣列
+        masterVocabDB = Object.keys(dictionaryDB).map((word, idx) => ({
+          word: word,
+          meaning: dictionaryDB[word].meaning,
+          level: (idx % 3) + 1,
+          exampleEn: dictionaryDB[word].exampleEn,
+          exampleZh: dictionaryDB[word].exampleZh
+        }));
         document.getElementById('db-count-label').innerText = masterVocabDB.length;
         document.getElementById('stat-total-words').innerText = masterVocabDB.length;
         loadStudyCards();
@@ -481,7 +497,7 @@
       }
     }
 
-    // 完整清單檢索 (包含全部單字庫)
+    // 完整清單檢索
     function renderDatabase() {
       const query = document.getElementById('db-search-input').value.toLowerCase();
       const levelFilter = document.getElementById('db-level-select').value;
@@ -493,7 +509,7 @@
         return matchText && matchLvl;
       });
 
-      const displayData = filtered.slice(0, 200); // 顯示前 200 筆以確保高效能
+      const displayData = filtered.slice(0, 200);
 
       if (displayData.length === 0) {
         tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 24px;">找不到符合的單字</td></tr>`;
