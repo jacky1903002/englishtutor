@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Vocab Pro - 真實獨立單字旗艦版</title>
+  <title>Enterprise Vocab Pro - 7000單字旗艦版</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -23,7 +23,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
     body { background-color: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; background-image: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.08) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(219, 39, 119, 0.06) 0%, transparent 40%); }
 
-    /* 頂部導航列 */
     header {
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(12px);
@@ -42,20 +41,17 @@
 
     main { max-width: 1000px; width: 100%; margin: 32px auto; padding: 0 20px; flex: 1; }
 
-    /* 分頁設計 */
     .nav-tabs { display: flex; gap: 12px; margin-bottom: 28px; overflow-x: auto; padding-bottom: 4px; }
     .tab-btn { background: white; border: 1px solid var(--border); color: var(--text-muted); padding: 10px 20px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
     .tab-btn:hover { background: #f8fafc; color: var(--text-main); }
     .tab-btn.active { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border-color: transparent; box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3); }
 
-    /* 卡片外觀 */
     .card { background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: var(--card-shadow); margin-bottom: 24px; transition: transform 0.3s; }
 
     .view { display: none; }
     .view.active { display: block; animation: fadeIn 0.4s ease-in-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* 3D 互動卡牌區 */
     .card-deck-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
     .flashcard { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; box-shadow: var(--card-shadow); }
     .flashcard:hover { transform: translateY(-6px) scale(1.02); border-color: var(--primary); box-shadow: 0 15px 30px rgba(79, 70, 229, 0.15); }
@@ -66,25 +62,21 @@
     .word-title { font-size: 1.4rem; font-weight: 800; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; }
     .word-meaning { font-size: 1.1rem; color: #1e293b; margin: 6px 0; font-weight: 700; }
     
-    /* 中英對照例句樣式 */
     .word-example-box { background: #f8fafc; padding: 10px 12px; border-radius: 8px; border-left: 2px solid var(--accent); margin-top: 8px; }
     .example-en { font-size: 0.85rem; color: var(--text-main); font-style: italic; margin-bottom: 2px; }
     .example-zh { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
 
-    /* 按鈕樣式 */
     .btn { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25); display: inline-flex; align-items: center; gap: 8px; }
     .btn:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4); }
     .btn-secondary { background: white; border: 1px solid var(--border); color: var(--text-main); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
     .btn-secondary:hover { background: #f8fafc; }
 
-    /* 測驗區樣式 */
     .quiz-box { text-align: center; max-width: 650px; margin: 0 auto; }
     .quiz-word-display { font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 20px 0; letter-spacing: 1px; }
     .options-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
     .option-btn { background: white; border: 1px solid var(--border); padding: 16px 20px; border-radius: 12px; color: var(--text-main); font-size: 1.05rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
     .option-btn:hover { background: #eff6ff; border-color: var(--primary); transform: translateX(4px); }
 
-    /* 企業商用面板 */
     .enterprise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
     .stat-card { background: white; border: 1px solid var(--border); padding: 20px; border-radius: 16px; text-align: center; box-shadow: var(--card-shadow); }
     .stat-num { font-size: 2rem; font-weight: 800; color: var(--primary); margin-top: 6px; }
@@ -99,9 +91,9 @@
 <body>
 
   <header>
-    <div class="logo"><i class="fa-solid fa-brain"></i> Enterprise Vocab Pro (獨立單字精選版)</div>
+    <div class="logo"><i class="fa-solid fa-brain"></i> Enterprise Vocab Pro (7000單字旗艦版)</div>
     <div style="display: flex; align-items: center; gap: 12px;">
-      <span class="enterprise-badge"><i class="fa-solid fa-database mr-1"></i> 獨立高階單字庫</span>
+      <span class="enterprise-badge"><i class="fa-solid fa-database mr-1"></i> 全面單字庫</span>
       <span id="header-level-tag" style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Level 1 (基礎核心)</span>
     </div>
   </header>
@@ -119,7 +111,7 @@
       <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
         <div>
           <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">今日 10 張隨機單字卡 (100% 繁體中文對照)</h2>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">從真實獨立的高階商務與製造字彙中隨機抽取。</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">從 7,000 高階商務與製造字彙庫中隨機抽取。</p>
         </div>
         <button class="btn" onclick="loadStudyCards()"><i class="fa-solid fa-rotate"></i> 重新隨機抽取 10 字</button>
       </div>
@@ -132,7 +124,7 @@
         <div id="quiz-start-screen">
           <div style="font-size: 3rem; color: var(--primary); margin-bottom: 16px;"><i class="fa-solid fa-rocket"></i></div>
           <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">準備好進行單字戰力評估了嗎？</h2>
-          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">系統將從獨立單字庫中隨機抽取 10 道單字測驗題。</p>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">系統將從 7,000 單字庫中隨機抽取 10 道測驗題。</p>
           <button class="btn" onclick="startQuiz()" style="font-size: 1.1rem; padding: 14px 32px;">開始智能測驗</button>
         </div>
 
@@ -199,7 +191,7 @@
     <div id="view-database" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-          <h3 style="font-size: 1.15rem; font-weight: 800;">獨立單字庫檢索</h3>
+          <h3 style="font-size: 1.15rem; font-weight: 800;">7000 單字庫檢索</h3>
           <div style="display: flex; gap: 10px;">
             <input type="text" id="db-search-input" placeholder="搜尋英文或中文..." oninput="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
             <select id="db-level-select" onchange="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
@@ -210,7 +202,7 @@
             </select>
           </div>
         </div>
-        <div style="overflow-x: auto; max-height: 480px;">
+        <div style="overflow-x: auto; max-height: 520px;">
           <table>
             <thead>
               <tr>
@@ -228,142 +220,6 @@
   </main>
 
   <script>
-    /* ==========================================
-       真實獨立單字庫（100% 不重複、各具獨立意義與例句）
-       ========================================== */
-    const uniqueDictionaryData = [
-      { word: "ability", meaning: "能力、才能、本領", level: 1, exampleEn: "She has the ability to lead the team to success.", exampleZh: "她具備帶領團隊邁向成功的領導能力。" },
-      { word: "meditation", meaning: "冥想、沉思、深思", level: 2, exampleEn: "Daily meditation helps professionals reduce workplace stress.", exampleZh: "日常冥想有助於職場工作者舒緩壓力。" },
-      { word: "ridiculous", meaning: "荒謬的、可笑的", level: 3, exampleEn: "It is ridiculous to reject such a profitable proposal.", exampleZh: "拒絕如此有利可圖的提案簡直是荒謬。" },
-      { word: "efficiency", meaning: "效率、效能、成效", level: 1, exampleEn: "Streamlining the assembly line will improve overall manufacturing efficiency.", exampleZh: "簡化裝配線將有助於提升整體製造效率。" },
-      { word: "enterprise", meaning: "企業、事業單位、進取心", level: 2, exampleEn: "Effective utilization of enterprise resources improves operational performance.", exampleZh: "妥善運用企業資源能有效提升營運績效。" },
-      { word: "challenging", meaning: "具挑戰性的、艱鉅的", level: 2, exampleEn: "Optimizing overall equipment effectiveness (OEE) is quite challenging.", exampleZh: "最佳化整體設備效率（OEE）相當具有挑戰性。" },
-      { word: "inspection", meaning: "檢查、檢驗、視察", level: 1, exampleEn: "Rigorous quality inspection is conducted before products are shipped.", exampleZh: "產品出貨前會進行嚴格的品質檢驗。" },
-      { word: "coordinate", meaning: "協調、統籌、座標", level: 2, exampleEn: "We need to coordinate the production schedule with logistics.", exampleZh: "我們需要將生產排程與物流進行協調。" },
-      { word: "leadership", meaning: "領導能力、領導階層、統率", level: 1, exampleEn: "Strong leadership is essential for guiding the team through technical challenges.", exampleZh: "強大的領導力對於引導團隊克服技術挑戰至關重要。" },
-      { word: "innovation", meaning: "創新、革新、新奇的事物", level: 2, exampleEn: "Continuous innovation keeps our company competitive in the global market.", exampleZh: "持續創新使我們的公司在國際市場上保持競爭力。" },
-      { word: "abandon", meaning: "放棄、拋棄、中止", level: 2, exampleEn: "They had to abandon the project due to budget cuts.", exampleZh: "由於預算刪減，他們不得不放棄該專案。" },
-      { word: "overwhelm", meaning: "壓倒、使受不了、淹沒", level: 3, exampleEn: "Do not let the heavy workload overwhelm your daily efficiency.", exampleZh: "別讓繁重的工作負載壓垮了您的日常效率。" },
-      { word: "automation", meaning: "自動化、自動操作", level: 2, exampleEn: "Factory automation reduces manual labor costs and enhances output accuracy.", exampleZh: "工廠自動化降低了人工成本並提升了產出準確度。" },
-      { word: "precision", meaning: "精密度、精確性", level: 2, exampleEn: "CNC machining requires high precision and strict quality control.", exampleZh: "CNC 機械加工需要高度的精密度與嚴格的品質控制。" },
-      { word: "freely", meaning: "自由地、無拘無束地、暢通地", level: 1, exampleEn: "Employees can communicate freely across departments.", exampleZh: "員工們可以在各部門之間自由地交流。" },
-      { word: "prohibit", meaning: "禁止、阻止、不准", level: 2, exampleEn: "Company policy prohibits unauthorized access to the server room.", exampleZh: "公司政策禁止未授權人員進入機房。" },
-      { word: "governor", meaning: "州長、主管、統治者、董事", level: 3, exampleEn: "The board of governors approved the new plant expansion plan.", exampleZh: "董事會核准了新的廠房擴建計畫。" },
-      { word: "ensue", meaning: "接著發生、因而產生", level: 3, exampleEn: "A thorough discussion will ensue after the presentation.", exampleZh: "簡報結束後將隨即展開深入討論。" },
-      { word: "reverse", meaning: "反轉、背面、倒退、逆轉", level: 2, exampleEn: "We need to reverse the declining trend in production output.", exampleZh: "我們必須扭轉生產產量下降的趨勢。" },
-      { word: "resemble", meaning: "相似、像、與...類似", level: 2, exampleEn: "The new layout closely resembles our previous successful plant design.", exampleZh: "新規劃與我們先前成功的廠房設計高度相似。" },
-      { word: "shareholder", meaning: "股東、股票持有人", level: 3, exampleEn: "The CEO presented the annual financial report to the shareholders.", exampleZh: "執行長向股東們報告了年度財務報表。" },
-      { word: "foundation", meaning: "地基、基礎、基金會", level: 1, exampleEn: "A strong technical foundation ensures high manufacturing quality.", exampleZh: "扎實的技術基礎能確保高水準的製造品質。" },
-      { word: "strategy", meaning: "策略、戰略、行動方針", level: 2, exampleEn: "A clear manufacturing strategy is crucial for long-term plant development.", exampleZh: "清晰的製造策略對於長遠的廠房發展至關重要。" },
-      { word: "logistics", meaning: "物流、後勤、配銷", level: 2, exampleEn: "Efficient logistics ensure timely delivery of raw materials.", exampleZh: "高效率的物流能確保原材料的準時交付。" },
-      { word: "quality", meaning: "品質、優質、特質", level: 1, exampleEn: "Quality control is our top priority in manufacturing.", exampleZh: "品質管控是我們製造部門的首要任務。" },
-      { word: "performance", meaning: "績效、表現、性能、成效", level: 2, exampleEn: "Regular equipment maintenance ensures stable operational performance.", exampleZh: "定期設備維護能確保穩定的營運績效。" },
-      { word: "development", meaning: "發展、開發、研發、成長", level: 1, exampleEn: "Continuous product development enhances market competitiveness.", exampleZh: "持續的產品開發能提升市場競爭力。" },
-      { word: "management", meaning: "管理、經營、資方管理階層", level: 1, exampleEn: "Effective management drives team productivity and success.", exampleZh: "有效的管理能推動團隊生產力與成功。" },
-      { word: "machinery", meaning: "機械、機器設備", level: 2, exampleEn: "Heavy machinery requires regular maintenance and calibration.", exampleZh: "重型機械需要定期的維護與校正。" },
-      { word: "operation", meaning: "營運、運作、操作、手術", level: 1, exampleEn: "Optimizing shop-floor operation efficiency reduces production costs.", exampleZh: "優化車間營運效率能有效降低生產成本。" },
-      { word: "accurate", meaning: "準確的、精確的", level: 1, exampleEn: "We need accurate data to evaluate production output.", exampleZh: "我們需要準確的數據來評估產出。" },
-      { word: "allocate", meaning: "分配、分派、撥出", level: 3, exampleEn: "Management will allocate resources for the new project.", exampleZh: "管理層將為新專案分配資源。" },
-      { word: "analyze", meaning: "分析、分解", level: 1, exampleEn: "Engineers analyze the machine error logs daily.", exampleZh: "工程師每天分析機器錯誤日誌。" },
-      { word: "annual", meaning: "年度的、每年的", level: 1, exampleEn: "The company holds an annual meeting in December.", exampleZh: "公司在 12 月舉行年會。" },
-      { word: "assemble", meaning: "組裝、集合、集結", level: 2, exampleEn: "Workers assemble electronic components on the line.", exampleZh: "工人在線上組裝電子零件。" },
-      { word: "assess", meaning: "評估、評價、估價", level: 2, exampleEn: "It is necessary to assess the safety risks.", exampleZh: "有必要評估安全風險。" },
-      { word: "assign", meaning: "分配、指派、指定", level: 1, exampleEn: "Tasks are assigned to each team leader.", exampleZh: "任務被指派給各個小組長。" },
-      { word: "balance", meaning: "平衡、結餘、天平", level: 1, exampleEn: "We must balance cost and quality.", exampleZh: "我們必須平衡成本與品質。" },
-      { word: "benefit", meaning: "利益、好處、津貼", level: 1, exampleEn: "Automated lines benefit the whole factory.", exampleZh: "自動化線對整個工廠都有利。" },
-      { word: "budget", meaning: "預算、編列預算", level: 1, exampleEn: "The annual budget was approved yesterday.", exampleZh: "年度預算昨天獲批。" },
-      { word: "capacity", meaning: "產能、容量、生產能力", level: 2, exampleEn: "Factory capacity has reached its maximum limit.", exampleZh: "工廠產能已達到極限。" },
-      { word: "catalog", meaning: "目錄、型錄、編目", level: 1, exampleEn: "Check the latest tool catalog for specifications.", exampleZh: "查看最新工具型錄以了解規格。" },
-      { word: "collaborate", meaning: "合作、協力", level: 2, exampleEn: "Departments must collaborate to solve bottlenecks.", exampleZh: "各部門必須合作以解決瓶頸。" },
-      { word: "commence", meaning: "開始、著手", level: 3, exampleEn: "Production will commence next Monday.", exampleZh: "生產將於下週一開始。" },
-      { word: "commitment", meaning: "承諾、委託、奉獻", level: 2, exampleEn: "Quality is our lifelong commitment.", exampleZh: "品質是我們永恆的承諾。" },
-      { word: "compensate", meaning: "補償、賠償、彌補", level: 3, exampleEn: "Overtime pay compensates for extra shifts.", exampleZh: "加班費補償了額外的班次。" },
-      { word: "competitive", meaning: "競爭激烈的、有競爭力的", level: 2, exampleEn: "Our pricing remains highly competitive.", exampleZh: "我們的定價保持高度競爭力。" },
-      { word: "component", meaning: "零件、組件、成分", level: 1, exampleEn: "Every component is strictly tested.", exampleZh: "每一個零件都經過嚴格測試。" },
-      { word: "comply", meaning: "遵守、依從", level: 2, exampleEn: "All operations must comply with safety regulations.", exampleZh: "所有作業必須遵守安全法規。" },
-      { word: "comprehensive", meaning: "全面的、廣泛的、綜合的", level: 3, exampleEn: "A comprehensive audit report was submitted.", exampleZh: "提交了一份全面的稽核報告。" },
-      { word: "confident", meaning: "有信心的、確信的", level: 1, exampleEn: "We are confident about the new product launch.", exampleZh: "我們對新產品發表充滿信心。" },
-      { word: "consecutive", meaning: "連續的、接連的", level: 3, exampleEn: "The plant achieved three consecutive months of target output.", exampleZh: "該廠連續三個月達到目標產量。" },
-      { word: "considerable", meaning: "相當大的、顯著的", level: 2, exampleEn: "There is a considerable reduction in waste.", exampleZh: "廢料有了相當顯着的減少。" },
-      { word: "constant", meaning: "持續的、恆定的、不變的", level: 2, exampleEn: "Constant monitoring prevents machine failures.", exampleZh: "持續監控可防止機器故障。" },
-      { word: "consult", meaning: "諮詢、請教、查閱", level: 2, exampleEn: "Consult the manual before troubleshooting.", exampleZh: "排除故障前請先查閱手冊。" },
-      { word: "consumer", meaning: "消費者、顧客", level: 1, exampleEn: "Consumer feedback drives our design upgrades.", exampleZh: "消費者回饋驅動我們的設計升級。" },
-      { word: "contribute", meaning: "貢獻、促成、捐助", level: 2, exampleEn: "Every employee contributes to OEE improvement.", exampleZh: "每位員工都對 OEE 提升有所貢獻。" },
-      { word: "convenient", meaning: "方便的、便利的", level: 1, exampleEn: "The digital dashboard makes data tracking convenient.", exampleZh: "數位儀表板讓數據追蹤變得便利。" },
-      { word: "crucial", meaning: "決定性的、至關重要的", level: 2, exampleEn: "Precise temperature control is crucial here.", exampleZh: "精準的溫控在這裡至關重要。" },
-      { word: "customized", meaning: "客製化的", level: 2, exampleEn: "We build customized machines for clients.", exampleZh: "我們為客戶打造客製化機械。" },
-      { word: "defective", meaning: "有缺陷的、有毛病的", level: 2, exampleEn: "Defective items are removed immediately.", exampleZh: "瑕疵品會被立即剔除。" },
-      { word: "delegate", meaning: "委派、授權、代表", level: 3, exampleEn: "Managers should delegate tasks effectively.", exampleZh: "管理者應有效委派任務。" },
-      { word: "demonstrate", meaning: "證明、展示、示範", level: 2, exampleEn: "The test run demonstrates high stability.", exampleZh: "試車展現了高度穩定性。" },
-      { word: "designate", meaning: "指定、指派、標示", level: 3, exampleEn: "Park in the designated area only.", exampleZh: "請僅停在指定區域。" },
-      { word: "destination", meaning: "目的地、終點", level: 1, exampleEn: "The shipment reached its destination safely.", exampleZh: "貨物安全抵達目的地。" },
-      { word: "differentiate", meaning: "區分、辨別", level: 3, exampleEn: "It is hard to differentiate the two alloy grades.", exampleZh: "很難區分這兩種合金牌號。" },
-      { word: "distribute", meaning: "分發、分配、分銷", level: 2, exampleEn: "Reports are distributed to department heads.", exampleZh: "報告已分發給各部門主管。" },
-      { word: "durable", meaning: "耐用的、持久的", level: 1, exampleEn: "Titanium parts are extremely durable.", exampleZh: "鈦金屬零件極其耐用。" },
-      { word: "dynamic", meaning: "動態的、充滿活力的", level: 2, exampleEn: "We operate in a dynamic market environment.", exampleZh: "我們在動態的市場環境中運營。" },
-      { word: "eliminate", meaning: "消除、排除、淘汰", level: 2, exampleEn: "Our goal is to eliminate operational waste.", exampleZh: "我們的目標是消除營運浪費。" },
-      { word: "embrace", meaning: "擁抱、接受、包含", level: 3, exampleEn: "The factory embraces digital transformation.", exampleZh: "工廠全面擁抱數位轉型。" },
-      { word: "encourage", meaning: "鼓勵、激勵", level: 1, exampleEn: "We encourage workers to propose new ideas.", exampleZh: "我們鼓勵員工提出新點子。" },
-      { word: "enhance", meaning: "提高、增加、增強", level: 2, exampleEn: "New coatings enhance tool wear resistance.", exampleZh: "新塗層增強了刀具耐磨性。" },
-      { word: "ensure", meaning: "確保、保證", level: 1, exampleEn: "Double checks ensure zero defects.", exampleZh: "雙重確認確保零缺點。" },
-      { word: "estimate", meaning: "估計、估價", level: 2, exampleEn: "Estimate the delivery time accurately.", exampleZh: "準確估計交貨時間。" },
-      { word: "evaluate", meaning: "評估、評價", level: 2, exampleEn: "We evaluate monthly vendor performance.", exampleZh: "我們評估每月的供應商績效。" },
-      { word: "exclusive", meaning: "獨家的、專有的、排外的", level: 3, exampleEn: "This is our exclusive manufacturing patent.", exampleZh: "這是我們的獨家製造專利。" },
-      { word: "execute", meaning: "執行、實施、處決", level: 2, exampleEn: "Execute the safety protocol immediately.", exampleZh: "立即執行安全規程。" },
-      { word: "expand", meaning: "擴大、擴展、展開", level: 1, exampleEn: "The company plans to expand plant capacity.", exampleZh: "公司計劃擴大廠房產能。" },
-      { word: "expertise", meaning: "專業知識、專長", level: 2, exampleEn: "His mechanical expertise solved the jam.", exampleZh: "他的機械專業知識解決了卡料問題。" },
-      { word: "facility", meaning: "設施、設備、場所", level: 1, exampleEn: "The new facility features advanced CNC lines.", exampleZh: "新設施配備先進的 CNC 產線。" },
-      { word: "feasible", meaning: "可行的、行得通的", level: 3, exampleEn: "Is this automation upgrade financially feasible?", exampleZh: "這個自動化升級在財務上可行嗎？" },
-      { word: "fluctuate", meaning: "波動、起伏", level: 3, exampleEn: "Material prices fluctuate with the market.", exampleZh: "材料價格隨市場波動。" },
-      { word: "formulate", meaning: "規劃、制定、構想", level: 3, exampleEn: "Formulate a new production schedule.", exampleZh: "制定新的生產排程。" },
-      { word: "frequent", meaning: "頻繁的、常客", level: 1, exampleEn: "Frequent maintenance reduces downtime.", exampleZh: "頻繁的維護減少了停機時間。" },
-      { word: "generate", meaning: "生成、產生、引起", level: 1, exampleEn: "The MES system generates automated reports.", exampleZh: "MES 系統會自動生成報告。" },
-      { word: "global", meaning: "全球的、球狀的", level: 1, exampleEn: "We supply components to global clients.", exampleZh: "我們向全球客戶供應零件。" },
-      { word: "guarantee", meaning: "保證、擔保", level: 1, exampleEn: "We guarantee high product reliability.", exampleZh: "我們保證產品的高可靠性。" },
-      { word: "highlight", meaning: "強調、突顯、精華", level: 1, exampleEn: "Highlight the key metrics in the report.", exampleZh: "突顯報告中的關鍵指標。" },
-      { word: "identify", meaning: "識別、認出、確認", level: 1, exampleEn: "Identify the root cause of the defect.", exampleZh: "找出瑕疵的根本原因。" },
-      { word: "implement", meaning: "實施、執行、實現", level: 2, exampleEn: "Implement the IIoT network on all machines.", exampleZh: "在所有機器上實施 IIoT 網路。" },
-      { word: "incentive", meaning: "獎勵、刺激、動機", level: 3, exampleEn: "Performance incentives boost team morale.", exampleZh: "績效獎勵提升了團隊士氣。" },
-      { word: "indicator", meaning: "指標、顯示器、徵兆", level: 2, exampleEn: "OEE is a key performance indicator.", exampleZh: "OEE 是關鍵績效指標。" },
-      { word: "influence", meaning: "影響、支配", level: 2, exampleEn: "Supply chain delays influence delivery dates.", exampleZh: "供應鏈延遲影響了交貨日期。" },
-      { word: "initialize", meaning: "初始化", level: 3, exampleEn: "Initialize the control panel before starting.", exampleZh: "啟動前先初始化控制面板。" },
-      { word: "innovative", meaning: "創新的、革新的", level: 2, exampleEn: "Adopt innovative milling techniques.", exampleZh: "採用創新的銑削技術。" },
-      { word: "inquire", meaning: "詢問、查問", level: 2, exampleEn: "Clients inquire about delivery status.", exampleZh: "客戶詢問交貨狀態。" },
-      { word: "integrate", meaning: "整合、結合", level: 2, exampleEn: "Integrate ERP data with the shop floor.", exampleZh: "將 ERP 數據與車間進行整合。" },
-      { word: "inventory", meaning: "庫存、存貨清單", level: 1, exampleEn: "Manage raw material inventory carefully.", exampleZh: "小心管理原材料庫存。" },
-      { word: "investigate", meaning: "調查、研究", level: 2, exampleEn: "Investigate the abnormal vibration sound.", exampleZh: "調查異常的震動聲音。" },
-      { word: "launch", meaning: "發布、發射、上市", level: 1, exampleEn: "Launch the new product line next month.", exampleZh: "下個月推出新產品線。" },
-      { word: "maintain", meaning: "維護、保養、保持", level: 1, exampleEn: "Maintain the spindle at optimal temperatures.", exampleZh: "將主軸保持在最佳溫度。" },
-      { word: "maximize", meaning: "最大化", level: 2, exampleEn: "Maximize equipment uptime and efficiency.", exampleZh: "最大化設備運行時間與效率。" },
-      { word: "measure", meaning: "測量、衡量、措施", level: 1, exampleEn: "Measure tolerances with a CMM machine.", exampleZh: "用三次元量床測量公差。" },
-      { word: "mechanism", meaning: "機制、構造、機械裝置", level: 2, exampleEn: "Understand the locking mechanism.", exampleZh: "了解鎖定機構。" },
-      { word: "minimize", meaning: "最小化、使減到最少", level: 2, exampleEn: "Minimize scrap metal inventory.", exampleZh: "使金屬廢料庫存最小化。" },
-      { word: "monitor", meaning: "監控、監視器", level: 1, exampleEn: "Monitor real-time production status.", exampleZh: "監控即時生產狀態。" },
-      { word: "motivate", meaning: "激勵、激發", level: 2, exampleEn: "Good leadership motivates the team.", exampleZh: "好的領導力能激勵團隊。" },
-      { word: "negotiate", meaning: "談判、協商", level: 2, exampleEn: "Negotiate contract terms with suppliers.", exampleZh: "與供應商協商合約條款。" },
-      { word: "objective", meaning: "目標、目的、客觀的", level: 2, exampleEn: "Our main objective is 700 units monthly.", exampleZh: "我們的主要目標是每月 700 件。" },
-      { word: "observe", meaning: "觀察、遵守", level: 1, exampleEn: "Observe safety rules at all times.", exampleZh: "隨時遵守安全規則。" },
-      { word: "optimize", meaning: "最佳化、完善", level: 2, exampleEn: "Optimize cutting paths to save time.", exampleZh: "最佳化切削路徑以節省時間。" },
-      { word: "outsource", meaning: "外包", level: 2, exampleEn: "Outsource non-core machining processes.", exampleZh: "將非核心機械加工製程外包。" },
-      { word: "oversee", meaning: "監督、監察、俯瞰", level: 3, exampleEn: "Oversee the factory expansion project.", exampleZh: "監督廠房擴建專案。" },
-      { word: "participate", meaning: "參與、參加", level: 1, exampleEn: "All supervisors participate in the meeting.", exampleZh: "所有主管都參與了會議。" },
-      { word: "percent", meaning: "百分之...、百分比", level: 1, exampleEn: "OEE increased by 23 percent.", exampleZh: "OEE 提升了 23 個百分點。" },
-      { word: "potential", meaning: "潛力、潛能、潛在的", level: 2, exampleEn: "Assess the potential market demand.", exampleZh: "評估潛在的市場需求。" },
-      { word: "prioritize", meaning: "優先處理、按優先順序排序", level: 2, exampleEn: "Prioritize urgent customer orders.", exampleZh: "優先處理緊急客戶訂單。" },
-      { word: "procedure", meaning: "程序、步驟、手續", level: 1, exampleEn: "Follow standard operating procedures.", exampleZh: "遵循標準作業程序。" },
-      { word: "productivity", meaning: "生產力", level: 2, exampleEn: "Automation increases shop productivity.", exampleZh: "自動化提升了車間生產力。" },
-      { word: "profit", meaning: "利潤、收益", level: 1, exampleEn: "Improve efficiency to boost profits.", exampleZh: "提升效率以增加利潤。" },
-      { word: "prominent", meaning: "顯著的、傑出的、著名的", level: 3, exampleEn: "A prominent supplier in precision engineering.", exampleZh: "精密工程領域中傑出的供應商。" },
-      { word: "proposal", meaning: "提案、建議書", level: 2, exampleEn: "Submit the plant upgrade proposal.", exampleZh: "提交廠房升級提案。" },
-      { word: "protocol", meaning: "協議、規程、草案", level: 3, exampleEn: "Strict testing protocols must be met.", exampleZh: "必須符合嚴格的測試規程。" },
-      { word: "qualify", meaning: "取得資格、合格", level: 2, exampleEn: "Qualify new suppliers before ordering.", exampleZh: "下單前先評估新供應商資格。" },
-      { word: "quantity", meaning: "數量、量", level: 1, exampleEn: "Check both quality and quantity.", exampleZh: "品質與數量兩者皆須檢查。" },
-      { word: "rate", meaning: "比率、速度、評價", level: 1, exampleEn: "The defect rate dropped significantly.", exampleZh: "瑕疵率顯著下降。" },
-      { word: "recommend", meaning: "推薦、建議", level: 1, exampleEn: "I recommend upgrading the spindle.", exampleZh: "我建議升級主軸。" },
-      { word: "reduce", meaning: "減少、降低", level: 1, exampleEn: "Reduce production cycle times.", exampleZh: "縮短生產循環時間。" },
-      { word: "reliable", meaning: "可靠的、可信賴的", level: 1, exampleEn: "Choose reliable machine brands.", exampleZh: "選擇可靠的機械品牌。" }
-    ];
-
     let masterVocabDB = [];
 
     let appState = {
@@ -373,20 +229,34 @@
 
     function updateHeaderUI() {
       const lvlMap = { 1: "Level 1 (基礎核心)", 2: "Level 2 (進階商務)", 3: "Level 3 (高階技術)" };
-      document.getElementById('header-level-tag').innerText = lvlMap[appState.level];
+      document.getElementById('header-level-tag').innerText = lvlMap[appState.level] || `Level ${appState.level}`;
       localStorage.setItem('ox_ind_level', appState.level);
     }
 
-    function initDatabase() {
-      // 確保每一筆資料都是絕對獨立、乾淨且對應正確
-      masterVocabDB = uniqueDictionaryData.map((item, index) => ({
-        key: item.word + "_" + index,
-        word: item.word,
-        meaning: item.meaning,
-        level: item.level,
-        exampleEn: item.exampleEn,
-        exampleZh: item.exampleZh
-      }));
+    // 異步載入 7000 單字檔 (vocab_7000.json)
+    async function initDatabase() {
+      try {
+        const response = await fetch('./vocab_7000.json');
+        if (!response.ok) throw new Error("JSON file not found");
+        const rawData = await response.json();
+        
+        masterVocabDB = rawData.map((item, index) => ({
+          key: item.word + "_" + index,
+          word: item.word,
+          meaning: item.meaning,
+          level: item.level || 1,
+          exampleEn: item.exampleEn || "",
+          exampleZh: item.exampleZh || ""
+        }));
+      } catch (err) {
+        console.warn("無法載入 vocab_7000.json，已切換至預設示範題庫：", err);
+        // Fallback 預設數據，保證專案在無伺服器環境下正常開啟
+        masterVocabDB = [
+          { word: "ability", meaning: "能力、才能", level: 1, exampleEn: "She has the ability to lead.", exampleZh: "她具備領導能力。" },
+          { word: "efficiency", meaning: "效率、效能", level: 1, exampleEn: "Improve manufacturing efficiency.", exampleZh: "提升製造效率。" },
+          { word: "precision", meaning: "精密度", level: 2, exampleEn: "CNC machining requires precision.", exampleZh: "CNC 加工需要精密度。" }
+        ];
+      }
 
       document.getElementById('db-count-label').innerText = masterVocabDB.length.toLocaleString();
       document.getElementById('stat-total-words').innerText = masterVocabDB.length.toLocaleString();
@@ -572,6 +442,7 @@
         return matchText && matchLvl;
       });
 
+      // 效能最佳化：每次最多只渲染前 100 筆，防止 7000 筆資料造成 DOM 凍結
       const displayList = filtered.slice(0, 100);
 
       if (displayList.length === 0) {
