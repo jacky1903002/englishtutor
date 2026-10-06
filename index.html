@@ -39,7 +39,6 @@
     .logo { font-size: 1.35rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 10px; }
     .enterprise-badge { background: rgba(79, 70, 229, 0.1); border: 1px solid rgba(79, 70, 229, 0.3); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* 改為全螢幕大寬度檢視 */
     main { max-width: 1400px; width: 95%; margin: 24px auto; padding: 0 12px; flex: 1; }
 
     .nav-tabs { display: flex; gap: 14px; margin-bottom: 24px; overflow-x: auto; padding-bottom: 4px; }
@@ -53,13 +52,13 @@
     .view.active { display: block; animation: fadeIn 0.4s ease-in-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* 全螢幕大卡牌學習模式 */
+    /* 卡牌風格 */
     .hero-card-viewport {
       background: white;
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 48px;
-      min-height: 500px;
+      min-height: 420px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -95,7 +94,7 @@
     .hero-example-en { font-size: 1.3rem; color: var(--text-main); font-style: italic; line-height: 1.6; margin-bottom: 8px; font-weight: 500; }
     .hero-example-zh { font-size: 1.15rem; color: var(--text-muted); font-weight: 600; }
 
-    /* 加大款分頁導覽器 (Enlarged Pagination & Controls) */
+    /* 分頁導覽 */
     .card-pagination-controls {
       display: flex;
       flex-direction: column;
@@ -106,7 +105,6 @@
     .nav-actions { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 20px; }
     .dots-container { display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; }
     
-    /* 大尺寸分頁按鈕 */
     .dot {
       width: 48px;
       height: 48px;
@@ -131,7 +129,7 @@
     .btn-secondary { background: white; border: 1px solid var(--border); color: var(--text-main); box-shadow: 0 2px 6px rgba(0,0,0,0.04); font-size: 1rem; padding: 12px 24px; }
     .btn-secondary:hover { background: #f8fafc; }
 
-    /* 全螢幕測驗區塊 */
+    /* 測驗區 */
     .quiz-box { text-align: center; max-width: 900px; margin: 0 auto; min-height: 550px; display: flex; flex-direction: column; justify-content: center; }
     .quiz-word-display { font-size: 3.2rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 24px 0; letter-spacing: 1px; }
     .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 16px; margin-top: 28px; }
@@ -154,7 +152,7 @@
     }
     .input-field:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); }
 
-    /* 全螢幕戰情室統計 */
+    /* 戰情室 */
     .enterprise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 28px; }
     .stat-card { background: white; border: 1px solid var(--border); padding: 24px; border-radius: 20px; text-align: center; box-shadow: var(--card-shadow); }
     .stat-num { font-size: 2.5rem; font-weight: 900; color: var(--primary); margin-top: 8px; }
@@ -166,7 +164,6 @@
     .tag { display: inline-block; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; background: rgba(5, 150, 105, 0.1); color: var(--success); }
     .user-pill { background: rgba(79, 70, 229, 0.08); color: var(--primary); font-weight: 700; padding: 6px 14px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; }
 
-    /* 動態成就圖示 */
     .score-icon-badge {
       font-size: 5rem;
       margin-bottom: 16px;
@@ -190,10 +187,10 @@
       <button class="tab-btn active" onclick="switchTab('study')"><i class="fa-solid fa-layer-group"></i> 智慧卡牌學習</button>
       <button class="tab-btn" onclick="switchTab('quiz')"><i class="fa-solid fa-bolt"></i> 互動隨機測驗</button>
       <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-building-shield"></i> 學習戰情室</button>
-      <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-database"></i> 完整清單檢索 (<span id="db-count-label">0</span>)</button>
+      <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-database"></i> 完整清單檢索 ( <span id="db-count-label">0</span> )</button>
     </div>
 
-    <!-- 1. 智慧卡牌學習區（全螢幕加強版） -->
+    <!-- 1. 智慧卡牌學習區 -->
     <div id="view-study" class="view active">
       <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
         <div>
@@ -203,10 +200,8 @@
         <button class="btn" onclick="loadStudyCards()"><i class="fa-solid fa-rotate"></i> 重新隨機抽取 10 字</button>
       </div>
 
-      <!-- 全螢幕單字展示區 -->
       <div id="hero-card-container"></div>
 
-      <!-- 下方控制與大尺寸 10 分頁導覽區 -->
       <div class="card-pagination-controls">
         <div class="nav-actions">
           <button class="btn btn-secondary" id="btn-prev-card" onclick="changeCardIndex(-1)">
@@ -220,7 +215,7 @@
       </div>
     </div>
 
-    <!-- 2. 互動隨機測驗區（滿版視圖 + 動態圖示） -->
+    <!-- 2. 互動隨機測驗區 -->
     <div id="view-quiz" class="view">
       <div class="card quiz-box">
         <div id="quiz-start-screen">
@@ -248,7 +243,6 @@
           <div class="options-grid" id="quiz-options-container"></div>
         </div>
 
-        <!-- 測驗完成結果區：依照分數動態呈現圖示 -->
         <div id="quiz-result-screen" style="display: none; text-align: center;">
           <div id="quiz-badge-icon-container" class="score-icon-badge"></div>
           <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 12px;">測驗圓滿完成！</h2>
@@ -259,7 +253,7 @@
       </div>
     </div>
 
-    <!-- 3. 學習戰情室（全螢幕視野 + 暱稱過濾） -->
+    <!-- 3. 學習戰情室 -->
     <div id="view-enterprise" class="view">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
         <h2 style="font-size: 1.5rem; font-weight: 800;">學習戰情室數據中心</h2>
@@ -288,7 +282,7 @@
 
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h3 style="font-size: 1.25rem; font-weight: 800;"><i class="fa-solid fa-chart-line text-indigo-600" style="margin-right: 8px;"></i> 個人與團體學習歷程紀錄</h3>
+          <h3 style="font-size: 1.25rem; font-weight: 800;"><i class="fa-solid fa-chart-line" style="color: var(--primary); margin-right: 8px;"></i> 個人與團體學習歷程紀錄</h3>
           <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;" onclick="clearHistory()"><i class="fa-solid fa-trash-can"></i> 清除歷史</button>
         </div>
         <div style="overflow-x: auto;">
@@ -309,7 +303,7 @@
       </div>
     </div>
 
-    <!-- 4. 單字庫完整檢索（全螢幕大表格） -->
+    <!-- 4. 單字庫完整檢索 -->
     <div id="view-database" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
@@ -342,6 +336,19 @@
   </main>
 
   <script>
+    const defaultFallbackVocab = [
+      { word: "ability", meaning: "[n.] 能力、才能", level: 1, exampleEn: "She has the ability to lead the entire engineering team.", exampleZh: "她具備領導整個工程團隊的能力。" },
+      { word: "capacity", meaning: "[n.] 容量、生產能力", level: 1, exampleEn: "The factory is running at full capacity this month.", exampleZh: "工廠本月正以最大產能全速運轉。" },
+      { word: "efficiency", meaning: "[n.] 效率、效能", level: 1, exampleEn: "Digital transformation can significantly improve production efficiency.", exampleZh: "數位轉型能顯著提升生產效率。" },
+      { word: "precision", meaning: "[n.] 精密度、精確性", level: 2, exampleEn: "CNC machining requires high precision to satisfy client requirements.", exampleZh: "CNC 加工需要高精密度以符合客戶要求。" },
+      { word: "optimize", meaning: "[v.] 最佳化、優化", level: 2, exampleEn: "We need to optimize the manufacturing process to reduce costs.", exampleZh: "我們需要優化製造流程以降低成本。" },
+      { word: "automation", meaning: "[n.] 自動化", level: 2, exampleEn: "Automation lines drastically reduce human error on shop floors.", exampleZh: "自動化產線大幅減少了車間的人為失誤。" },
+      { word: "innovation", meaning: "[n.] 創新、革新", level: 3, exampleEn: "Continuous innovation keeps the enterprise ahead of competitors.", exampleZh: "持續創新讓企業在競爭者中保持領先。" },
+      { word: "sustainability", meaning: "[n.] 永續性、可持續發展", level: 3, exampleEn: "Environmental sustainability is a core goal for modern plants.", exampleZh: "環境永續性是現代工廠的核心目標。" },
+      { word: "implementation", meaning: "[n.] 實施、執行", level: 3, exampleEn: "The implementation of MES visual dashboards improved OEE.", exampleZh: "MES 視覺化看板的導入提升了整體設備效率。" },
+      { word: "collaboration", meaning: "[n.] 合作、協同", level: 2, exampleEn: "Cross-departmental collaboration leads to project success.", exampleZh: "跨部門合作是專案成功的關鍵。" }
+    ];
+
     let masterVocabDB = [];
     let currentStudyPool = [];
     let currentCardIndex = 0;
@@ -354,7 +361,8 @@
 
     function updateHeaderUI() {
       const lvlMap = { 1: "Level 1 (基礎核心)", 2: "Level 2 (進階商務)", 3: "Level 3 (高階技術)" };
-      document.getElementById('header-level-tag').innerText = lvlMap[appState.level] || `Level ${appState.level}`;
+      const tagEl = document.getElementById('header-level-tag');
+      if (tagEl) tagEl.innerText = lvlMap[appState.level] || `Level ${appState.level}`;
       localStorage.setItem('ox_ind_level', appState.level);
     }
 
@@ -373,19 +381,18 @@
           exampleZh: item.exampleZh || ""
         }));
       } catch (err) {
-        console.warn("無法載入 vocab_7000.json，已切換至預設示範題庫：", err);
-        masterVocabDB = [
-          { word: "ability", meaning: "能力、才能", level: 1, exampleEn: "She has the ability to lead.", exampleZh: "她具備領導能力。" },
-          { word: "efficiency", meaning: "效率、效能", level: 1, exampleEn: "Improve manufacturing efficiency.", exampleZh: "提升製造效率。" },
-          { word: "precision", meaning: "精密度", level: 2, exampleEn: "CNC machining requires precision.", exampleZh: "CNC 加工需要精密度。" }
-        ];
+        console.warn("無法讀取外部 vocab_7000.json，已切換至備用預設題庫：", err);
+        masterVocabDB = [...defaultFallbackVocab];
       }
 
-      document.getElementById('db-count-label').innerText = masterVocabDB.length.toLocaleString();
-      document.getElementById('stat-total-words').innerText = masterVocabDB.length.toLocaleString();
+      const countEl = document.getElementById('db-count-label');
+      const totalWordsEl = document.getElementById('stat-total-words');
+      if (countEl) countEl.innerText = masterVocabDB.length.toLocaleString();
+      if (totalWordsEl) totalWordsEl.innerText = masterVocabDB.length.toLocaleString();
       
-      if (appState.lastUser) {
-        document.getElementById('quiz-username-input').value = appState.lastUser;
+      const userInput = document.getElementById('quiz-username-input');
+      if (appState.lastUser && userInput) {
+        userInput.value = appState.lastUser;
       }
 
       loadStudyCards();
@@ -395,8 +402,10 @@
 
     function switchTab(tabId) {
       ['study', 'quiz', 'enterprise', 'database'].forEach((id, idx) => {
-        document.getElementById(`view-${id}`).classList.toggle('active', id === tabId);
-        document.querySelectorAll('.tab-btn')[idx].classList.toggle('active', id === tabId);
+        const v = document.getElementById(`view-${id}`);
+        if (v) v.classList.toggle('active', id === tabId);
+        const btns = document.querySelectorAll('.tab-btn');
+        if (btns[idx]) btns[idx].classList.toggle('active', id === tabId);
       });
       if (tabId === 'study') loadStudyCards();
       if (tabId === 'enterprise') renderEnterpriseHistory();
@@ -408,7 +417,9 @@
     }
 
     function loadStudyCards() {
-      if (masterVocabDB.length === 0) return;
+      if (!masterVocabDB || masterVocabDB.length === 0) {
+        masterVocabDB = [...defaultFallbackVocab];
+      }
       const pool = masterVocabDB.filter(item => item.level === appState.level);
       const targetPool = pool.length >= 4 ? pool : masterVocabDB;
       currentStudyPool = getRandomItems(targetPool, Math.min(10, targetPool.length));
@@ -418,39 +429,44 @@
     }
 
     function renderStudyCard() {
-      if (currentStudyPool.length === 0) return;
+      if (!currentStudyPool || currentStudyPool.length === 0) return;
       const item = currentStudyPool[currentCardIndex];
       const container = document.getElementById('hero-card-container');
 
-      container.innerHTML = `
-        <div class="hero-card-viewport level-${item.level}">
-          <div>
-            <div class="hero-word-header">
-              <span class="hero-word-title">${item.word}</span>
-              <span class="enterprise-badge" style="font-size:0.95rem; padding: 8px 18px;">Level ${item.level}</span>
+      if (container) {
+        container.innerHTML = `
+          <div class="hero-card-viewport level-${item.level}">
+            <div>
+              <div class="hero-word-header">
+                <span class="hero-word-title">${item.word}</span>
+                <span class="enterprise-badge" style="font-size:0.95rem; padding: 8px 18px;">Level ${item.level}</span>
+              </div>
+              <div class="hero-word-meaning">${item.meaning}</div>
             </div>
-            <div class="hero-word-meaning">${item.meaning}</div>
-          </div>
-          <div class="hero-example-box">
-            <div class="hero-example-en">"${item.exampleEn || 'No example sentence available.'}"</div>
-            <div class="hero-example-zh">"${item.exampleZh || '暫無例句中文翻譯'}"</div>
-          </div>
-        </div>
-      `;
-
-      // 渲染放大版 10 個 Pagination Dots
-      const dotsContainer = document.getElementById('pagination-dots');
-      dotsContainer.innerHTML = '';
-      currentStudyPool.forEach((_, idx) => {
-        dotsContainer.innerHTML += `
-          <div class="dot ${idx === currentCardIndex ? 'active' : ''}" onclick="goToCard(${idx})">
-            ${idx + 1}
+            <div class="hero-example-box">
+              <div class="hero-example-en">"${item.exampleEn || 'No example sentence available.'}"</div>
+              <div class="hero-example-zh">"${item.exampleZh || '暫無例句中文翻譯'}"</div>
+            </div>
           </div>
         `;
-      });
+      }
 
-      document.getElementById('btn-prev-card').style.opacity = currentCardIndex === 0 ? '0.5' : '1';
-      document.getElementById('btn-next-card').style.opacity = currentCardIndex === currentStudyPool.length - 1 ? '0.5' : '1';
+      const dotsContainer = document.getElementById('pagination-dots');
+      if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        currentStudyPool.forEach((_, idx) => {
+          dotsContainer.innerHTML += `
+            <div class="dot ${idx === currentCardIndex ? 'active' : ''}" onclick="goToCard(${idx})">
+              ${idx + 1}
+            </div>
+          `;
+        });
+      }
+
+      const btnPrev = document.getElementById('btn-prev-card');
+      const btnNext = document.getElementById('btn-next-card');
+      if (btnPrev) btnPrev.style.opacity = currentCardIndex === 0 ? '0.5' : '1';
+      if (btnNext) btnNext.style.opacity = currentCardIndex === currentStudyPool.length - 1 ? '0.5' : '1';
     }
 
     function changeCardIndex(delta) {
@@ -467,7 +483,8 @@
     }
 
     document.addEventListener('keydown', (e) => {
-      if (document.getElementById('view-study').classList.contains('active')) {
+      const studyView = document.getElementById('view-study');
+      if (studyView && studyView.classList.contains('active')) {
         if (e.key === 'ArrowLeft') changeCardIndex(-1);
         if (e.key === 'ArrowRight') changeCardIndex(1);
       }
@@ -479,14 +496,14 @@
     let currentQuizUser = "";
 
     function startQuiz() {
-      if (masterVocabDB.length === 0) return;
+      if (!masterVocabDB || masterVocabDB.length === 0) masterVocabDB = [...defaultFallbackVocab];
       
       const inputEl = document.getElementById('quiz-username-input');
-      const username = inputEl.value.trim();
+      const username = inputEl ? inputEl.value.trim() : '';
 
       if (!username) {
         alert("請先輸入您的暱稱再開始測驗喔！");
-        inputEl.focus();
+        if (inputEl) inputEl.focus();
         return;
       }
 
@@ -496,4 +513,178 @@
 
       const pool = masterVocabDB.filter(item => item.level === appState.level);
       const targetPool = pool.length >= 4 ? pool : masterVocabDB;
-      quizQuestions = getRandom
+      quizQuestions = getRandomItems(targetPool, Math.min(10, targetPool.length));
+      currentQIdx = 0;
+      currentScore = 0;
+
+      document.getElementById('quiz-start-screen').style.display = 'none';
+      document.getElementById('quiz-result-screen').style.display = 'none';
+      document.getElementById('quiz-question-screen').style.display = 'block';
+      document.getElementById('quiz-active-user-pill').innerHTML = `<i class="fa-solid fa-user"></i> ${currentQuizUser}`;
+      renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+      if (currentQIdx >= quizQuestions.length) {
+        finishQuiz();
+        return;
+      }
+
+      const q = quizQuestions[currentQIdx];
+      document.getElementById('quiz-progress-text').innerText = `題目 ${currentQIdx + 1} /${quizQuestions.length}`;
+      document.getElementById('quiz-lvl-badge').innerText = `Level ${appState.level}`;
+      document.getElementById('quiz-word-el').innerText = q.word;
+
+      const wrongPool = masterVocabDB.filter(item => item.word !== q.word);
+      const wrongs = getRandomItems(wrongPool, 3);
+      const options = getRandomItems([q, ...wrongs], 4);
+
+      const container = document.getElementById('quiz-options-container');
+      container.innerHTML = '';
+      options.forEach((opt, idx) => {
+        container.innerHTML += `
+          <button class="option-btn" onclick="submitAnswer('${opt.meaning.replace(/'/g, "\\'")}', '${q.meaning.replace(/'/g, "\\'")}')">
+            (${idx + 1})${opt.meaning}
+          </button>
+        `;
+      });
+    }
+
+    function submitAnswer(selectedMeaning, correctMeaning) {
+      if (selectedMeaning === correctMeaning) currentScore++;
+      currentQIdx++;
+      renderQuizQuestion();
+    }
+
+    function finishQuiz() {
+      document.getElementById('quiz-question-screen').style.display = 'none';
+      document.getElementById('quiz-result-screen').style.display = 'block';
+
+      const totalQ = quizQuestions.length;
+      const pct = Math.round((currentScore / totalQ) * 100);
+      document.getElementById('quiz-score-display').innerText = `${currentQuizUser} 的最終得分：${currentScore} / ${totalQ} 分 (${pct}%)`;
+
+      const iconContainer = document.getElementById('quiz-badge-icon-container');
+      if (pct === 100) {
+        iconContainer.innerHTML = `<i class="fa-solid fa-crown" style="color: #f59e0b;"></i>`;
+      } else if (pct >= 80) {
+        iconContainer.innerHTML = `<i class="fa-solid fa-award" style="color: var(--success);"></i>`;
+      } else if (pct >= 60) {
+        iconContainer.innerHTML = `<i class="fa-solid fa-thumbs-up" style="color: var(--primary);"></i>`;
+      } else {
+        iconContainer.innerHTML = `<i class="fa-solid fa-fire-flame-curved" style="color: var(--warning);"></i>`;
+      }
+
+      let feedback = "";
+      const oldLvl = appState.level;
+
+      if (pct >= 80 && appState.level < 3) {
+        appState.level++;
+        feedback = `表現卓越！系統已自動將字彙難度提升至 Level ${appState.level} 🚀`;
+      } else if (pct < 50 && appState.level > 1) {
+        appState.level--;
+        feedback = `需要再加強！系統已自動將難度調降至 Level ${appState.level} 扎實根基。`;
+      } else {
+        feedback = `表現穩定！目前維持在 Level ${appState.level} 持續精進。`;
+      }
+
+      document.getElementById('quiz-feedback-display').innerText = feedback;
+      updateHeaderUI();
+
+      appState.history.unshift({
+        user: currentQuizUser,
+        date: new Date().toLocaleString(),
+        score: `${currentScore}/${totalQ}`,
+        pct: pct,
+        level: oldLvl
+      });
+      localStorage.setItem('ox_ind_history', JSON.stringify(appState.history));
+      renderEnterpriseHistory();
+    }
+
+    function resetQuiz() {
+      document.getElementById('quiz-result-screen').style.display = 'none';
+      document.getElementById('quiz-start-screen').style.display = 'block';
+    }
+
+    function renderEnterpriseHistory() {
+      const tbody = document.getElementById('enterprise-history-tbody');
+      const selectEl = document.getElementById('filter-user-select');
+      if (!tbody || !selectEl) return;
+
+      const users = [...new Set(appState.history.map(h => h.user || '匿名'))];
+      const selectedUser = selectEl.value || 'ALL';
+
+      selectEl.innerHTML = `<option value="ALL">所有使用者 (全體總覽)</option>`;
+      users.forEach(u => {
+        selectEl.innerHTML += `<option value="${u}" ${u === selectedUser ? 'selected' : ''}>${u}</option>`;
+      });
+
+      const filteredHistory = selectedUser === 'ALL' 
+        ? appState.history 
+        : appState.history.filter(h => (h.user || '匿名') === selectedUser);
+
+      document.getElementById('stat-quiz-count').innerText = filteredHistory.length;
+      
+      if (filteredHistory.length > 0) {
+        const avg = Math.round(filteredHistory.reduce((acc, h) => acc + h.pct, 0) / filteredHistory.length);
+        document.getElementById('stat-avg-acc').innerText = avg + '%';
+      } else {
+        document.getElementById('stat-avg-acc').innerText = '0%';
+      }
+
+      if (filteredHistory.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 24px;">尚無對應測驗紀錄。</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filteredHistory.map(h => `
+        <tr>
+          <td style="color: var(--text-muted);">${h.date}</td>
+          <td><span class="user-pill"><i class="fa-solid fa-user"></i> ${h.user || '匿名'}</span></td>
+          <td><span class="enterprise-badge">L${h.level}</span></td>
+          <td style="font-weight: 700;">${h.score}</td>
+          <td style="color: ${h.pct >= 80 ? 'var(--success)' : 'var(--primary)'}; font-weight: 700;">${h.pct}%</td>
+          <td><span class="tag">已記錄</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function clearHistory() {
+      if (confirm("確定要清除所有學習歷程紀錄嗎？")) {
+        appState.history = [];
+        localStorage.removeItem('ox_ind_history');
+        renderEnterpriseHistory();
+      }
+    }
+
+    function renderDatabase() {
+      const searchEl = document.getElementById('db-search-input');
+      const levelEl = document.getElementById('db-level-select');
+      const tbody = document.getElementById('db-tbody');
+      if (!tbody) return;
+
+      const query = searchEl ? searchEl.value.toLowerCase() : '';
+      const levelFilter = levelEl ? levelEl.value : 'all';
+
+      let filtered = masterVocabDB.filter(item => {
+        const matchText = item.word.toLowerCase().includes(query) || item.meaning.toLowerCase().includes(query);
+        const matchLvl = levelFilter === 'all' || item.level == levelFilter;
+        return matchText && matchLvl;
+      });
+
+      const displayList = filtered.slice(0, 100);
+
+      if (displayList.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 24px;">找不到符合的單字</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = displayList.map(item => `
+        <tr>
+          <td style="font-weight: 800; color: var(--text-main); font-size: 1.1rem;">${item.word}</td>
+          <td style="font-weight: 700; color: #1e293b; font-size: 1.05rem;">${item.meaning}</td>
+          <td><span class="enterprise-badge">L${item.level}</span></td>
+          <td>
+            <div style="font-style: italic; color: var(--text-main); font-size: 0.95rem;">"${item.exampleEn}"</div>
+            <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px
