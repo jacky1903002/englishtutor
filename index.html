@@ -3,295 +3,350 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Vocab Pro - 7000單字旗艦版</title>
+  <title>Enterprise Vocab Pro - Duolingo 旗艦版</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg-deep: #f1f5f9;
-      --bg-card: rgba(255, 255, 255, 0.85);
-      --primary: #4f46e5;
-      --primary-hover: #4338ca;
-      --accent: #db2777;
-      --success: #059669;
-      --warning: #d97706;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --border: rgba(0, 0, 0, 0.08);
-      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      --duo-green: #58cc02;
+      --duo-green-shadow: #46a302;
+      --duo-blue: #1cb0f6;
+      --duo-blue-shadow: #1899d6;
+      --duo-orange: #ff9600;
+      --duo-orange-shadow: #e58600;
+      --duo-yellow: #ffc800;
+      --duo-red: #ff4b4b;
+      --duo-red-shadow: #ea2b2b;
+      --duo-gray: #e5e5e5;
+      --duo-dark-gray: #afafaf;
+      --text-dark: #4b4b4b;
+      --bg-main: #f7f9fa;
+      --card-bg: #ffffff;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-    body { background-color: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; background-image: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.08) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(219, 39, 119, 0.06) 0%, transparent 40%); }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Din Round', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg-main); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
+    /* 頂部 Duolingo 遊戲化 Header */
     header {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 32px;
+      background: white;
+      border-bottom: 2px solid var(--duo-gray);
+      padding: 12px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
-    .logo { font-size: 1.25rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 10px; }
-    .enterprise-badge { background: rgba(79, 70, 229, 0.1); border: 1px solid rgba(79, 70, 229, 0.3); color: var(--primary); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .logo { font-size: 1.4rem; font-weight: 900; color: var(--duo-green); display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
+    
+    /* 頂部 gamification 狀態欄 */
+    .status-bar { display: flex; align-items: center; gap: 20px; font-weight: 800; font-size: 1.05rem; }
+    .status-item { display: flex; align-items: center; gap: 6px; cursor: pointer; transition: transform 0.2s; }
+    .status-item:hover { transform: scale(1.1); }
+    .fire { color: var(--duo-orange); }
+    .gem { color: var(--duo-blue); }
+    .heart { color: var(--duo-red); }
+    .xp { color: var(--duo-yellow); }
 
-    main { max-width: 1000px; width: 100%; margin: 32px auto; padding: 0 20px; flex: 1; }
+    main { max-width: 900px; width: 100%; margin: 24px auto; padding: 0 16px; flex: 1; }
 
-    .nav-tabs { display: flex; gap: 12px; margin-bottom: 28px; overflow-x: auto; padding-bottom: 4px; }
-    .tab-btn { background: white; border: 1px solid var(--border); color: var(--text-muted); padding: 10px 20px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-    .tab-btn:hover { background: #f8fafc; color: var(--text-main); }
-    .tab-btn.active { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border-color: transparent; box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3); }
+    /* 遊戲選單頁籤 */
+    .nav-tabs { display: flex; gap: 12px; margin-bottom: 24px; justify-content: center; flex-wrap: wrap; }
+    .tab-btn {
+      background: white;
+      border: 2px solid var(--duo-gray);
+      border-bottom: 5px solid var(--duo-dark-gray);
+      color: #777;
+      padding: 12px 24px;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.1s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+    }
+    .tab-btn:active { transform: translateY(3px); border-bottom-width: 2px; }
+    .tab-btn.active {
+      background: var(--duo-blue);
+      color: white;
+      border-color: var(--duo-blue-shadow);
+      box-shadow: 0 4px 0 var(--duo-blue-shadow);
+    }
 
-    .card { background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: var(--card-shadow); margin-bottom: 24px; transition: transform 0.3s; }
+    .card { background: var(--card-bg); border: 2px solid var(--duo-gray); border-radius: 24px; padding: 32px; box-shadow: 0 8px 0 var(--duo-gray); margin-bottom: 24px; position: relative; }
 
     .view { display: none; }
-    .view.active { display: block; animation: fadeIn 0.4s ease-in-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .view.active { display: block; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-    /* 全螢幕大卡牌學習模式 */
+    /* 3D 遊戲按鈕 */
+    .btn-3d {
+      background: var(--duo-green);
+      color: white;
+      border: none;
+      border-bottom: 5px solid var(--duo-green-shadow);
+      padding: 14px 28px;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.1s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      letter-spacing: 0.5px;
+    }
+    .btn-3d:hover { filter: brightness(1.05); }
+    .btn-3d:active { transform: translateY(3px); border-bottom-width: 2px; }
+
+    .btn-secondary-3d {
+      background: white;
+      color: var(--duo-blue);
+      border: 2px solid var(--duo-gray);
+      border-bottom: 5px solid var(--duo-dark-gray);
+    }
+    .btn-secondary-3d:hover { background: #f8fafc; }
+
+    /* 進度條 */
+    .progress-bar-wrap { width: 100%; height: 16px; background: var(--duo-gray); border-radius: 10px; overflow: hidden; margin: 16px 0; }
+    .progress-bar-fill { height: 100%; background: var(--duo-green); width: 0%; transition: width 0.3s ease; border-radius: 10px; }
+
+    /* 學習卡牌模式 */
     .hero-card-viewport {
       background: white;
-      border: 1px solid var(--border);
+      border: 3px solid var(--duo-gray);
       border-radius: 24px;
-      padding: 48px;
-      min-height: 520px;
+      padding: 36px;
+      min-height: 380px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+      box-shadow: 0 10px 0 var(--duo-gray);
+      transition: all 0.3s;
     }
-    .hero-card-viewport::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 8px;
-      height: 100%;
-      background: var(--primary);
-    }
-    .hero-card-viewport.level-2::before { background: var(--warning); }
-    .hero-card-viewport.level-3::before { background: var(--accent); }
-
-    .hero-word-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-    .hero-word-title { font-size: 3.2rem; font-weight: 900; color: var(--text-main); letter-spacing: -0.5px; line-height: 1.1; }
-    .hero-word-meaning { font-size: 1.8rem; color: var(--primary); font-weight: 800; margin-bottom: 28px; }
-
-    .hero-example-box {
-      background: rgba(248, 250, 252, 0.9);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      border-left: 4px solid var(--accent);
-      padding: 24px;
-      border-radius: 16px;
-      margin-top: auto;
-    }
-    .hero-example-en { font-size: 1.2rem; color: var(--text-main); font-style: italic; line-height: 1.6; margin-bottom: 8px; font-weight: 500; }
-    .hero-example-zh { font-size: 1.05rem; color: var(--text-muted); font-weight: 600; }
-
-    /* 分頁導覽器 (Pagination & Controls) */
-    .card-pagination-controls {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .nav-actions { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 16px; }
-    .dots-container { display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; }
-    .dot {
-      width: 36px;
-      height: 36px;
+    .hero-word-header { display: flex; justify-content: space-between; align-items: center; }
+    .hero-word-title { font-size: 3.2rem; font-weight: 900; color: #3c3c3c; }
+    .hero-word-meaning { font-size: 1.8rem; color: var(--duo-blue); font-weight: 800; margin-top: 8px; }
+    
+    .audio-btn {
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      background: white;
-      border: 1px solid var(--border);
+      background: var(--duo-blue);
+      color: white;
+      border: none;
+      border-bottom: 4px solid var(--duo-blue-shadow);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-muted);
+      font-size: 1.3rem;
       cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      transition: all 0.1s;
     }
-    .dot:hover { background: #f1f5f9; color: var(--text-main); }
-    .dot.active { background: var(--primary); color: white; border-color: transparent; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35); transform: scale(1.15); }
+    .audio-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
 
-    .btn { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25); display: inline-flex; align-items: center; gap: 8px; }
-    .btn:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4); }
-    .btn-secondary { background: white; border: 1px solid var(--border); color: var(--text-main); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-    .btn-secondary:hover { background: #f8fafc; }
+    .hero-example-box {
+      background: #f1f5f9;
+      border-left: 6px solid var(--duo-yellow);
+      padding: 20px;
+      border-radius: 16px;
+      margin-top: 24px;
+    }
 
-    .quiz-box { text-align: center; max-width: 650px; margin: 0 auto; }
-    .quiz-word-display { font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 20px 0; letter-spacing: 1px; }
-    .options-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
-    .option-btn { background: white; border: 1px solid var(--border); padding: 16px 20px; border-radius: 12px; color: var(--text-main); font-size: 1.05rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-    .option-btn:hover { background: #eff6ff; border-color: var(--primary); transform: translateX(4px); }
+    /* 分頁 Dots */
+    .dots-container { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+    .dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: white;
+      border: 2px solid var(--duo-gray);
+      border-bottom: 4px solid var(--duo-dark-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #888;
+      cursor: pointer;
+    }
+    .dot.active { background: var(--duo-green); color: white; border-color: var(--duo-green-shadow); }
+
+    /* 測驗區 */
+    .quiz-word-display { font-size: 2.8rem; font-weight: 900; color: #3c3c3c; text-align: center; margin: 20px 0; }
+    .options-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
+    
+    .option-btn {
+      background: white;
+      border: 2px solid var(--duo-gray);
+      border-bottom: 5px solid var(--duo-dark-gray);
+      padding: 18px 24px;
+      border-radius: 18px;
+      color: #3c3c3c;
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .option-btn:hover { background: #f7f9fa; border-color: var(--duo-blue); }
+    .option-btn:active { transform: translateY(3px); border-bottom-width: 2px; }
+    
+    /* 正確與錯誤狀態 */
+    .option-btn.correct { background: #d7ffb8 !important; border-color: var(--duo-green) !important; color: #2e7d32 !important; }
+    .option-btn.wrong { background: #ffdfe0 !important; border-color: var(--duo-red) !important; color: #c62828 !important; }
+
+    /* 答題完成底欄反饋 (Duolingo Footer Style) */
+    .feedback-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 200;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .feedback-footer.show { transform: translateY(0); }
+    .feedback-footer.correct-bg { background: #d7ffb8; border-top: 3px solid var(--duo-green); color: #2e7d32; }
+    .feedback-footer.wrong-bg { background: #ffdfe0; border-top: 3px solid var(--duo-red); color: #c62828; }
 
     .input-field {
       width: 100%;
-      max-width: 360px;
-      padding: 12px 16px;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-main);
-      outline: none;
-      transition: all 0.3s;
-      margin: 16px 0 20px 0;
+      max-width: 320px;
+      padding: 14px;
+      border: 2px solid var(--duo-gray);
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 800;
       text-align: center;
+      outline: none;
+      margin: 16px 0;
     }
-    .input-field:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); }
+    .input-field:focus { border-color: var(--duo-blue); }
 
-    .enterprise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
-    .stat-card { background: white; border: 1px solid var(--border); padding: 20px; border-radius: 16px; text-align: center; box-shadow: var(--card-shadow); }
-    .stat-num { font-size: 2rem; font-weight: 800; color: var(--primary); margin-top: 6px; }
-
-    table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 12px; }
-    th, td { padding: 14px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-    th { color: var(--text-muted); font-weight: 600; background: #f8fafc; }
-
-    .tag { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; background: rgba(5, 150, 105, 0.1); color: var(--success); }
-    .user-pill { background: rgba(79, 70, 229, 0.08); color: var(--primary); font-weight: 700; padding: 4px 10px; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px; }
+    /* 表格 styles */
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { padding: 14px; border-bottom: 2px solid var(--duo-gray); text-align: left; font-weight: 700; }
+    th { color: #888; background: #f8fafc; }
   </style>
 </head>
 <body>
 
+  <!-- 頂部 Duo 遊戲狀態列 -->
   <header>
-    <div class="logo"><i class="fa-solid fa-brain"></i> Enterprise Vocab Pro (7000單字旗艦版)</div>
-    <div style="display: flex; align-items: center; gap: 12px;">
-      <span class="enterprise-badge"><i class="fa-solid fa-database mr-1"></i> 全面單字庫</span>
-      <span id="header-level-tag" style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Level 1 (基礎核心)</span>
+    <div class="logo"><i class="fa-solid fa-feather-pointed"></i> Enterprise Vocab Pro</div>
+    <div class="status-bar">
+      <div class="status-item fire" title="連續學習天數"><i class="fa-solid fa-fire"></i> <span id="streak-count">7</span></div>
+      <div class="status-item gem" title="獲得寶石"><i class="fa-solid fa-gem"></i> <span id="gem-count">1,250</span></div>
+      <div class="status-item xp" title="總經驗值"><i class="fa-solid fa-bolt"></i> <span id="xp-count">340 XP</span></div>
+      <div class="status-item heart" title="剩餘體力"><i class="fa-solid fa-heart"></i> 5</div>
     </div>
   </header>
 
   <main>
     <div class="nav-tabs">
-      <button class="tab-btn active" onclick="switchTab('study')"><i class="fa-solid fa-layer-group"></i> 智慧卡牌學習</button>
-      <button class="tab-btn" onclick="switchTab('quiz')"><i class="fa-solid fa-bolt"></i> 互動隨機測驗</button>
-      <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-building-shield"></i> 學習戰情室</button>
-      <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-database"></i> 完整清單檢索 (<span id="db-count-label">0</span>)</button>
+      <button class="tab-btn active" onclick="switchTab('study')"><i class="fa-solid fa-book-open"></i> 卡牌學習</button>
+      <button class="tab-btn" onclick="switchTab('quiz')"><i class="fa-solid fa-gamepad"></i> 闖關測驗</button>
+      <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-trophy"></i> 戰情排行榜</button>
+      <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-list-check"></i> 單字總庫 (<span id="db-count-label">0</span>)</button>
     </div>
 
-    <!-- 1. 智慧卡牌學習區 -->
+    <!-- 1. 卡牌學習區 -->
     <div id="view-study" class="view active">
       <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
         <div>
-          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">沉浸式卡牌學習 (10 張全螢幕分頁)</h2>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">可使用下方分頁點切換、或使用鍵盤左右方向鍵（← / →）快速閱讀。</p>
+          <h2 style="font-size: 1.4rem; font-weight: 900;">🎯 每日單字特訓 (抽取 10 字)</h2>
+          <p style="color: #888; font-size: 0.95rem; font-weight: 700;">點擊喇叭發音，點擊卡牌切換下一張。</p>
         </div>
-        <button class="btn" onclick="loadStudyCards()"><i class="fa-solid fa-rotate"></i> 重新隨機抽取 10 字</button>
+        <button class="btn-3d" onclick="loadStudyCards()"><i class="fa-solid fa-shuffle"></i> 換一批單字</button>
       </div>
 
-      <!-- 全螢幕單字展示區 -->
       <div id="hero-card-container"></div>
 
-      <!-- 下方控制與 10 分頁導覽區 -->
-      <div class="card-pagination-controls">
-        <div class="nav-actions">
-          <button class="btn btn-secondary" id="btn-prev-card" onclick="changeCardIndex(-1)">
-            <i class="fa-solid fa-chevron-left"></i> 上一張
-          </button>
-          <div class="dots-container" id="pagination-dots"></div>
-          <button class="btn btn-secondary" id="btn-next-card" onclick="changeCardIndex(1)">
-            下一張 <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
+      <div class="dots-container" id="pagination-dots"></div>
+
+      <div style="display: flex; justify-content: space-between; margin-top: 16px;">
+        <button class="btn-3d btn-secondary-3d" id="btn-prev-card" onclick="changeCardIndex(-1)"><i class="fa-solid fa-arrow-left"></i> 上一張</button>
+        <button class="btn-3d btn-secondary-3d" id="btn-next-card" onclick="changeCardIndex(1)">下一張 <i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
 
-    <!-- 2. 互動隨機測驗區 -->
+    <!-- 2. 闖關測驗區 -->
     <div id="view-quiz" class="view">
-      <div class="card quiz-box">
-        <div id="quiz-start-screen">
-          <div style="font-size: 3rem; color: var(--primary); margin-bottom: 16px;"><i class="fa-solid fa-user-pen"></i></div>
-          <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">準備好進行單字戰力評估了嗎？</h2>
-          <p style="color: var(--text-muted); margin-bottom: 16px; font-size: 0.95rem;">請先輸入您的暱稱，測驗紀錄將會儲存至學習戰情室：</p>
-          
+      <div class="card">
+        <!-- 開始畫面 -->
+        <div id="quiz-start-screen" style="text-align: center; padding: 20px 0;">
+          <div style="font-size: 4rem; color: var(--duo-green); margin-bottom: 16px;"><i class="fa-solid fa-circle-play"></i></div>
+          <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">準備好開始英文挑戰了嗎？</h2>
+          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">輸入玩家暱稱開始關卡挑戰：</p>
           <div>
-            <input type="text" id="quiz-username-input" class="input-field" placeholder="請輸入您的暱稱 (例如: Alex)" maxlength="20">
+            <input type="text" id="quiz-username-input" class="input-field" placeholder="輸入暱稱" maxlength="20">
           </div>
-
-          <button class="btn" onclick="startQuiz()" style="font-size: 1.1rem; padding: 14px 32px;"><i class="fa-solid fa-play"></i> 開始智能測驗</button>
+          <button class="btn-3d" onclick="startQuiz()" style="font-size: 1.2rem; width: 80%; max-width: 300px;"><i class="fa-solid fa-rocket"></i> 開始測驗</button>
         </div>
 
-        <div id="quiz-question-screen" style="display: none; text-align: left;">
-          <div style="display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; margin-bottom: 10px;">
+        <!-- 題目畫面 -->
+        <div id="quiz-question-screen" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-weight: 800; color: #888;">
             <span id="quiz-progress-text">題目 1 / 10</span>
-            <div style="display: flex; gap: 8px; align-items: center;">
-              <span class="user-pill" id="quiz-active-user-pill"><i class="fa-solid fa-user"></i> -</span>
-              <span class="enterprise-badge" id="quiz-lvl-badge">Level 1</span>
-            </div>
+            <span style="color: var(--duo-orange);" id="quiz-lvl-badge">Level 1</span>
           </div>
-          <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: -10px;">請選出以下英文單字的正確中文含意：</div>
-          <div class="quiz-word-display" id="quiz-word-el">Loading...</div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="quiz-progress-fill"></div>
+          </div>
+
+          <div style="display: flex; justify-content: center; align-items: center; gap: 12px;">
+            <div class="quiz-word-display" id="quiz-word-el">Loading...</div>
+            <button class="audio-btn" id="quiz-speak-btn" onclick="speakCurrentWord()"><i class="fa-solid fa-volume-high"></i></button>
+          </div>
+
           <div class="options-grid" id="quiz-options-container"></div>
         </div>
 
-        <div id="quiz-result-screen" style="display: none; text-align: center;">
-          <div style="font-size: 4rem; color: var(--success); margin-bottom: 12px;"><i class="fa-solid fa-award"></i></div>
-          <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 8px;">測驗圓滿完成！</h2>
-          <p id="quiz-score-display" style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px;"></p>
-          <p id="quiz-feedback-display" style="font-size: 0.95rem; color: var(--primary); font-weight: 600; margin-bottom: 24px;"></p>
-          <button class="btn" onclick="resetQuiz()">再次挑戰</button>
+        <!-- 結算畫面 -->
+        <div id="quiz-result-screen" style="display: none; text-align: center; padding: 20px 0;">
+          <div style="font-size: 5rem; color: var(--duo-yellow); margin-bottom: 16px;"><i class="fa-solid fa-crown"></i></div>
+          <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 8px;">關卡完成！</h2>
+          <p id="quiz-score-display" style="font-size: 1.3rem; font-weight: 800; color: #3c3c3c; margin-bottom: 12px;"></p>
+          <p id="quiz-feedback-display" style="font-size: 1.1rem; color: var(--duo-blue); font-weight: 800; margin-bottom: 24px;"></p>
+          <button class="btn-3d" onclick="resetQuiz()"><i class="fa-solid fa-rotate-right"></i> 再玩一次</button>
         </div>
       </div>
     </div>
 
-    <!-- 3. 學習戰情室（支援個人/全體統計切換） -->
+    <!-- 3. 戰情排行榜 -->
     <div id="view-enterprise" class="view">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-        <h2 style="font-size: 1.3rem; font-weight: 800;">學習戰情室統計數據</h2>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <label for="filter-user-select" style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);"><i class="fa-solid fa-filter"></i> 依使用者統計：</label>
-          <select id="filter-user-select" onchange="renderEnterpriseHistory()" style="background: white; border: 1px solid var(--border); padding: 8px 16px; border-radius: 10px; font-weight: 700; color: var(--primary); outline: none; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-            <option value="ALL">所有使用者 (全體總覽)</option>
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 style="font-size: 1.4rem; font-weight: 900;"><i class="fa-solid fa-medal" style="color: var(--duo-yellow);"></i> 學習戰情排行榜</h2>
+          <select id="filter-user-select" onchange="renderEnterpriseHistory()" style="padding: 8px 16px; border-radius: 12px; font-weight: 800; border: 2px solid var(--duo-gray);">
+            <option value="ALL">全體排行榜</option>
           </select>
         </div>
-      </div>
-
-      <div class="enterprise-grid">
-        <div class="stat-card">
-          <div style="color: var(--text-muted); font-size: 0.85rem;">獨立單字庫總數</div>
-          <div class="stat-num" id="stat-total-words">0</div>
-        </div>
-        <div class="stat-card">
-          <div style="color: var(--text-muted); font-size: 0.85rem;" id="stat-quiz-label">總測驗次數</div>
-          <div class="stat-num" id="stat-quiz-count">0</div>
-        </div>
-        <div class="stat-card">
-          <div style="color: var(--text-muted); font-size: 0.85rem;" id="stat-acc-label">平均答對正確率</div>
-          <div class="stat-num" id="stat-avg-acc">0%</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-          <h3 style="font-size: 1.15rem; font-weight: 800;"><i class="fa-solid fa-chart-line text-indigo-600" style="margin-right: 6px;"></i> 個人與團體學習歷程紀錄</h3>
-          <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="clearHistory()"><i class="fa-solid fa-trash-can"></i> 清除歷史</button>
-        </div>
-        <div style="overflow-x: auto;">
-          <table>
-            <thead>
-              <tr>
-                <th>測驗時間</th>
-                <th>使用者暱稱</th>
-                <th>難度級別</th>
-                <th>得分狀況</th>
-                <th>正確率</th>
-                <th>狀態</th>
-              </tr>
-            </thead>
-            <tbody id="enterprise-history-tbody"></tbody>
-          </table>
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>玩家暱稱</th>
+              <th>挑戰等級</th>
+              <th>得分</th>
+              <th>正確率</th>
+              <th>時間</th>
+            </tr>
+          </thead>
+          <tbody id="enterprise-history-tbody"></tbody>
+        </table>
       </div>
     </div>
 
@@ -299,25 +354,17 @@
     <div id="view-database" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-          <h3 style="font-size: 1.15rem; font-weight: 800;">7000 單字庫檢索</h3>
-          <div style="display: flex; gap: 10px;">
-            <input type="text" id="db-search-input" placeholder="搜尋英文或中文..." oninput="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
-            <select id="db-level-select" onchange="renderDatabase()" style="background: white; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; color: var(--text-main); font-size: 0.9rem; outline: none;">
-              <option value="all">全部等級</option>
-              <option value="1">Level 1 (基礎)</option>
-              <option value="2">Level 2 (進階)</option>
-              <option value="3">Level 3 (高階)</option>
-            </select>
-          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 900;">📚 7000 單字庫檢索</h3>
+          <input type="text" id="db-search-input" placeholder="搜尋英文或中文..." oninput="renderDatabase()" class="input-field" style="margin: 0; max-width: 240px;">
         </div>
-        <div style="overflow-x: auto; max-height: 520px;">
+        <div style="overflow-x: auto; max-height: 480px;">
           <table>
             <thead>
               <tr>
-                <th>英文單字</th>
-                <th>中文釋義 (Chinese Meaning)</th>
-                <th>難度級別</th>
-                <th>中英對照例句應用 (Bilingual Example)</th>
+                <th>單字</th>
+                <th>釋義</th>
+                <th>等級</th>
+                <th>例句</th>
               </tr>
             </thead>
             <tbody id="db-tbody"></tbody>
@@ -326,6 +373,18 @@
       </div>
     </div>
   </main>
+
+  <!-- 底部 Duolingo 答題反饋彈窗 -->
+  <div class="feedback-footer" id="feedback-footer">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="font-size: 2.5rem;" id="feedback-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <div>
+        <h3 id="feedback-title" style="font-size: 1.4rem; font-weight: 900;">太棒了！</h3>
+        <p id="feedback-detail" style="font-size: 1rem; font-weight: 700;"></p>
+      </div>
+    </div>
+    <button class="btn-3d" id="feedback-next-btn" onclick="nextQuizQuestion()">下一題</button>
+  </div>
 
   <script>
     let masterVocabDB = [];
@@ -338,19 +397,22 @@
       history: JSON.parse(localStorage.getItem('ox_ind_history')) || []
     };
 
-    function updateHeaderUI() {
-      const lvlMap = { 1: "Level 1 (基礎核心)", 2: "Level 2 (進階商務)", 3: "Level 3 (高階技術)" };
-      document.getElementById('header-level-tag').innerText = lvlMap[appState.level] || `Level ${appState.level}`;
-      localStorage.setItem('ox_ind_level', appState.level);
+    // 語音朗讀
+    function speakWord(word) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      }
     }
 
-    // 異步載入 7000 單字檔 (vocab_7000.json)
     async function initDatabase() {
       try {
         const response = await fetch('./vocab_7000.json');
         if (!response.ok) throw new Error("JSON file not found");
         const rawData = await response.json();
-        
         masterVocabDB = rawData.map((item, index) => ({
           key: item.word + "_" + index,
           word: item.word,
@@ -360,18 +422,14 @@
           exampleZh: item.exampleZh || ""
         }));
       } catch (err) {
-        console.warn("無法載入 vocab_7000.json，已切換至預設示範題庫：", err);
         masterVocabDB = [
-          { word: "ability", meaning: "能力、才能", level: 1, exampleEn: "She has the ability to lead.", exampleZh: "她具備領導能力。" },
-          { word: "efficiency", meaning: "效率、效能", level: 1, exampleEn: "Improve manufacturing efficiency.", exampleZh: "提升製造效率。" },
-          { word: "precision", meaning: "精密度", level: 2, exampleEn: "CNC machining requires precision.", exampleZh: "CNC 加工需要精密度。" }
+          { word: "ability", meaning: "[n.] 能力、才能", level: 1, exampleEn: "She has the ability to lead.", exampleZh: "她具備領導能力。" },
+          { word: "efficiency", meaning: "[n.] 效率、效能", level: 1, exampleEn: "Improve manufacturing efficiency.", exampleZh: "提升製造效率。" },
+          { word: "precision", meaning: "[n.] 精密度", level: 2, exampleEn: "CNC machining requires precision.", exampleZh: "CNC 加工需要精密度。" }
         ];
       }
 
-      document.getElementById('db-count-label').innerText = masterVocabDB.length.toLocaleString();
-      document.getElementById('stat-total-words').innerText = masterVocabDB.length.toLocaleString();
-      
-      // 預填上次暱稱
+      document.getElementById('db-count-label').innerText = masterVocabDB.length;
       if (appState.lastUser) {
         document.getElementById('quiz-username-input').value = appState.lastUser;
       }
@@ -395,53 +453,43 @@
       return [...arr].sort(() => 0.5 - Math.random()).slice(0, count);
     }
 
-    // 載入 10 張卡牌並初始化分頁
     function loadStudyCards() {
       if (masterVocabDB.length === 0) return;
       const pool = masterVocabDB.filter(item => item.level === appState.level);
       const targetPool = pool.length >= 4 ? pool : masterVocabDB;
       currentStudyPool = getRandomItems(targetPool, Math.min(10, targetPool.length));
       currentCardIndex = 0;
-      
       renderStudyCard();
     }
 
-    // 渲染當前單一全螢幕卡牌與分頁按鈕
     function renderStudyCard() {
       if (currentStudyPool.length === 0) return;
       const item = currentStudyPool[currentCardIndex];
       const container = document.getElementById('hero-card-container');
 
       container.innerHTML = `
-        <div class="hero-card-viewport level-${item.level}">
+        <div class="hero-card-viewport">
           <div>
             <div class="hero-word-header">
               <span class="hero-word-title">${item.word}</span>
-              <span class="enterprise-badge" style="font-size:0.85rem; padding: 6px 14px;">Level ${item.level}</span>
+              <button class="audio-btn" onclick="speakWord('${item.word}')"><i class="fa-solid fa-volume-high"></i></button>
             </div>
             <div class="hero-word-meaning">${item.meaning}</div>
           </div>
           <div class="hero-example-box">
-            <div class="hero-example-en">"${item.exampleEn || 'No example sentence available.'}"</div>
-            <div class="hero-example-zh">"${item.exampleZh || '暫無例句中文翻譯'}"</div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: #3c3c3c;">"${item.exampleEn || 'No example sentence.'}"</div>
+            <div style="color: #777; font-weight: 700; margin-top: 4px;">"${item.exampleZh || '暫無例句中文'}"</div>
           </div>
         </div>
       `;
 
-      // 渲染 10 個 Pagination Dots
       const dotsContainer = document.getElementById('pagination-dots');
       dotsContainer.innerHTML = '';
       currentStudyPool.forEach((_, idx) => {
         dotsContainer.innerHTML += `
-          <div class="dot ${idx === currentCardIndex ? 'active' : ''}" onclick="goToCard(${idx})">
-            ${idx + 1}
-          </div>
+          <div class="dot ${idx === currentCardIndex ? 'active' : ''}" onclick="goToCard(${idx})">${idx + 1}</div>
         `;
       });
-
-      // 更新按鈕狀態
-      document.getElementById('btn-prev-card').style.opacity = currentCardIndex === 0 ? '0.5' : '1';
-      document.getElementById('btn-next-card').style.opacity = currentCardIndex === currentStudyPool.length - 1 ? '0.5' : '1';
     }
 
     function changeCardIndex(delta) {
@@ -457,30 +505,16 @@
       renderStudyCard();
     }
 
-    // 鍵盤快捷鍵切換卡牌 (← / →)
-    document.addEventListener('keydown', (e) => {
-      if (document.getElementById('view-study').classList.contains('active')) {
-        if (e.key === 'ArrowLeft') changeCardIndex(-1);
-        if (e.key === 'ArrowRight') changeCardIndex(1);
-      }
-    });
-
+    /* 闖關測驗邏輯 */
     let quizQuestions = [];
     let currentQIdx = 0;
     let currentScore = 0;
     let currentQuizUser = "";
 
     function startQuiz() {
-      if (masterVocabDB.length === 0) return;
-      
       const inputEl = document.getElementById('quiz-username-input');
       const username = inputEl.value.trim();
-
-      if (!username) {
-        alert("請先輸入您的暱稱再開始測驗喔！");
-        inputEl.focus();
-        return;
-      }
+      if (!username) { alert("請輸入暱稱！"); return; }
 
       currentQuizUser = username;
       appState.lastUser = username;
@@ -495,7 +529,6 @@
       document.getElementById('quiz-start-screen').style.display = 'none';
       document.getElementById('quiz-result-screen').style.display = 'none';
       document.getElementById('quiz-question-screen').style.display = 'block';
-      document.getElementById('quiz-active-user-pill').innerHTML = `<i class="fa-solid fa-user"></i> ${currentQuizUser}`;
       renderQuizQuestion();
     }
 
@@ -507,8 +540,10 @@
 
       const q = quizQuestions[currentQIdx];
       document.getElementById('quiz-progress-text').innerText = `題目 ${currentQIdx + 1} / ${quizQuestions.length}`;
-      document.getElementById('quiz-lvl-badge').innerText = `Level ${appState.level}`;
+      document.getElementById('quiz-progress-fill').style.width = `${((currentQIdx + 1) / quizQuestions.length) * 100}%`;
       document.getElementById('quiz-word-el').innerText = q.word;
+
+      speakWord(q.word);
 
       const wrongPool = masterVocabDB.filter(item => item.word !== q.word);
       const wrongs = getRandomItems(wrongPool, 3);
@@ -518,15 +553,53 @@
       container.innerHTML = '';
       options.forEach((opt, idx) => {
         container.innerHTML += `
-          <button class="option-btn" onclick="submitAnswer('${opt.meaning.replace(/'/g, "\\'")}', '${q.meaning.replace(/'/g, "\\'")}')">
-            (${idx + 1}) ${opt.meaning}
+          <button class="option-btn" onclick="checkAnswer(this, '${opt.meaning.replace(/'/g, "\\'")}', '${q.meaning.replace(/'/g, "\\'")}')">
+            <span>(${idx + 1}) ${opt.meaning}</span>
+            <i class="fa-regular fa-circle"></i>
           </button>
         `;
       });
     }
 
-    function submitAnswer(selectedMeaning, correctMeaning) {
-      if (selectedMeaning === correctMeaning) currentScore++;
+    function speakCurrentWord() {
+      const q = quizQuestions[currentQIdx];
+      if (q) speakWord(q.word);
+    }
+
+    function checkAnswer(btn, selected, correct) {
+      const isCorrect = selected === correct;
+      const allBtns = document.querySelectorAll('.option-btn');
+      allBtns.forEach(b => b.style.pointerEvents = 'none');
+
+      if (isCorrect) {
+        btn.classList.add('correct');
+        btn.querySelector('i').className = 'fa-solid fa-circle-check';
+        currentScore++;
+        showFeedback(true, "答對了！太厲害了！");
+      } else {
+        btn.classList.add('wrong');
+        btn.querySelector('i').className = 'fa-solid fa-circle-xmark';
+        showFeedback(false, `正確答案是：${correct}`);
+      }
+    }
+
+    function showFeedback(isCorrect, text) {
+      const footer = document.getElementById('feedback-footer');
+      const icon = document.getElementById('feedback-icon');
+      const title = document.getElementById('feedback-title');
+      const detail = document.getElementById('feedback-detail');
+      const btn = document.getElementById('feedback-next-btn');
+
+      footer.className = `feedback-footer show ${isCorrect ? 'correct-bg' : 'wrong-bg'}`;
+      icon.innerHTML = isCorrect ? `<i class="fa-solid fa-circle-check"></i>` : `<i class="fa-solid fa-circle-xmark"></i>`;
+      title.innerText = isCorrect ? "非常好！" : "再接再厲！";
+      detail.innerText = text;
+      btn.style.background = isCorrect ? "var(--duo-green)" : "var(--duo-red)";
+      btn.style.borderColor = isCorrect ? "var(--duo-green-shadow)" : "var(--duo-red-shadow)";
+    }
+
+    function nextQuizQuestion() {
+      document.getElementById('feedback-footer').classList.remove('show');
       currentQIdx++;
       renderQuizQuestion();
     }
@@ -537,30 +610,18 @@
 
       const totalQ = quizQuestions.length;
       const pct = Math.round((currentScore / totalQ) * 100);
-      document.getElementById('quiz-score-display').innerText = `${currentQuizUser} 的最終得分：${currentScore} / ${totalQ} 分 (${pct}%)`;
+      document.getElementById('quiz-score-display').innerText = `${currentQuizUser} 獲得得分：${currentScore} / ${totalQ} (${pct}%)`;
 
-      let feedback = "";
-      const oldLvl = appState.level;
-
-      if (pct >= 80 && appState.level < 3) {
-        appState.level++;
-        feedback = `表現卓越！系統已自動將字彙難度提升至 Level ${appState.level} 🚀`;
-      } else if (pct < 50 && appState.level > 1) {
-        appState.level--;
-        feedback = `需要再加強！系統已自動將難度調降至 Level ${appState.level} 扎實根基。`;
-      } else {
-        feedback = `表現穩定！目前維持在 Level ${appState.level} 持續精進。`;
-      }
-
-      document.getElementById('quiz-feedback-display').innerText = feedback;
-      updateHeaderUI();
+      // 增加經驗值
+      const currentXP = parseInt(document.getElementById('xp-count').innerText) || 0;
+      document.getElementById('xp-count').innerText = `${currentXP + (currentScore * 10)} XP`;
 
       appState.history.unshift({
         user: currentQuizUser,
-        date: new Date().toLocaleString(),
+        date: new Date().toLocaleTimeString(),
         score: `${currentScore}/${totalQ}`,
         pct: pct,
-        level: oldLvl
+        level: appState.level
       });
       localStorage.setItem('ox_ind_history', JSON.stringify(appState.history));
       renderEnterpriseHistory();
@@ -573,89 +634,33 @@
 
     function renderEnterpriseHistory() {
       const tbody = document.getElementById('enterprise-history-tbody');
-      const selectEl = document.getElementById('filter-user-select');
-
-      // 更新暱稱下拉選單選項
-      const users = [...new Set(appState.history.map(h => h.user || '匿名'))];
-      const selectedUser = selectEl.value || 'ALL';
-
-      selectEl.innerHTML = `<option value="ALL">所有使用者 (全體總覽)</option>`;
-      users.forEach(u => {
-        selectEl.innerHTML += `<option value="${u}" ${u === selectedUser ? 'selected' : ''}>${u}</option>`;
-      });
-
-      // 根據選取的暱稱篩選資料
-      const filteredHistory = selectedUser === 'ALL' 
-        ? appState.history 
-        : appState.history.filter(h => (h.user || '匿名') === selectedUser);
-
-      // 更新統計數字
-      document.getElementById('stat-quiz-count').innerText = filteredHistory.length;
-      
-      if (filteredHistory.length > 0) {
-        const avg = Math.round(filteredHistory.reduce((acc, h) => acc + h.pct, 0) / filteredHistory.length);
-        document.getElementById('stat-avg-acc').innerText = avg + '%';
-      } else {
-        document.getElementById('stat-avg-acc').innerText = '0%';
-      }
-
-      if (filteredHistory.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 24px;">尚無對應測驗紀錄。</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = filteredHistory.map(h => `
+      if (!tbody) return;
+      tbody.innerHTML = appState.history.map(h => `
         <tr>
-          <td style="color: var(--text-muted);">${h.date}</td>
-          <td><span class="user-pill"><i class="fa-solid fa-user"></i> ${h.user || '匿名'}</span></td>
-          <td><span class="enterprise-badge">L${h.level}</span></td>
-          <td style="font-weight: 700;">${h.score}</td>
-          <td style="color: ${h.pct >= 80 ? 'var(--success)' : 'var(--primary)'}; font-weight: 700;">${h.pct}%</td>
-          <td><span class="tag">已記錄</span></td>
+          <td>${h.user}</td>
+          <td>Level ${h.level}</td>
+          <td>${h.score}</td>
+          <td style="color: var(--duo-green);">${h.pct}%</td>
+          <td style="color: #888;">${h.date}</td>
         </tr>
       `).join('');
-    }
-
-    function clearHistory() {
-      if (confirm("確定要清除所有學習歷程紀錄嗎？")) {
-        appState.history = [];
-        localStorage.removeItem('ox_ind_history');
-        renderEnterpriseHistory();
-      }
     }
 
     function renderDatabase() {
       const query = document.getElementById('db-search-input').value.toLowerCase();
-      const levelFilter = document.getElementById('db-level-select').value;
       const tbody = document.getElementById('db-tbody');
+      const filtered = masterVocabDB.filter(item => item.word.toLowerCase().includes(query) || item.meaning.toLowerCase().includes(query)).slice(0, 50);
 
-      let filtered = masterVocabDB.filter(item => {
-        const matchText = item.word.toLowerCase().includes(query) || item.meaning.toLowerCase().includes(query);
-        const matchLvl = levelFilter === 'all' || item.level == levelFilter;
-        return matchText && matchLvl;
-      });
-
-      const displayList = filtered.slice(0, 100);
-
-      if (displayList.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 24px;">找不到符合的單字</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = displayList.map(item => `
+      tbody.innerHTML = filtered.map(item => `
         <tr>
-          <td style="font-weight: 800; color: var(--text-main); font-size: 1.05rem;">${item.word}</td>
-          <td style="font-weight: 700; color: #1e293b;">${item.meaning}</td>
-          <td><span class="enterprise-badge">L${item.level}</span></td>
-          <td>
-            <div style="font-style: italic; color: var(--text-main); font-size: 0.85rem;">"${item.exampleEn}"</div>
-            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">"${item.exampleZh}"</div>
-          </td>
+          <td style="color: var(--duo-blue);">${item.word}</td>
+          <td>${item.meaning}</td>
+          <td>L${item.level}</td>
+          <td style="font-size: 0.85rem; color: #666;">${item.exampleEn}</td>
         </tr>
       `).join('');
     }
 
-    updateHeaderUI();
     initDatabase();
   </script>
 </body>
