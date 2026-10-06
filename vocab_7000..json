@@ -1,0 +1,3216 @@
+[
+  {
+    "id": 1,
+    "word": "a/an",
+    "pos": "art.",
+    "level": 1,
+    "translation": "一個；一（冠詞）",
+    "sentence": "She bought an apple and a banana at the market."
+  },
+  {
+    "id": 2,
+    "word": "ability",
+    "pos": "n.",
+    "level": 1,
+    "translation": "能力；才能",
+    "sentence": "He has the ability to learn new languages quickly."
+  },
+  {
+    "id": 3,
+    "word": "able",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "能夠的；有能力的",
+    "sentence": "Will you be able to finish the report by tomorrow?"
+  },
+  {
+    "id": 4,
+    "word": "about",
+    "pos": "prep./adv.",
+    "level": 1,
+    "translation": "關於；大約",
+    "sentence": "We talked about our travel plans for nearly an hour."
+  },
+  {
+    "id": 5,
+    "word": "above",
+    "pos": "prep./adv./adj.",
+    "level": 1,
+    "translation": "在…上方；高於",
+    "sentence": "The plane flew high above the clouds."
+  },
+  {
+    "id": 6,
+    "word": "abroad",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "在國外；到國外",
+    "sentence": "Many young people dream of studying abroad."
+  },
+  {
+    "id": 7,
+    "word": "absent",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "缺席的；不在場的",
+    "sentence": "Three students were absent from class today due to illness."
+  },
+  {
+    "id": 8,
+    "word": "accept",
+    "pos": "v.",
+    "level": 1,
+    "translation": "接受；答應",
+    "sentence": "She was delighted to accept the job offer."
+  },
+  {
+    "id": 9,
+    "word": "accident",
+    "pos": "n.",
+    "level": 1,
+    "translation": "意外；交通事故",
+    "sentence": "He was injured in a car accident last week."
+  },
+  {
+    "id": 10,
+    "word": "achieve",
+    "pos": "v.",
+    "level": 1,
+    "translation": "達成；實現",
+    "sentence": "With hard work, you can achieve your career goals."
+  },
+  {
+    "id": 11,
+    "word": "across",
+    "pos": "prep./adv.",
+    "level": 1,
+    "translation": "穿過；在…對面",
+    "sentence": "The dog ran safely across the street."
+  },
+  {
+    "id": 12,
+    "word": "act",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "行動；表演；法案",
+    "sentence": "It is important to act quickly in an emergency."
+  },
+  {
+    "id": 13,
+    "word": "action",
+    "pos": "n.",
+    "level": 1,
+    "translation": "行動；行為",
+    "sentence": "Actions speak louder than words."
+  },
+  {
+    "id": 14,
+    "word": "active",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "活躍的；積極的",
+    "sentence": "He leads an active lifestyle and exercises every morning."
+  },
+  {
+    "id": 15,
+    "word": "activity",
+    "pos": "n.",
+    "level": 1,
+    "translation": "活動",
+    "sentence": "Swimming is my favorite outdoor activity in summer."
+  },
+  {
+    "id": 16,
+    "word": "actor",
+    "pos": "n.",
+    "level": 1,
+    "translation": "男演員",
+    "sentence": "The actor won an award for his outstanding performance."
+  },
+  {
+    "id": 17,
+    "word": "actress",
+    "pos": "n.",
+    "level": 1,
+    "translation": "女演員",
+    "sentence": "She is a famous actress who has starred in many movies."
+  },
+  {
+    "id": 18,
+    "word": "add",
+    "pos": "v.",
+    "level": 1,
+    "translation": "增加；添加",
+    "sentence": "Please add a little sugar to my coffee."
+  },
+  {
+    "id": 19,
+    "word": "address",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "地址；演說；致詞",
+    "sentence": "Please write your residential address on this form."
+  },
+  {
+    "id": 20,
+    "word": "admire",
+    "pos": "v.",
+    "level": 1,
+    "translation": "欽佩；欣賞",
+    "sentence": "I really admire her dedication to community service."
+  },
+  {
+    "id": 21,
+    "word": "adult",
+    "pos": "n./adj.",
+    "level": 1,
+    "translation": "成年人；成年的",
+    "sentence": "The ticket price for an adult is twenty dollars."
+  },
+  {
+    "id": 22,
+    "word": "advance",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "前進；進步；預先",
+    "sentence": "Medical technology has made great advances in recent years."
+  },
+  {
+    "id": 23,
+    "word": "advantage",
+    "pos": "n.",
+    "level": 1,
+    "translation": "優勢；好處",
+    "sentence": "Knowing multiple languages is a big advantage in business."
+  },
+  {
+    "id": 24,
+    "word": "advice",
+    "pos": "n.",
+    "level": 1,
+    "translation": "建議；忠告",
+    "sentence": "My teacher gave me valuable advice on my career choice."
+  },
+  {
+    "id": 25,
+    "word": "advise",
+    "pos": "v.",
+    "level": 1,
+    "translation": "建議；勸告",
+    "sentence": "The doctor advised him to get more sleep each night."
+  },
+  {
+    "id": 26,
+    "word": "afford",
+    "pos": "v.",
+    "level": 1,
+    "translation": "負擔得起；買得起",
+    "sentence": "We cannot afford to buy a new car right now."
+  },
+  {
+    "id": 27,
+    "word": "afraid",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "害怕的；擔心的",
+    "sentence": "Don't be afraid to ask questions if you don't understand."
+  },
+  {
+    "id": 28,
+    "word": "after",
+    "pos": "prep./conj./adv.",
+    "level": 1,
+    "translation": "在…之後",
+    "sentence": "We went for a short walk after dinner."
+  },
+  {
+    "id": 29,
+    "word": "afternoon",
+    "pos": "n.",
+    "level": 1,
+    "translation": "下午",
+    "sentence": "I have an important meeting scheduled for this afternoon."
+  },
+  {
+    "id": 30,
+    "word": "again",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "再次；重新",
+    "sentence": "Could you please repeat that question again?"
+  },
+  {
+    "id": 31,
+    "word": "against",
+    "pos": "prep.",
+    "level": 1,
+    "translation": "反對；緊靠著",
+    "sentence": "They played against a very strong team yesterday."
+  },
+  {
+    "id": 32,
+    "word": "age",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "年齡；時代",
+    "sentence": "Children under the age of five enter the museum for free."
+  },
+  {
+    "id": 33,
+    "word": "ago",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "在…以前",
+    "sentence": "They moved to this city three years ago."
+  },
+  {
+    "id": 34,
+    "word": "agree",
+    "pos": "v.",
+    "level": 1,
+    "translation": "同意；贊同",
+    "sentence": "I completely agree with your proposal."
+  },
+  {
+    "id": 35,
+    "word": "ahead",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "在前面；預先",
+    "sentence": "Go straight ahead for two blocks and turn left."
+  },
+  {
+    "id": 36,
+    "word": "aid",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "援助；幫助",
+    "sentence": "First-aid kits are stored in the factory office."
+  },
+  {
+    "id": 37,
+    "word": "aim",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "目標；瞄準",
+    "sentence": "Our primary aim is to improve product quality."
+  },
+  {
+    "id": 38,
+    "word": "air",
+    "pos": "n.",
+    "level": 1,
+    "translation": "空氣；天空",
+    "sentence": "Fresh air is essential for good physical health."
+  },
+  {
+    "id": 39,
+    "word": "aircraft",
+    "pos": "n.",
+    "level": 1,
+    "translation": "航空器；飛機",
+    "sentence": "The new aircraft completed its test flight successfully."
+  },
+  {
+    "id": 40,
+    "word": "airline",
+    "pos": "n.",
+    "level": 1,
+    "translation": "航空公司",
+    "sentence": "Which airline are you flying with for your trip?"
+  },
+  {
+    "id": 41,
+    "word": "airplane",
+    "pos": "n.",
+    "level": 1,
+    "translation": "飛機",
+    "sentence": "The airplane landed safely at the airport."
+  },
+  {
+    "id": 42,
+    "word": "airport",
+    "pos": "n.",
+    "level": 1,
+    "translation": "機場",
+    "sentence": "We arrived at the airport two hours before departure."
+  },
+  {
+    "id": 43,
+    "word": "alarm",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "警報；鬧鐘；使驚恐",
+    "sentence": "My alarm clock rings at six o'clock every morning."
+  },
+  {
+    "id": 44,
+    "word": "album",
+    "pos": "n.",
+    "level": 1,
+    "translation": "相簿；音樂專輯",
+    "sentence": "The famous band just released a new music album."
+  },
+  {
+    "id": 45,
+    "word": "alike",
+    "pos": "adj./adv.",
+    "level": 1,
+    "translation": "相似的；同樣地",
+    "sentence": "The twin brothers look and dress very much alike."
+  },
+  {
+    "id": 46,
+    "word": "alive",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "活著的；有生氣的",
+    "sentence": "It is amazing that the plant is still alive without water."
+  },
+  {
+    "id": 47,
+    "word": "all",
+    "pos": "adj./pron./adv.",
+    "level": 1,
+    "translation": "全部的；所有的",
+    "sentence": "All students must submit their homework by Friday."
+  },
+  {
+    "id": 48,
+    "word": "allow",
+    "pos": "v.",
+    "level": 1,
+    "translation": "允許；准許",
+    "sentence": "Smoking is not allowed inside the office building."
+  },
+  {
+    "id": 49,
+    "word": "almost",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "幾乎；差不多",
+    "sentence": "It is almost time for the meeting to start."
+  },
+  {
+    "id": 50,
+    "word": "alone",
+    "pos": "adj./adv.",
+    "level": 1,
+    "translation": "單獨的；獨自一人的",
+    "sentence": "He enjoys walking alone in the park in the evening."
+  }
+]
+[
+  {
+    "id": 51,
+    "word": "along",
+    "pos": "prep./adv.",
+    "level": 1,
+    "translation": "沿著；順著",
+    "sentence": "We took a peaceful walk along the river bank."
+  },
+  {
+    "id": 52,
+    "word": "already",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "已經",
+    "sentence": "I have already finished all my homework for tomorrow."
+  },
+  {
+    "id": 53,
+    "word": "also",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "也；此外",
+    "sentence": "She plays the piano well, and she can also sing."
+  },
+  {
+    "id": 54,
+    "word": "always",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "總是；一直",
+    "sentence": "He always arrives at the office on time."
+  },
+  {
+    "id": 55,
+    "word": "a.m./AM",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "上午",
+    "sentence": "The store opens at eight a.m. every weekday."
+  },
+  {
+    "id": 56,
+    "word": "America",
+    "pos": "n.",
+    "level": 1,
+    "translation": "美國；美洲",
+    "sentence": "They are planning a family trip to America next year."
+  },
+  {
+    "id": 57,
+    "word": "American",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "美國的；美國人",
+    "sentence": "We enjoyed traditional American apple pie for dessert."
+  },
+  {
+    "id": 58,
+    "word": "among",
+    "pos": "prep.",
+    "level": 1,
+    "translation": "在…之中",
+    "sentence": "The small cabin is hidden among tall pine trees."
+  },
+  {
+    "id": 59,
+    "word": "amount",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "數量；總計",
+    "sentence": "A large amount of water was used to extinguish the fire."
+  },
+  {
+    "id": 60,
+    "word": "ancient",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "古代的；古老的",
+    "sentence": "They visited several ancient temples during their vacation."
+  },
+  {
+    "id": 61,
+    "word": "and",
+    "pos": "conj.",
+    "level": 1,
+    "translation": "和；而且",
+    "sentence": "He put on his jacket and walked out the door."
+  },
+  {
+    "id": 62,
+    "word": "anger",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "憤怒；使發怒",
+    "sentence": "He struggled to control his anger during the debate."
+  },
+  {
+    "id": 63,
+    "word": "angle",
+    "pos": "n.",
+    "level": 1,
+    "translation": "角度；角",
+    "sentence": "The photographer tried shooting the picture from a different angle."
+  },
+  {
+    "id": 64,
+    "word": "angry",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "生氣的；憤怒的",
+    "sentence": "She was angry when she saw the damaged goods."
+  },
+  {
+    "id": 65,
+    "word": "animal",
+    "pos": "n.",
+    "level": 1,
+    "translation": "動物",
+    "sentence": "Lions are wild animals that hunt in packs."
+  },
+  {
+    "id": 66,
+    "word": "ankle",
+    "pos": "n.",
+    "level": 1,
+    "translation": "腳踝",
+    "sentence": "He twisted his ankle while running down the stairs."
+  },
+  {
+    "id": 67,
+    "word": "another",
+    "pos": "adj./pron.",
+    "level": 1,
+    "translation": "另一個；再一個",
+    "sentence": "Would you like another cup of hot tea?"
+  },
+  {
+    "id": 68,
+    "word": "answer",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "答案；回答",
+    "sentence": "Please answer the phone if it rings."
+  },
+  {
+    "id": 69,
+    "word": "ant",
+    "pos": "n.",
+    "level": 1,
+    "translation": "螞蟻",
+    "sentence": "A line of ants moved across the kitchen floor."
+  },
+  {
+    "id": 70,
+    "word": "any",
+    "pos": "adj./pron./adv.",
+    "level": 1,
+    "translation": "任何的；一些",
+    "sentence": "Do you have any questions about today's lesson?"
+  },
+  {
+    "id": 71,
+    "word": "anybody",
+    "pos": "pron.",
+    "level": 1,
+    "translation": "任何人",
+    "sentence": "Is there anybody inside the conference room?"
+  },
+  {
+    "id": 72,
+    "word": "anymore",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "不再",
+    "sentence": "They don't live in this city anymore."
+  },
+  {
+    "id": 73,
+    "word": "anyone",
+    "pos": "pron.",
+    "level": 1,
+    "translation": "任何人",
+    "sentence": "Anyone can join the club if they register online."
+  },
+  {
+    "id": 74,
+    "word": "anything",
+    "pos": "pron.",
+    "level": 1,
+    "translation": "任何事物",
+    "sentence": "I didn't hear anything suspicious last night."
+  },
+  {
+    "id": 75,
+    "word": "anytime",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "在任何時候",
+    "sentence": "You can call me anytime if you need help."
+  },
+  {
+    "id": 76,
+    "word": "anyway",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "無論如何；總之",
+    "sentence": "It was raining, but we went out anyway."
+  },
+  {
+    "id": 77,
+    "word": "anywhere",
+    "pos": "adv./pron.",
+    "level": 1,
+    "translation": "任何地方",
+    "sentence": "I couldn't find my keys anywhere in the house."
+  },
+  {
+    "id": 78,
+    "word": "apartment",
+    "pos": "n.",
+    "level": 1,
+    "translation": "公寓",
+    "sentence": "She rented a small apartment near her university."
+  },
+  {
+    "id": 79,
+    "word": "apologize",
+    "pos": "v.",
+    "level": 1,
+    "translation": "道歉",
+    "sentence": "He apologized to his team for being late."
+  },
+  {
+    "id": 80,
+    "word": "appear",
+    "pos": "v.",
+    "level": 1,
+    "translation": "出現；顯現",
+    "sentence": "A bright rainbow appeared in the sky after the rain."
+  },
+  {
+    "id": 81,
+    "word": "apple",
+    "pos": "n.",
+    "level": 1,
+    "translation": "蘋果",
+    "sentence": "Eating an apple every day is good for health."
+  },
+  {
+    "id": 82,
+    "word": "appreciate",
+    "pos": "v.",
+    "level": 1,
+    "translation": "感謝；欣賞",
+    "sentence": "I really appreciate your timely assistance on this project."
+  },
+  {
+    "id": 83,
+    "word": "April",
+    "pos": "n.",
+    "level": 1,
+    "translation": "四月",
+    "sentence": "Spring officially starts in early April in this region."
+  },
+  {
+    "id": 84,
+    "word": "area",
+    "pos": "n.",
+    "level": 1,
+    "translation": "區域；面積",
+    "sentence": "There are many nice cafes in this area."
+  },
+  {
+    "id": 85,
+    "word": "argue",
+    "pos": "v.",
+    "level": 1,
+    "translation": "爭論；辯論",
+    "sentence": "It is best not to argue over minor details."
+  },
+  {
+    "id": 86,
+    "word": "arm",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "手臂；武器；武裝",
+    "sentence": "He broke his left arm during the sports match."
+  },
+  {
+    "id": 87,
+    "word": "army",
+    "pos": "n.",
+    "level": 1,
+    "translation": "軍隊；陸軍",
+    "sentence": "He served in the army for two years after college."
+  },
+  {
+    "id": 88,
+    "word": "around",
+    "pos": "prep./adv.",
+    "level": 1,
+    "translation": "在…四周；大約",
+    "sentence": "They sat around the table and enjoyed their meal."
+  },
+  {
+    "id": 89,
+    "word": "arrange",
+    "pos": "v.",
+    "level": 1,
+    "translation": "安排；排列",
+    "sentence": "She helped arrange the schedule for the conference."
+  },
+  {
+    "id": 90,
+    "word": "arrest",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "逮捕；拘留",
+    "sentence": "The police arrived quickly to arrest the suspect."
+  },
+  {
+    "id": 91,
+    "word": "arrive",
+    "pos": "v.",
+    "level": 1,
+    "translation": "到達；抵達",
+    "sentence": "The train will arrive at the station in ten minutes."
+  },
+  {
+    "id": 92,
+    "word": "art",
+    "pos": "n.",
+    "level": 1,
+    "translation": "藝術；美術",
+    "sentence": "She studies modern art at the local academy."
+  },
+  {
+    "id": 93,
+    "word": "article",
+    "pos": "n.",
+    "level": 1,
+    "translation": "文章；物品",
+    "sentence": "He published an interesting article on digital marketing."
+  },
+  {
+    "id": 94,
+    "word": "artist",
+    "pos": "n.",
+    "level": 1,
+    "translation": "藝術家；畫家",
+    "sentence": "The artist painted a beautiful landscape on canvas."
+  },
+  {
+    "id": 95,
+    "word": "as",
+    "pos": "prep./conj./adv.",
+    "level": 1,
+    "translation": "作為；當…時；如同",
+    "sentence": "He works as a senior mechanical engineer."
+  },
+  {
+    "id": 96,
+    "word": "Asia",
+    "pos": "n.",
+    "level": 1,
+    "translation": "亞洲",
+    "sentence": "Taiwan is located in East Asia."
+  },
+  {
+    "id": 97,
+    "word": "Asian",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "亞洲的；亞洲人",
+    "sentence": "Asian cuisine is popular all around the world."
+  },
+  {
+    "id": 98,
+    "word": "ask",
+    "pos": "v.",
+    "level": 1,
+    "translation": "詢問；要求",
+    "sentence": "Feel free to ask if you need further clarification."
+  },
+  {
+    "id": 99,
+    "word": "asleep",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "睡著的",
+    "sentence": "The baby fell asleep shortly after eating."
+  },
+  {
+    "id": 100,
+    "word": "assistant",
+    "pos": "n.",
+    "level": 1,
+    "translation": "助手；助理",
+    "sentence": "The executive assistant organized all the meeting files."
+  }
+]
+[
+  {
+    "id": 101,
+    "word": "assume",
+    "pos": "v.",
+    "level": 1,
+    "translation": "假設；認為",
+    "sentence": "We cannot assume that everyone will agree with this strategy."
+  },
+  {
+    "id": 102,
+    "word": "at",
+    "pos": "prep.",
+    "level": 1,
+    "translation": "在…；在…時刻",
+    "sentence": "The workshop will start at nine o'clock tomorrow morning."
+  },
+  {
+    "id": 103,
+    "word": "attack",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "攻擊；進攻",
+    "sentence": "The network system was protected from a cyber attack."
+  },
+  {
+    "id": 104,
+    "word": "attend",
+    "pos": "v.",
+    "level": 1,
+    "translation": "參加；出席",
+    "sentence": "All department managers are requested to attend the seminar."
+  },
+  {
+    "id": 105,
+    "word": "attention",
+    "pos": "n.",
+    "level": 1,
+    "translation": "注意；注意力",
+    "sentence": "Please pay close attention to the safety guidelines."
+  },
+  {
+    "id": 106,
+    "word": "attitude",
+    "pos": "n.",
+    "level": 1,
+    "translation": "態度；看法",
+    "sentence": "Maintaining a positive attitude helps overcome challenges."
+  },
+  {
+    "id": 107,
+    "word": "attract",
+    "pos": "v.",
+    "level": 1,
+    "translation": "吸引；引起",
+    "sentence": "The new exhibition attracted thousands of visitors this weekend."
+  },
+  {
+    "id": 108,
+    "word": "August",
+    "pos": "n.",
+    "level": 1,
+    "translation": "八月",
+    "sentence": "They usually take their annual family vacation in August."
+  },
+  {
+    "id": 109,
+    "word": "aunt/aunty",
+    "pos": "n.",
+    "level": 1,
+    "translation": "阿姨；姑姑；嬸嬸",
+    "sentence": "My aunt sent me a thoughtful gift for my birthday."
+  },
+  {
+    "id": 110,
+    "word": "Australia",
+    "pos": "n.",
+    "level": 1,
+    "translation": "澳洲",
+    "sentence": "Kangaroos and koalas are native animals of Australia."
+  },
+  {
+    "id": 111,
+    "word": "Australian",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "澳洲的；澳洲人",
+    "sentence": "We met an Australian traveler at the hotel lobby."
+  },
+  {
+    "id": 112,
+    "word": "author",
+    "pos": "n.",
+    "level": 1,
+    "translation": "作者；作家",
+    "sentence": "The author signed copies of his new novel for fans."
+  },
+  {
+    "id": 113,
+    "word": "autumn",
+    "pos": "n.",
+    "level": 1,
+    "translation": "秋天；秋季",
+    "sentence": "The weather becomes cool and pleasant in autumn."
+  },
+  {
+    "id": 114,
+    "word": "available",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "可利用的；有空的",
+    "sentence": "The technician will be available to help after lunch."
+  },
+  {
+    "id": 115,
+    "word": "avoid",
+    "pos": "v.",
+    "level": 1,
+    "translation": "避免；避開",
+    "sentence": "Double-check the figures to avoid unnecessary errors."
+  },
+  {
+    "id": 116,
+    "word": "awake",
+    "pos": "adj./v.",
+    "level": 1,
+    "translation": "清醒的；喚醒",
+    "sentence": "Noise from the street kept him awake all night."
+  },
+  {
+    "id": 117,
+    "word": "award",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "獎項；頒發",
+    "sentence": "The team won an award for exceptional quality control."
+  },
+  {
+    "id": 118,
+    "word": "away",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "離開；在遠處",
+    "sentence": "The bus stop is only five minutes away from here."
+  },
+  {
+    "id": 119,
+    "word": "baby",
+    "pos": "n.",
+    "level": 1,
+    "translation": "嬰兒",
+    "sentence": "The baby fell fast asleep after being fed."
+  },
+  {
+    "id": 120,
+    "word": "back",
+    "pos": "n./adv./adj./v.",
+    "level": 1,
+    "translation": "背部；後面；返回",
+    "sentence": "Please take a seat and rest your back."
+  },
+  {
+    "id": 121,
+    "word": "background",
+    "pos": "n.",
+    "level": 1,
+    "translation": "背景",
+    "sentence": "He has a strong background in mechanical engineering."
+  },
+  {
+    "id": 122,
+    "word": "bad",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "壞的；不良的",
+    "sentence": "Poor maintenance can lead to bad equipment performance."
+  },
+  {
+    "id": 123,
+    "word": "bag",
+    "pos": "n.",
+    "level": 1,
+    "translation": "袋子；包包",
+    "sentence": "She carried a heavy leather bag onto the train."
+  },
+  {
+    "id": 124,
+    "word": "bake",
+    "pos": "v.",
+    "level": 1,
+    "translation": "烘焙；烤",
+    "sentence": "My mother likes to bake fresh bread on weekends."
+  },
+  {
+    "id": 125,
+    "word": "bakery",
+    "pos": "n.",
+    "level": 1,
+    "translation": "麵包店",
+    "sentence": "The smell of fresh pastry filled the bakery."
+  },
+  {
+    "id": 126,
+    "word": "balance",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "平衡；餘額",
+    "sentence": "It is crucial to maintain a healthy work-life balance."
+  },
+  {
+    "id": 127,
+    "word": "balcony",
+    "pos": "n.",
+    "level": 1,
+    "translation": "陽台",
+    "sentence": "We sat on the balcony enjoying the night view."
+  },
+  {
+    "id": 128,
+    "word": "ball",
+    "pos": "n.",
+    "level": 1,
+    "translation": "球；舞會",
+    "sentence": "The children passed the ball back and forth in the park."
+  },
+  {
+    "id": 129,
+    "word": "balloon",
+    "pos": "n.",
+    "level": 1,
+    "translation": "氣球",
+    "sentence": "They decorated the party room with colorful balloons."
+  },
+  {
+    "id": 130,
+    "word": "banana",
+    "pos": "n.",
+    "level": 1,
+    "translation": "香蕉",
+    "sentence": "A banana is a quick and convenient source of energy."
+  },
+  {
+    "id": 131,
+    "word": "band",
+    "pos": "n.",
+    "level": 1,
+    "translation": "樂團；帶子",
+    "sentence": "The rock band gave an energetic live performance."
+  },
+  {
+    "id": 132,
+    "word": "bank",
+    "pos": "n.",
+    "level": 1,
+    "translation": "銀行；河岸",
+    "sentence": "He went to the bank to open a savings account."
+  },
+  {
+    "id": 133,
+    "word": "banker",
+    "pos": "n.",
+    "level": 1,
+    "translation": "銀行家；銀行從業者",
+    "sentence": "The banker explained the loan terms in detail."
+  },
+  {
+    "id": 134,
+    "word": "bar",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "酒吧；條；棒",
+    "sentence": "He bought a chocolate bar from the vending machine."
+  },
+  {
+    "id": 135,
+    "word": "barbecue",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "烤肉；戶外烤肉",
+    "sentence": "We hosted a barbecue in the backyard on Sunday."
+  },
+  {
+    "id": 136,
+    "word": "barber",
+    "pos": "n.",
+    "level": 1,
+    "translation": "理髮師",
+    "sentence": "The barber trimmed his hair neatly before the interview."
+  },
+  {
+    "id": 137,
+    "word": "base",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "基礎；基地",
+    "sentence": "The lamp stands firmly on a heavy metal base."
+  },
+  {
+    "id": 138,
+    "word": "baseball",
+    "pos": "n.",
+    "level": 1,
+    "translation": "棒球",
+    "sentence": "Baseball is one of the most popular sports in Taiwan."
+  },
+  {
+    "id": 139,
+    "word": "basement",
+    "pos": "n.",
+    "level": 1,
+    "translation": "地下室",
+    "sentence": "The building's parking garage is located in the basement."
+  },
+  {
+    "id": 140,
+    "word": "basic",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "基礎的；基本的",
+    "sentence": "Mastering basic skills is key to learning any technology."
+  },
+  {
+    "id": 141,
+    "word": "basket",
+    "pos": "n.",
+    "level": 1,
+    "translation": "籃子",
+    "sentence": "She filled the picnic basket with sandwiches and fruits."
+  },
+  {
+    "id": 142,
+    "word": "basketball",
+    "pos": "n.",
+    "level": 1,
+    "translation": "籃球",
+    "sentence": "They play basketball together after school every Tuesday."
+  },
+  {
+    "id": 143,
+    "word": "bat",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "球棒；蝙蝠",
+    "sentence": "He swung the wooden bat and hit a home run."
+  },
+  {
+    "id": 144,
+    "word": "bath",
+    "pos": "n.",
+    "level": 1,
+    "translation": "沐浴；洗澡",
+    "sentence": "A warm bath helps relax muscles after a long day."
+  },
+  {
+    "id": 145,
+    "word": "bathe",
+    "pos": "v.",
+    "level": 1,
+    "translation": "洗澡；浸泡",
+    "sentence": "Parents should check the water temperature before bathing babies."
+  },
+  {
+    "id": 146,
+    "word": "bathroom",
+    "pos": "n.",
+    "level": 1,
+    "translation": "浴室；洗手間",
+    "sentence": "The master bedroom includes a private bathroom."
+  },
+  {
+    "id": 147,
+    "word": "be",
+    "pos": "v.",
+    "level": 1,
+    "translation": "是；存在",
+    "sentence": "Please be patient while the update is installing."
+  },
+  {
+    "id": 148,
+    "word": "beach",
+    "pos": "n.",
+    "level": 1,
+    "translation": "海灘；沙灘",
+    "sentence": "We spent the whole afternoon walking along the sunny beach."
+  },
+  {
+    "id": 149,
+    "word": "bear",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "熊；忍受；承受",
+    "sentence": "The structure can bear heavy loads without bending."
+  },
+  {
+    "id": 150,
+    "word": "beard",
+    "pos": "n.",
+    "level": 1,
+    "translation": "鬍鬚",
+    "sentence": "He decided to grow a beard during the winter holidays."
+  }
+]
+[
+  {
+    "id": 151,
+    "word": "beat",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "擊打；打敗；節拍",
+    "sentence": "Our team managed to beat the champion in the final game."
+  },
+  {
+    "id": 152,
+    "word": "beautiful",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "美麗的；漂亮的",
+    "sentence": "They enjoyed a beautiful view of the ocean from their hotel room."
+  },
+  {
+    "id": 153,
+    "word": "beauty",
+    "pos": "n.",
+    "level": 1,
+    "translation": "美貌；美麗",
+    "sentence": "The natural beauty of the mountains attracts many hikers."
+  },
+  {
+    "id": 154,
+    "word": "because",
+    "pos": "conj.",
+    "level": 1,
+    "translation": "因為",
+    "sentence": "The outdoor event was canceled because of heavy rain."
+  },
+  {
+    "id": 155,
+    "word": "become",
+    "pos": "v.",
+    "level": 1,
+    "translation": "變成；成為",
+    "sentence": "He studied hard to become a professional engineer."
+  },
+  {
+    "id": 156,
+    "word": "bed",
+    "pos": "n.",
+    "level": 1,
+    "translation": "床",
+    "sentence": "She went to bed early to get enough rest before the exam."
+  },
+  {
+    "id": 157,
+    "word": "bedroom",
+    "pos": "n.",
+    "level": 1,
+    "translation": "臥室",
+    "sentence": "The house features three bedrooms and a spacious living room."
+  },
+  {
+    "id": 158,
+    "word": "bee",
+    "pos": "n.",
+    "level": 1,
+    "translation": "蜜蜂",
+    "sentence": "A bee flew into the garden and landed on a flower."
+  },
+  {
+    "id": 159,
+    "word": "beef",
+    "pos": "n.",
+    "level": 1,
+    "translation": "牛肉",
+    "sentence": "They ordered grilled beef steak for dinner."
+  },
+  {
+    "id": 160,
+    "word": "beer",
+    "pos": "n.",
+    "level": 1,
+    "translation": "啤酒",
+    "sentence": "He ordered a cold beer to enjoy with his meal."
+  },
+  {
+    "id": 161,
+    "word": "before",
+    "pos": "prep./conj./adv.",
+    "level": 1,
+    "translation": "在…之前",
+    "sentence": "Please wash your hands before eating."
+  },
+  {
+    "id": 162,
+    "word": "begin",
+    "pos": "v.",
+    "level": 1,
+    "translation": "開始",
+    "sentence": "The meeting will begin as soon as the manager arrives."
+  },
+  {
+    "id": 163,
+    "word": "beginner",
+    "pos": "n.",
+    "level": 1,
+    "translation": "初學者",
+    "sentence": "This course is specially designed for complete beginners."
+  },
+  {
+    "id": 164,
+    "word": "beginning",
+    "pos": "n.",
+    "level": 1,
+    "translation": "開始；開端",
+    "sentence": "At the beginning of the year, we set new sales goals."
+  },
+  {
+    "id": 165,
+    "word": "behave",
+    "pos": "v.",
+    "level": 1,
+    "translation": "表現；舉止",
+    "sentence": "Children are taught to behave respectfully in public."
+  },
+  {
+    "id": 166,
+    "word": "behind",
+    "pos": "prep./adv.",
+    "level": 1,
+    "translation": "在…後面",
+    "sentence": "There is a small garden behind the house."
+  },
+  {
+    "id": 167,
+    "word": "believe",
+    "pos": "v.",
+    "level": 1,
+    "translation": "相信；認為",
+    "sentence": "I strongly believe that practice leads to perfection."
+  },
+  {
+    "id": 168,
+    "word": "bell",
+    "pos": "n.",
+    "level": 1,
+    "translation": "鈴；鐘",
+    "sentence": "The school bell rang, signaling the start of recess."
+  },
+  {
+    "id": 169,
+    "word": "belong",
+    "pos": "v.",
+    "level": 1,
+    "translation": "屬於",
+    "sentence": "Does this leather wallet belong to anyone here?"
+  },
+  {
+    "id": 170,
+    "word": "below",
+    "pos": "prep./adv.",
+    "level": 1,
+    "translation": "在…下方",
+    "sentence": "Please sign your name on the line below."
+  },
+  {
+    "id": 171,
+    "word": "belt",
+    "pos": "n.",
+    "level": 1,
+    "translation": "皮帶；帶子",
+    "sentence": "He buckled his seat belt before starting the car engine."
+  },
+  {
+    "id": 172,
+    "word": "bench",
+    "pos": "n.",
+    "level": 1,
+    "translation": "長椅；工作檯",
+    "sentence": "They sat on a park bench and chatted quietly."
+  },
+  {
+    "id": 173,
+    "word": "besides",
+    "pos": "prep./adv.",
+    "level": 1,
+    "translation": "除…之外；而且",
+    "sentence": "Besides Japanese, she can also speak fluent English."
+  },
+  {
+    "id": 174,
+    "word": "best",
+    "pos": "adj./adv./n.",
+    "level": 1,
+    "translation": "最好的；最好地",
+    "sentence": "We will do our best to meet the delivery deadline."
+  },
+  {
+    "id": 175,
+    "word": "better",
+    "pos": "adj./adv.",
+    "level": 1,
+    "translation": "較好的；更好地",
+    "sentence": "Regular practice will make your skills much better."
+  },
+  {
+    "id": 176,
+    "word": "between",
+    "pos": "prep.",
+    "level": 1,
+    "translation": "在…之間",
+    "sentence": "The factory is located between Hsinchu and Miaoli."
+  },
+  {
+    "id": 177,
+    "word": "beyond",
+    "pos": "prep./adv.",
+    "level": 1,
+    "translation": "超過；在…較遠處",
+    "sentence": "The cost of the repair was far beyond our budget."
+  },
+  {
+    "id": 178,
+    "word": "bicycle/bike",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "腳踏車；騎腳踏車",
+    "sentence": "He rides his bicycle to work every sunny day."
+  },
+  {
+    "id": 179,
+    "word": "big",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "大的；重要的",
+    "sentence": "They moved into a big house with a wide garden."
+  },
+  {
+    "id": 180,
+    "word": "bill",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "帳單；鈔票；法案",
+    "sentence": "Could you please bring us the bill after dinner?"
+  },
+  {
+    "id": 181,
+    "word": "biology",
+    "pos": "n.",
+    "level": 1,
+    "translation": "生物學",
+    "sentence": "She has a keen interest in marine biology."
+  },
+  {
+    "id": 182,
+    "word": "bird",
+    "pos": "n.",
+    "level": 1,
+    "translation": "鳥",
+    "sentence": "A flock of birds flew across the morning sky."
+  },
+  {
+    "id": 183,
+    "word": "birthday",
+    "pos": "n.",
+    "level": 1,
+    "translation": "生日",
+    "sentence": "We prepared a surprise party for her birthday."
+  },
+  {
+    "id": 184,
+    "word": "bite",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "咬；一口",
+    "sentence": "Be careful not to let the dog bite you."
+  },
+  {
+    "id": 185,
+    "word": "bitter",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "苦的；嚴寒的",
+    "sentence": "Black coffee usually has a slightly bitter taste."
+  },
+  {
+    "id": 186,
+    "word": "black",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "黑色的；黑色",
+    "sentence": "He wore a stylish black suit to the ceremony."
+  },
+  {
+    "id": 187,
+    "word": "blackboard",
+    "pos": "n.",
+    "level": 1,
+    "translation": "黑板",
+    "sentence": "The teacher wrote the math problem on the blackboard."
+  },
+  {
+    "id": 188,
+    "word": "blank",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "空白的；空格",
+    "sentence": "Please fill in the blank spaces with your details."
+  },
+  {
+    "id": 189,
+    "word": "blanket",
+    "pos": "n.",
+    "level": 1,
+    "translation": "毯子；毛毯",
+    "sentence": "She covered the sleeping child with a warm blanket."
+  },
+  {
+    "id": 190,
+    "word": "blind",
+    "pos": "adj./v.",
+    "level": 1,
+    "translation": "盲的；瞎的",
+    "sentence": "Guide dogs are trained to assist blind people."
+  },
+  {
+    "id": 191,
+    "word": "block",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "積木；街區；阻擋",
+    "sentence": "A large fallen tree blocked the entire road."
+  },
+  {
+    "id": 192,
+    "word": "blood",
+    "pos": "n.",
+    "level": 1,
+    "translation": "血液",
+    "sentence": "Regular exercise improves overall blood circulation."
+  },
+  {
+    "id": 193,
+    "word": "blouse",
+    "pos": "n.",
+    "level": 1,
+    "translation": "女用襯衫",
+    "sentence": "She paired a silk blouse with a black skirt."
+  },
+  {
+    "id": 194,
+    "word": "blow",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "吹；吹氣；重擊",
+    "sentence": "A strong gust of wind blew my hat away."
+  },
+  {
+    "id": 195,
+    "word": "blue",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "藍色的；藍色",
+    "sentence": "The sky was completely clear and bright blue."
+  },
+  {
+    "id": 196,
+    "word": "board",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "木板；董事會；登（機/船）",
+    "sentence": "Passengers were asked to board the plane immediately."
+  },
+  {
+    "id": 197,
+    "word": "boat",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "小船；划船",
+    "sentence": "We rented a small wooden boat to explore the lake."
+  },
+  {
+    "id": 198,
+    "word": "body",
+    "pos": "n.",
+    "level": 1,
+    "translation": "身體；主體",
+    "sentence": "Getting adequate rest is essential for a healthy body."
+  },
+  {
+    "id": 199,
+    "word": "boil",
+    "pos": "v.",
+    "level": 1,
+    "translation": "沸騰；煮沸",
+    "sentence": "Please boil the water before adding the tea leaves."
+  },
+  {
+    "id": 200,
+    "word": "bomb",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "炸彈；轟炸",
+    "sentence": "The bomb disposal squad safely neutralized the explosive."
+  }
+]
+[
+  {
+    "id": 201,
+    "word": "bone",
+    "pos": "n.",
+    "level": 1,
+    "translation": "骨頭",
+    "sentence": "Calcium is essential for building strong and healthy bones."
+  },
+  {
+    "id": 202,
+    "word": "book",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "書本；預訂",
+    "sentence": "I need to book a hotel room for my upcoming business trip."
+  },
+  {
+    "id": 203,
+    "word": "bookcase",
+    "pos": "n.",
+    "level": 1,
+    "translation": "書架；書櫃",
+    "sentence": "He organized his technical manuals neatly on the bookcase."
+  },
+  {
+    "id": 204,
+    "word": "bookmark",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "書籤；將…加入書籤",
+    "sentence": "She used a colorful ribbon as a bookmark in her novel."
+  },
+  {
+    "id": 205,
+    "word": "bookstore",
+    "pos": "n.",
+    "level": 1,
+    "translation": "書店",
+    "sentence": "I bought this management guide at a local bookstore."
+  },
+  {
+    "id": 206,
+    "word": "boot",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "靴子；開機",
+    "sentence": "He wore heavy safety boots while inspecting the factory."
+  },
+  {
+    "id": 207,
+    "word": "bored",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "感到無聊的",
+    "sentence": "The audience grew bored during the overly long presentation."
+  },
+  {
+    "id": 208,
+    "word": "boring",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "令人無聊的",
+    "sentence": "The movie was so boring that several people fell asleep."
+  },
+  {
+    "id": 209,
+    "word": "born",
+    "pos": "adj./v.",
+    "level": 1,
+    "translation": "出生的；天生的",
+    "sentence": "She was born in a small coastal town in Taiwan."
+  },
+  {
+    "id": 210,
+    "word": "borrow",
+    "pos": "v.",
+    "level": 1,
+    "translation": "借入",
+    "sentence": "May I borrow your laptop charger for an hour?"
+  },
+  {
+    "id": 211,
+    "word": "boss",
+    "pos": "n.",
+    "level": 1,
+    "translation": "老闆；主管",
+    "sentence": "Our boss approved the new project proposal this morning."
+  },
+  {
+    "id": 212,
+    "word": "both",
+    "pos": "det./pron./adv.",
+    "level": 1,
+    "translation": "兩者都",
+    "sentence": "Both options have their unique advantages and drawbacks."
+  },
+  {
+    "id": 213,
+    "word": "bother",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "打擾；煩惱",
+    "sentence": "Sorry to bother you, but do you have a moment to talk?"
+  },
+  {
+    "id": 214,
+    "word": "bottle",
+    "pos": "n.",
+    "level": 1,
+    "translation": "瓶子",
+    "sentence": "Remember to bring a reusable water bottle when traveling."
+  },
+  {
+    "id": 215,
+    "word": "bottom",
+    "pos": "n./adj.",
+    "level": 1,
+    "translation": "底部；底部的",
+    "sentence": "The company name is printed at the bottom of each page."
+  },
+  {
+    "id": 216,
+    "word": "bow",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "鞠躬；弓；蝴蝶結",
+    "sentence": "It is customary to bow when greeting business partners in Japan."
+  },
+  {
+    "id": 217,
+    "word": "bowl",
+    "pos": "n.",
+    "level": 1,
+    "translation": "碗",
+    "sentence": "He ate a hot bowl of soup to warm up on a cold evening."
+  },
+  {
+    "id": 218,
+    "word": "bowling",
+    "pos": "n.",
+    "level": 1,
+    "translation": "保齡球",
+    "sentence": "They went bowling with colleagues after work on Friday."
+  },
+  {
+    "id": 219,
+    "word": "box",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "箱子；盒；拳擊",
+    "sentence": "All spare parts were packed safely in a cardboard box."
+  },
+  {
+    "id": 220,
+    "word": "boy",
+    "pos": "n.",
+    "level": 1,
+    "translation": "男孩",
+    "sentence": "The little boy ran excitedly across the playground."
+  },
+  {
+    "id": 221,
+    "word": "brain",
+    "pos": "n.",
+    "level": 1,
+    "translation": "大腦；頭腦",
+    "sentence": "Getting good sleep helps your brain process information better."
+  },
+  {
+    "id": 222,
+    "word": "branch",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "樹枝；分公司；分店",
+    "sentence": "The bank will open a new branch in Hsinchu next month."
+  },
+  {
+    "id": 223,
+    "word": "brave",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "勇敢的",
+    "sentence": "The firefighter showed a brave spirit during the rescue operation."
+  },
+  {
+    "id": 224,
+    "word": "bread",
+    "pos": "n.",
+    "level": 1,
+    "translation": "麵包",
+    "sentence": "He bought a freshly baked loaf of bread for breakfast."
+  },
+  {
+    "id": 225,
+    "word": "break",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "打破；損壞；休息",
+    "sentence": "Let's take a ten-minute break before continuing the discussion."
+  },
+  {
+    "id": 226,
+    "word": "breakfast",
+    "pos": "n.",
+    "level": 1,
+    "translation": "早餐",
+    "sentence": "Eating a balanced breakfast gives you energy for the day."
+  },
+  {
+    "id": 227,
+    "word": "brick",
+    "pos": "n.",
+    "level": 1,
+    "translation": "磚塊",
+    "sentence": "The historic building was constructed entirely of red brick."
+  },
+  {
+    "id": 228,
+    "word": "bridge",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "橋樑；建立聯繫",
+    "sentence": "The new bridge significantly reduced traffic congestion."
+  },
+  {
+    "id": 229,
+    "word": "brief",
+    "pos": "adj./n./v.",
+    "level": 1,
+    "translation": "簡短的；簡報",
+    "sentence": "The manager gave a brief summary of the weekly progress."
+  },
+  {
+    "id": 230,
+    "word": "bright",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "明亮的；聰慧的",
+    "sentence": "The LED lights provide bright illumination across the workshop."
+  },
+  {
+    "id": 231,
+    "word": "brilliant",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "出色的；燦爛的",
+    "sentence": "The engineering team came up with a brilliant solution."
+  },
+  {
+    "id": 232,
+    "word": "bring",
+    "pos": "v.",
+    "level": 1,
+    "translation": "帶來；攜帶",
+    "sentence": "Please bring your ID card when attending the conference."
+  },
+  {
+    "id": 233,
+    "word": "broadcast",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "廣播；播送",
+    "sentence": "The news was broadcast live across the nation."
+  },
+  {
+    "id": 234,
+    "word": "broad",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "寬廣的；廣泛的",
+    "sentence": "The survey covers a broad range of industrial topics."
+  },
+  {
+    "id": 235,
+    "word": "brother",
+    "pos": "n.",
+    "level": 1,
+    "translation": "兄弟",
+    "sentence": "My elder brother works as a software developer."
+  },
+  {
+    "id": 236,
+    "word": "brown",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "棕色的；棕色",
+    "sentence": "He was wearing a brown leather jacket."
+  },
+  {
+    "id": 237,
+    "word": "brush",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "刷子；刷",
+    "sentence": "Clean the machine surface thoroughly with a soft brush."
+  },
+  {
+    "id": 238,
+    "word": "bucket",
+    "pos": "n.",
+    "level": 1,
+    "translation": "水桶",
+    "sentence": "Fill the bucket with soapy water to clean the floor."
+  },
+  {
+    "id": 239,
+    "word": "buffet",
+    "pos": "n.",
+    "level": 1,
+    "translation": "自助餐",
+    "sentence": "The hotel offers a rich breakfast buffet for guests."
+  },
+  {
+    "id": 240,
+    "word": "bug",
+    "pos": "n.",
+    "level": 1,
+    "translation": "昆蟲；（程式）漏洞",
+    "sentence": "The software update fixed a minor system bug."
+  },
+  {
+    "id": 241,
+    "word": "build",
+    "pos": "v.",
+    "level": 1,
+    "translation": "建造；建立",
+    "sentence": "The company plans to build a new manufacturing facility."
+  },
+  {
+    "id": 242,
+    "word": "building",
+    "pos": "n.",
+    "level": 1,
+    "translation": "建築物；大樓",
+    "sentence": "Our main office is located in this modern building."
+  },
+  {
+    "id": 243,
+    "word": "bun",
+    "pos": "n.",
+    "level": 1,
+    "translation": "小圓麵包；饅頭",
+    "sentence": "She bought a steamed pork bun for a quick snack."
+  },
+  {
+    "id": 244,
+    "word": "burn",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "燃燒；燒傷",
+    "sentence": "Be careful when handling hot metal to avoid burns."
+  },
+  {
+    "id": 245,
+    "word": "bus",
+    "pos": "n.",
+    "level": 1,
+    "translation": "公車；巴士",
+    "sentence": "He catches the daily express bus to get to work."
+  },
+  {
+    "id": 246,
+    "word": "business",
+    "pos": "n.",
+    "level": 1,
+    "translation": "商業；生意；事務",
+    "sentence": "They expanded their business into European markets."
+  },
+  {
+    "id": 247,
+    "word": "businessman",
+    "pos": "n.",
+    "level": 1,
+    "translation": "企業家；商人",
+    "sentence": "The experienced businessman negotiated a successful deal."
+  },
+  {
+    "id": 248,
+    "word": "busy",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "忙碌的；繁忙的",
+    "sentence": "The factory floor was extremely busy during peak season."
+  },
+  {
+    "id": 249,
+    "word": "but",
+    "pos": "conj./prep.",
+    "level": 1,
+    "translation": "但是；除了",
+    "sentence": "The project was difficult, but the team completed it on time."
+  },
+  {
+    "id": 250,
+    "word": "butter",
+    "pos": "n.",
+    "level": 1,
+    "translation": "奶油",
+    "sentence": "Spread a thin layer of butter on the toast."
+  }
+]
+[
+  {
+    "id": 251,
+    "word": "butterfly",
+    "pos": "n.",
+    "level": 1,
+    "translation": "蝴蝶",
+    "sentence": "A colorful butterfly landed gently on the flower."
+  },
+  {
+    "id": 252,
+    "word": "button",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "紐扣；按鈕；扣上",
+    "sentence": "Press the green button to start the machine."
+  },
+  {
+    "id": 253,
+    "word": "buy",
+    "pos": "v.",
+    "level": 1,
+    "translation": "購買",
+    "sentence": "We need to buy additional raw materials for production."
+  },
+  {
+    "id": 254,
+    "word": "by",
+    "pos": "prep./adv.",
+    "level": 1,
+    "translation": "在…旁邊；被；經由；在…之前",
+    "sentence": "Please send the completed report by Friday afternoon."
+  },
+  {
+    "id": 255,
+    "word": "cabbage",
+    "pos": "n.",
+    "level": 1,
+    "translation": "高麗菜；包心菜",
+    "sentence": "Fresh cabbage is commonly used in hot pot dishes."
+  },
+  {
+    "id": 256,
+    "word": "cable",
+    "pos": "n.",
+    "level": 1,
+    "translation": "纜線；電纜",
+    "sentence": "Check the network cable connection if the system is offline."
+  },
+  {
+    "id": 257,
+    "word": "cafe",
+    "pos": "n.",
+    "level": 1,
+    "translation": "咖啡廳",
+    "sentence": "We met at a cozy cafe near the office to discuss the plan."
+  },
+  {
+    "id": 258,
+    "word": "cafeteria",
+    "pos": "n.",
+    "level": 1,
+    "translation": "自助餐廳；員工/學生餐廳",
+    "sentence": "Employees can enjoy lunch at the company cafeteria."
+  },
+  {
+    "id": 259,
+    "word": "cage",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "籠子；關進籠子",
+    "sentence": "The parrot was singing inside its spacious cage."
+  },
+  {
+    "id": 260,
+    "word": "cake",
+    "pos": "n.",
+    "level": 1,
+    "translation": "蛋糕",
+    "sentence": "She baked a chocolate cake for her friend's birthday."
+  },
+  {
+    "id": 261,
+    "word": "calendar",
+    "pos": "n.",
+    "level": 1,
+    "translation": "日曆；行事曆",
+    "sentence": "I marked all inspection dates on my digital calendar."
+  },
+  {
+    "id": 262,
+    "word": "call",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "呼叫；打電話；稱呼",
+    "sentence": "Please give me a call as soon as you arrive."
+  },
+  {
+    "id": 263,
+    "word": "calm",
+    "pos": "adj./v./n.",
+    "level": 1,
+    "translation": "平靜的；鎮靜的；使平靜",
+    "sentence": "It is crucial to stay calm during an emergency response."
+  },
+  {
+    "id": 264,
+    "word": "camel",
+    "pos": "n.",
+    "level": 1,
+    "translation": "駱駝",
+    "sentence": "Camels can survive for long periods in hot deserts."
+  },
+  {
+    "id": 265,
+    "word": "camera",
+    "pos": "n.",
+    "level": 1,
+    "translation": "照相機；攝影機",
+    "sentence": "He brought a professional camera to record the equipment audit."
+  },
+  {
+    "id": 266,
+    "word": "camp",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "露營；營地",
+    "sentence": "They set up a camp near the mountain stream."
+  },
+  {
+    "id": 267,
+    "word": "campaign",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "活動；競選活動",
+    "sentence": "The safety awareness campaign reduced factory accidents."
+  },
+  {
+    "id": 268,
+    "word": "can",
+    "pos": "aux./n./v.",
+    "level": 1,
+    "translation": "能；可以；罐頭；裝罐",
+    "sentence": "He can speak three languages fluently."
+  },
+  {
+    "id": 269,
+    "word": "Canada",
+    "pos": "n.",
+    "level": 1,
+    "translation": "加拿大",
+    "sentence": "Canada is famous for its breathtaking natural scenery."
+  },
+  {
+    "id": 270,
+    "word": "Canadian",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "加拿大的；加拿大人的；加拿大人的",
+    "sentence": "We met a Canadian engineer at the global exposition."
+  },
+  {
+    "id": 271,
+    "word": "cancel",
+    "pos": "v.",
+    "level": 1,
+    "translation": "取消",
+    "sentence": "We had to cancel the outdoor meeting due to severe weather."
+  },
+  {
+    "id": 272,
+    "word": "cancer",
+    "pos": "n.",
+    "level": 1,
+    "translation": "癌症",
+    "sentence": "Early detection plays a key role in treating cancer."
+  },
+  {
+    "id": 273,
+    "word": "candle",
+    "pos": "n.",
+    "level": 1,
+    "translation": "蠟燭",
+    "sentence": "She lit a scented candle to create a relaxing atmosphere."
+  },
+  {
+    "id": 274,
+    "word": "candy",
+    "pos": "n.",
+    "level": 1,
+    "translation": "糖果",
+    "sentence": "Children love eating sweet candies after lunch."
+  },
+  {
+    "id": 275,
+    "word": "cap",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "帽子；蓋子；加蓋",
+    "sentence": "Make sure to tighten the cap on the chemical container."
+  },
+  {
+    "id": 276,
+    "word": "capable",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "有能力的；勝任的",
+    "sentence": "She is a capable leader who handles complex tasks efficiently."
+  },
+  {
+    "id": 277,
+    "word": "capacity",
+    "pos": "n.",
+    "level": 1,
+    "translation": "容量；產能；能力",
+    "sentence": "The new production line will double our monthly capacity."
+  },
+  {
+    "id": 278,
+    "word": "capital",
+    "pos": "n./adj.",
+    "level": 1,
+    "translation": "首都；資金；大寫字母；主要的",
+    "sentence": "Taipei is the capital city of Taiwan."
+  },
+  {
+    "id": 279,
+    "word": "captain",
+    "pos": "n.",
+    "level": 1,
+    "translation": "隊長；船長；機長",
+    "sentence": "The ship's captain guided the vessel safely into port."
+  },
+  {
+    "id": 280,
+    "word": "car",
+    "pos": "n.",
+    "level": 1,
+    "translation": "汽車",
+    "sentence": "He parked his car in the underground parking lot."
+  },
+  {
+    "id": 281,
+    "word": "card",
+    "pos": "n.",
+    "level": 1,
+    "translation": "卡片；名片",
+    "sentence": "He handed me his business card after the introduction."
+  },
+  {
+    "id": 282,
+    "word": "care",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "關心；照顧；小心",
+    "sentence": "Handle these precision instruments with great care."
+  },
+  {
+    "id": 283,
+    "word": "career",
+    "pos": "n.",
+    "level": 1,
+    "translation": "事業；職業生涯",
+    "sentence": "He has built a successful career in industrial management."
+  },
+  {
+    "id": 284,
+    "word": "careful",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "小心的；仔細的",
+    "sentence": "Be careful when operating high-voltage machinery."
+  },
+  {
+    "id": 285,
+    "word": "careless",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "粗心的；疏忽的",
+    "sentence": "Careless mistakes during assembly can cause quality issues."
+  },
+  {
+    "id": 286,
+    "word": "carpet",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "地毯",
+    "sentence": "They laid a soft wool carpet in the main conference room."
+  },
+  {
+    "id": 287,
+    "word": "carrot",
+    "pos": "n.",
+    "level": 1,
+    "translation": "胡蘿蔔",
+    "sentence": "Carrots are rich in vitamin A and good for vision."
+  },
+  {
+    "id": 288,
+    "word": "carry",
+    "pos": "v.",
+    "level": 1,
+    "translation": "搬運；攜帶",
+    "sentence": "Workers use forklifts to carry heavy metal boxes."
+  },
+  {
+    "id": 289,
+    "word": "cart",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "手推車",
+    "sentence": "Put the tools on the cart and wheel them over to line two."
+  },
+  {
+    "id": 290,
+    "word": "cartoon",
+    "pos": "n.",
+    "level": 1,
+    "translation": "卡通；漫畫",
+    "sentence": "Children love watching animated cartoons on Saturday morning."
+  },
+  {
+    "id": 291,
+    "word": "case",
+    "pos": "n.",
+    "level": 1,
+    "translation": "情況；案例；盒子；箱子",
+    "sentence": "In case of fire, use the stairs instead of the elevator."
+  },
+  {
+    "id": 292,
+    "word": "cash",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "現金；兌現",
+    "sentence": "Do you prefer paying in cash or with a credit card?"
+  },
+  {
+    "id": 293,
+    "word": "cassette",
+    "pos": "n.",
+    "level": 1,
+    "translation": "卡帶；盒式磁帶",
+    "sentence": "My grandfather keeps an old cassette player in his studio."
+  },
+  {
+    "id": 294,
+    "word": "castle",
+    "pos": "n.",
+    "level": 1,
+    "translation": "城堡",
+    "sentence": "The ancient castle sits high on top of the hill."
+  },
+  {
+    "id": 295,
+    "word": "cat",
+    "pos": "n.",
+    "level": 1,
+    "translation": "貓",
+    "sentence": "The cat slept comfortably on the sunny windowsill."
+  },
+  {
+    "id": 296,
+    "word": "catch",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "接住；接捕；趕上",
+    "sentence": "He ran quickly to catch the last train home."
+  },
+  {
+    "id": 297,
+    "word": "cause",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "原因；起因；導致",
+    "sentence": "Engineers conducted a root-cause analysis on the equipment failure."
+  },
+  {
+    "id": 298,
+    "word": "ceiling",
+    "pos": "n.",
+    "level": 1,
+    "translation": "天花板；上限",
+    "sentence": "Bright light fixtures were installed on the workshop ceiling."
+  },
+  {
+    "id": 299,
+    "word": "celebrate",
+    "pos": "v.",
+    "level": 1,
+    "translation": "慶祝",
+    "sentence": "The department held a dinner party to celebrate achieving their output target."
+  },
+  {
+    "id": 300,
+    "word": "cell",
+    "pos": "n.",
+    "level": 1,
+    "translation": "細胞；電池；小房間",
+    "sentence": "Solar cells convert sunlight directly into electricity."
+  }
+]
+[
+  {
+    "id": 301,
+    "word": "cell phone",
+    "pos": "n.",
+    "level": 1,
+    "translation": "手機",
+    "sentence": "Please set your cell phone to silent mode during the meeting."
+  },
+  {
+    "id": 302,
+    "word": "cent",
+    "pos": "n.",
+    "level": 1,
+    "translation": "分（貨幣單位）",
+    "sentence": "The price of the component increased by a few cents per unit."
+  },
+  {
+    "id": 303,
+    "word": "center",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "中心；集中",
+    "sentence": "The new research center is equipped with advanced testing tools."
+  },
+  {
+    "id": 304,
+    "word": "central",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "中央的；核心的",
+    "sentence": "The central processing system coordinates all automated lines."
+  },
+  {
+    "id": 305,
+    "word": "century",
+    "pos": "n.",
+    "level": 1,
+    "translation": "世紀；百年",
+    "sentence": "Industrial technology has made remarkable progress over the past century."
+  },
+  {
+    "id": 306,
+    "word": "cereal",
+    "pos": "n.",
+    "level": 1,
+    "translation": "穀物；麥片",
+    "sentence": "A quick bowl of cereal is a popular morning meal."
+  },
+  {
+    "id": 307,
+    "word": "certain",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "確定的；某種的",
+    "sentence": "We need to verify certain parameters before starting mass production."
+  },
+  {
+    "id": 308,
+    "word": "certainly",
+    "pos": "adv.",
+    "level": 1,
+    "translation": "當然；確實地",
+    "sentence": "This new layout will certainly improve our workflow efficiency."
+  },
+  {
+    "id": 309,
+    "word": "chain",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "鏈條；連鎖店；栓住",
+    "sentence": "Managing a global supply chain requires clear coordination."
+  },
+  {
+    "id": 310,
+    "word": "chair",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "椅子；主席；主持",
+    "sentence": "He was asked to chair the upcoming technical review committee."
+  },
+  {
+    "id": 311,
+    "word": "chalk",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "粉筆；用粉筆寫",
+    "sentence": "The instructor used white chalk to draw a diagram on the board."
+  },
+  {
+    "id": 312,
+    "word": "challenge",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "挑戰；質疑",
+    "sentence": "Reducing process defect rates presents a tough challenge."
+  },
+  {
+    "id": 313,
+    "word": "chance",
+    "pos": "n.",
+    "level": 1,
+    "translation": "機會；可能性",
+    "sentence": "This conference provides a great chance to network with experts."
+  },
+  {
+    "id": 314,
+    "word": "change",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "改變；零錢",
+    "sentence": "We made a slight change to the original design specification."
+  },
+  {
+    "id": 315,
+    "word": "channel",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "頻道；管道；水道",
+    "sentence": "Discord is a popular channel for team communication and coordination."
+  },
+  {
+    "id": 316,
+    "word": "character",
+    "pos": "n.",
+    "level": 1,
+    "translation": "性格；角色；文字",
+    "sentence": "He is a respected character in the local business community."
+  },
+  {
+    "id": 317,
+    "word": "charge",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "充電；收費；控告；負責",
+    "sentence": "Remember to charge your tablet before heading to the workshop."
+  },
+  {
+    "id": 318,
+    "word": "chart",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "圖表；繪製",
+    "sentence": "The bar chart displays our monthly production targets clearly."
+  },
+  {
+    "id": 319,
+    "word": "chase",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "追逐；追求",
+    "sentence": "The dog ran across the field to chase the ball."
+  },
+  {
+    "id": 320,
+    "word": "cheap",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "便宜的",
+    "sentence": "Choosing low-quality materials might look cheap initially but cost more later."
+  },
+  {
+    "id": 321,
+    "word": "cheat",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "欺騙；作弊",
+    "sentence": "Integrity is essential, so no company should cheat on quality checks."
+  },
+  {
+    "id": 322,
+    "word": "check",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "檢查；核對；支票",
+    "sentence": "Engineers perform a daily maintenance check on every machine."
+  },
+  {
+    "id": 323,
+    "word": "cheer",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "歡呼；喝彩；使高興",
+    "sentence": "The crowd cheered when the home team won the baseball game."
+  },
+  {
+    "id": 324,
+    "word": "cheerful",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "快樂的；開朗的",
+    "sentence": "Her cheerful attitude brings positive energy to the whole workspace."
+  },
+  {
+    "id": 325,
+    "word": "cheese",
+    "pos": "n.",
+    "level": 1,
+    "translation": "起司；乳酪",
+    "sentence": "I ordered a toasted sandwich with extra cheddar cheese."
+  },
+  {
+    "id": 326,
+    "word": "chemical",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "化學的；化學製品",
+    "sentence": "Always wear protective goggles when handling chemical solutions."
+  },
+  {
+    "id": 327,
+    "word": "chemistry",
+    "pos": "n.",
+    "level": 1,
+    "translation": "化學",
+    "sentence": "Understanding material chemistry helps improve surface treatment processes."
+  },
+  {
+    "id": 328,
+    "word": "chess",
+    "pos": "n.",
+    "level": 1,
+    "translation": "西洋棋",
+    "sentence": "Playing chess requires strategic planning and foresight."
+  },
+  {
+    "id": 329,
+    "word": "chicken",
+    "pos": "n.",
+    "level": 1,
+    "translation": "雞肉；雞",
+    "sentence": "We ordered grilled chicken salad for lunch."
+  },
+  {
+    "id": 330,
+    "word": "chief",
+    "pos": "n./adj.",
+    "level": 1,
+    "translation": "首領；主管；主要的",
+    "sentence": "The chief executive officer delivered the opening remarks."
+  },
+  {
+    "id": 331,
+    "word": "child",
+    "pos": "n.",
+    "level": 1,
+    "translation": "兒童；小孩",
+    "sentence": "Every child deserves access to high-quality education."
+  },
+  {
+    "id": 332,
+    "word": "childhood",
+    "pos": "n.",
+    "level": 1,
+    "translation": "童年；幼年時期",
+    "sentence": "He spent most of his childhood in southern Taiwan."
+  },
+  {
+    "id": 333,
+    "word": "childish",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "幼稚的；孩子氣的",
+    "sentence": "Arguing over trivial matters is rather childish."
+  },
+  {
+    "id": 334,
+    "word": "childlike",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "天真爛漫的；像孩子的",
+    "sentence": "She approached learning new skills with childlike curiosity."
+  },
+  {
+    "id": 335,
+    "word": "chin",
+    "pos": "n.",
+    "level": 1,
+    "translation": "下巴",
+    "sentence": "He rested his chin on his hand while contemplating the issue."
+  },
+  {
+    "id": 336,
+    "word": "China",
+    "pos": "n.",
+    "level": 1,
+    "translation": "中國",
+    "sentence": "Trade agreements between nations impact regional commerce."
+  },
+  {
+    "id": 337,
+    "word": "Chinese",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "中國的；中文的；中文；中國人",
+    "sentence": "He is fluent in both English and Chinese."
+  },
+  {
+    "id": 338,
+    "word": "chocolate",
+    "pos": "n.",
+    "level": 1,
+    "translation": "巧克力",
+    "sentence": "A piece of dark chocolate goes well with afternoon coffee."
+  },
+  {
+    "id": 339,
+    "word": "choice",
+    "pos": "n.",
+    "level": 1,
+    "translation": "選擇",
+    "sentence": "Selecting high-precision tools is a smart choice for quality control."
+  },
+  {
+    "id": 340,
+    "word": "choose",
+    "pos": "v.",
+    "level": 1,
+    "translation": "選擇；挑選",
+    "sentence": "You can choose between sea freight and air freight for delivery."
+  },
+  {
+    "id": 341,
+    "word": "chopstick",
+    "pos": "n.",
+    "level": 1,
+    "translation": "筷子",
+    "sentence": "Many Asian cuisines are traditionally eaten using chopsticks."
+  },
+  {
+    "id": 342,
+    "word": "Christmas",
+    "pos": "n.",
+    "level": 1,
+    "translation": "聖誕節",
+    "sentence": "The shop installed festive decorations for Christmas."
+  },
+  {
+    "id": 343,
+    "word": "church",
+    "pos": "n.",
+    "level": 1,
+    "translation": "教堂",
+    "sentence": "The old church building has beautiful stained-glass windows."
+  },
+  {
+    "id": 344,
+    "word": "circle",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "圓圈；圈出；環繞",
+    "sentence": "Please circle the correct answer on the survey sheet."
+  },
+  {
+    "id": 345,
+    "word": "city",
+    "pos": "n.",
+    "level": 1,
+    "translation": "城市",
+    "sentence": "Hsinchu is well known as a major high-tech city."
+  },
+  {
+    "id": 346,
+    "word": "clap",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "鼓掌；拍手",
+    "sentence": "The audience started to clap after the presentation ended."
+  },
+  {
+    "id": 347,
+    "word": "class",
+    "pos": "n.",
+    "level": 1,
+    "translation": "班級；課程；階級",
+    "sentence": "Engineers attended a training class on automation tools."
+  },
+  {
+    "id": 348,
+    "word": "classic",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "經典的；經典作品",
+    "sentence": "This book is considered a classic guide to effective management."
+  },
+  {
+    "id": 349,
+    "word": "classmate",
+    "pos": "n.",
+    "level": 1,
+    "translation": "同班同學",
+    "sentence": "He reconnected with a university classmate at the seminar."
+  },
+  {
+    "id": 350,
+    "word": "classroom",
+    "pos": "n.",
+    "level": 1,
+    "translation": "教室",
+    "sentence": "The smart classroom is equipped with interactive whiteboards."
+  }
+]
+[
+  {
+    "id": 351,
+    "word": "clean",
+    "pos": "adj./v.",
+    "level": 1,
+    "translation": "乾淨的；打掃；清潔",
+    "sentence": "Keep the workbench clean to prevent dust from contaminating parts."
+  },
+  {
+    "id": 352,
+    "word": "clear",
+    "pos": "adj./v.",
+    "level": 1,
+    "translation": "清楚的；晴朗的；清除",
+    "sentence": "Please provide clear instructions for the operators."
+  },
+  {
+    "id": 353,
+    "word": "clerk",
+    "pos": "n.",
+    "level": 1,
+    "translation": "店員；辦事員",
+    "sentence": "The hotel clerk helped us complete the check-in process."
+  },
+  {
+    "id": 354,
+    "word": "clever",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "聰明的；機敏的",
+    "sentence": "He came up with a clever way to reduce production waste."
+  },
+  {
+    "id": 355,
+    "word": "climate",
+    "pos": "n.",
+    "level": 1,
+    "translation": "氣候",
+    "sentence": "The tropical climate brings high humidity during summer."
+  },
+  {
+    "id": 356,
+    "word": "climb",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "攀爬；上升",
+    "sentence": "They plan to climb the mountain during the weekend."
+  },
+  {
+    "id": 357,
+    "word": "clock",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "時鐘；打卡記錄",
+    "sentence": "The clock on the wall shows that it is time for lunch."
+  },
+  {
+    "id": 358,
+    "word": "close",
+    "pos": "v./adj./adv.",
+    "level": 1,
+    "translation": "關閉；親密的；接近的",
+    "sentence": "Please close the safety door before starting the test."
+  },
+  {
+    "id": 359,
+    "word": "closet",
+    "pos": "n.",
+    "level": 1,
+    "translation": "壁櫥；衣櫃",
+    "sentence": "Spare uniforms are stored inside the hallway closet."
+  },
+  {
+    "id": 360,
+    "word": "clothes",
+    "pos": "n.",
+    "level": 1,
+    "translation": "衣服；服裝",
+    "sentence": "Workers must change into protective clothes before entering the lab."
+  },
+  {
+    "id": 361,
+    "word": "cloud",
+    "pos": "n.",
+    "level": 1,
+    "translation": "雲朵；雲端",
+    "sentence": "Dark clouds gather in the sky, signaling an incoming storm."
+  },
+  {
+    "id": 362,
+    "word": "cloudy",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "多雲的；陰天的",
+    "sentence": "The weather today will be mostly cloudy with a chance of rain."
+  },
+  {
+    "id": 363,
+    "word": "club",
+    "pos": "n.",
+    "level": 1,
+    "translation": "社團；俱樂部；球棒",
+    "sentence": "He joined the company's photography club last year."
+  },
+  {
+    "id": 364,
+    "word": "coach",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "教練；長途巴士；指導",
+    "sentence": "The coach gave valuable tips to team members before the match."
+  },
+  {
+    "id": 365,
+    "word": "coal",
+    "pos": "n.",
+    "level": 1,
+    "translation": "煤炭",
+    "sentence": "Coal was widely used as fuel during the industrial revolution."
+  },
+  {
+    "id": 366,
+    "word": "coast",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "海岸；沿海地區",
+    "sentence": "The scenic highway runs along the eastern coast of Taiwan."
+  },
+  {
+    "id": 367,
+    "word": "coat",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "外套；塗層；塗上",
+    "sentence": "Apply a thin coat of anti-rust oil on metal components."
+  },
+  {
+    "id": 368,
+    "word": "cockroach",
+    "pos": "n.",
+    "level": 1,
+    "translation": "蟑螂",
+    "sentence": "Regular cleaning prevents cockroaches from appearing in the kitchen."
+  },
+  {
+    "id": 369,
+    "word": "coffee",
+    "pos": "n.",
+    "level": 1,
+    "translation": "咖啡",
+    "sentence": "He drinks a hot cup of black coffee every morning."
+  },
+  {
+    "id": 370,
+    "word": "coin",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "硬幣；鑄造（硬幣）",
+    "sentence": "Insert a coin into the vending machine to get a drink."
+  },
+  {
+    "id": 371,
+    "word": "coke",
+    "pos": "n.",
+    "level": 1,
+    "translation": "可樂；焦炭",
+    "sentence": "He ordered an ice-cold coke with his hamburger."
+  },
+  {
+    "id": 372,
+    "word": "cold",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "寒烈的；冷的；感冒",
+    "sentence": "Wear a thick coat to stay warm in cold weather."
+  },
+  {
+    "id": 373,
+    "word": "collect",
+    "pos": "v.",
+    "level": 1,
+    "translation": "收集；聚集",
+    "sentence": "The system will collect data on machine performance automatically."
+  },
+  {
+    "id": 374,
+    "word": "collection",
+    "pos": "n.",
+    "level": 1,
+    "translation": "收藏品；收集；聚集",
+    "sentence": "The library has an extensive collection of engineering books."
+  },
+  {
+    "id": 375,
+    "word": "college",
+    "pos": "n.",
+    "level": 1,
+    "translation": "學院；大學",
+    "sentence": "She graduated from a top engineering college with honors."
+  },
+  {
+    "id": 376,
+    "word": "color",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "顏色；著色",
+    "sentence": "Different colors are used to distinguish safety hazard levels."
+  },
+  {
+    "id": 377,
+    "word": "colorful",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "色彩繽紛的；精彩的",
+    "sentence": "The dashboard displays colorful charts for easy data analysis."
+  },
+  {
+    "id": 378,
+    "word": "comb",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "梳子；梳理",
+    "sentence": "She used a wooden comb to smooth her hair."
+  },
+  {
+    "id": 379,
+    "word": "come",
+    "pos": "v.",
+    "level": 1,
+    "translation": "來；到達",
+    "sentence": "Please come to the meeting room at two o'clock."
+  },
+  {
+    "id": 380,
+    "word": "comfortable",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "舒適的；舒服的",
+    "sentence": "Ergonomic chairs make working long hours much more comfortable."
+  },
+  {
+    "id": 381,
+    "word": "comic",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "滑稽的；漫畫",
+    "sentence": "My son enjoys reading Japanese comic books during weekends."
+  },
+  {
+    "id": 382,
+    "word": "command",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "命令；指揮；控制",
+    "sentence": "Type the specific command into the terminal to run the script."
+  },
+  {
+    "id": 383,
+    "word": "comment",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "評論；意見；發表意見",
+    "sentence": "Feel free to leave your comments on the proposal draft."
+  },
+  {
+    "id": 384,
+    "word": "common",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "常見的；共同的",
+    "sentence": "Wear and tear is a common issue in heavy machining operations."
+  },
+  {
+    "id": 385,
+    "word": "company",
+    "pos": "n.",
+    "level": 1,
+    "translation": "公司；陪伴",
+    "sentence": "Our company expanded its overseas production facilities recently."
+  },
+  {
+    "id": 386,
+    "word": "compare",
+    "pos": "v.",
+    "level": 1,
+    "translation": "比較；對比",
+    "sentence": "We need to compare prices from different suppliers before buying."
+  },
+  {
+    "id": 387,
+    "word": "complain",
+    "pos": "v.",
+    "level": 1,
+    "translation": "抱怨；投訴",
+    "sentence": "Customers will complain if shipment deliveries are delayed."
+  },
+  {
+    "id": 388,
+    "word": "complete",
+    "pos": "adj./v.",
+    "level": 1,
+    "translation": "完整的；完成",
+    "sentence": "The team worked hard to complete the audit on schedule."
+  },
+  {
+    "id": 389,
+    "word": "complex",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "複雜的；綜合設施",
+    "sentence": "Programming industrial robots involves solving complex problems."
+  },
+  {
+    "id": 390,
+    "word": "computer",
+    "pos": "n.",
+    "level": 1,
+    "translation": "電腦",
+    "sentence": "Every engineer is equipped with a high-performance computer."
+  },
+  {
+    "id": 391,
+    "word": "concern",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "關心；關切；使擔心",
+    "sentence": "Product quality remains our primary concern during mass production."
+  },
+  {
+    "id": 392,
+    "word": "concert",
+    "pos": "n.",
+    "level": 1,
+    "translation": "音樂會；演唱會",
+    "sentence": "They bought tickets to see a live music concert."
+  },
+  {
+    "id": 393,
+    "word": "condition",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "狀況；條件；調節",
+    "sentence": "Make sure all machinery is kept in optimal operating condition."
+  },
+  {
+    "id": 394,
+    "word": "consider",
+    "pos": "v.",
+    "level": 1,
+    "translation": "考慮；認為",
+    "sentence": "Please consider all cost factors before finalizing the purchase."
+  },
+  {
+    "id": 395,
+    "word": "continue",
+    "pos": "v.",
+    "level": 1,
+    "translation": "繼續；持續",
+    "sentence": "We will continue to optimize output rates next month."
+  },
+  {
+    "id": 396,
+    "word": "control",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "控制；管理",
+    "sentence": "Quality control procedures are enforced strictly in our factory."
+  },
+  {
+    "id": 397,
+    "word": "convenient",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "方便的；便利的",
+    "sentence": "Online booking makes scheduling business trips fast and convenient."
+  },
+  {
+    "id": 398,
+    "word": "conversation",
+    "pos": "n.",
+    "level": 1,
+    "translation": "對話；交談",
+    "sentence": "They had a productive conversation regarding contract details."
+  },
+  {
+    "id": 399,
+    "word": "cook",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "烹調；煮飯；廚師",
+    "sentence": "He likes to cook dinner for his family on weekends."
+  },
+  {
+    "id": 400,
+    "word": "cookie",
+    "pos": "n.",
+    "level": 1,
+    "translation": "餅乾",
+    "sentence": "She served chocolate chip cookies with afternoon tea."
+  }
+]
