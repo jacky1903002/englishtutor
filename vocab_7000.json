@@ -797,9 +797,11 @@
     "pos": "n.",
     "level": 1,
     "translation": "助手；助理",
-    "sentence": "The executive assistant organized all the meeting files."
+"sentence": "The executive assistant organized all the meeting files."
   },
   {
+    "id": 101,
+    "word": "assume",
     "id": 101,
     "word": "assume",
     "pos": "v.",
@@ -1198,7 +1200,7 @@
     "level": 1,
     "translation": "鬍鬚",
     "sentence": "He decided to grow a beard during the winter holidays."
-  },
+ },
   {
     "id": 151,
     "word": "beat",
@@ -1572,7 +1574,7 @@
     "word": "boat",
     "pos": "n./v.",
     "level": 1,
-    "translation": "小船；劃船",
+    "translation": "小船；划船",
     "sentence": "We rented a small wooden boat to explore the lake."
   },
   {
@@ -1597,7 +1599,7 @@
     "pos": "n./v.",
     "level": 1,
     "translation": "炸彈；轟炸",
-    "sentence": "The bomb disposal squad safely neutralized the explosive."
+"sentence": "The bomb disposal squad safely neutralized the explosive."
   },
   {
     "id": 201,
@@ -1700,7 +1702,7 @@
     "word": "bother",
     "pos": "v./n.",
     "level": 1,
-    "translation": "打擾；煩腦",
+    "translation": "打擾；煩惱",
     "sentence": "Sorry to bother you, but do you have a moment to talk?"
   },
   {
@@ -1997,7 +1999,7 @@
     "pos": "n.",
     "level": 1,
     "translation": "奶油",
-    "sentence": "Spread a thin layer of butter on the toast."
+"sentence": "Spread a thin layer of butter on the toast."
   },
   {
     "id": 251,
@@ -2364,7 +2366,7 @@
     "word": "catch",
     "pos": "v./n.",
     "level": 1,
-    "translation": "接住；捕獲；趕上",
+    "translation": "接住；接捕；趕上",
     "sentence": "He ran quickly to catch the last train home."
   },
   {
@@ -2397,7 +2399,7 @@
     "pos": "n.",
     "level": 1,
     "translation": "細胞；電池；小房間",
-    "sentence": "Solar cells convert sunlight directly into electricity."
+"sentence": "Spread a thin layer of butter on the toast."
   },
   {
     "id": 301,
@@ -2798,7 +2800,7 @@
     "level": 1,
     "translation": "教室",
     "sentence": "The smart classroom is equipped with interactive whiteboards."
-  },
+},
   {
     "id": 351,
     "word": "clean",
@@ -2852,7 +2854,751 @@
     "word": "clock",
     "pos": "n./v.",
     "level": 1,
-    "translation": "時鐘；打卡；記錄時間",
-    "sentence": "The wall clock in the office shows exactly three o'clock."
+    "translation": "時鐘；打卡記錄",
+    "sentence": "The clock on the wall shows that it is time for lunch."
+  },
+  {
+    "id": 358,
+    "word": "close",
+    "pos": "v./adj./adv.",
+    "level": 1,
+    "translation": "關閉；親密的；接近的",
+    "sentence": "Please close the safety door before starting the test."
+  },
+  {
+    "id": 359,
+    "word": "closet",
+    "pos": "n.",
+    "level": 1,
+    "translation": "壁櫥；衣櫃",
+    "sentence": "Spare uniforms are stored inside the hallway closet."
+  },
+  {
+    "id": 360,
+    "word": "clothes",
+    "pos": "n.",
+    "level": 1,
+    "translation": "衣服；服裝",
+    "sentence": "Workers must change into protective clothes before entering the lab."
+  },
+  {
+    "id": 361,
+    "word": "cloud",
+    "pos": "n.",
+    "level": 1,
+    "translation": "雲朵；雲端",
+    "sentence": "Dark clouds gather in the sky, signaling an incoming storm."
+  },
+  {
+    "id": 362,
+    "word": "cloudy",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "多雲的；陰天的",
+    "sentence": "The weather today will be mostly cloudy with a chance of rain."
+  },
+  {
+    "id": 363,
+    "word": "club",
+    "pos": "n.",
+    "level": 1,
+    "translation": "社團；俱樂部；球棒",
+    "sentence": "He joined the company's photography club last year."
+  },
+  {
+    "id": 364,
+    "word": "coach",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "教練；長途巴士；指導",
+    "sentence": "The coach gave valuable tips to team members before the match."
+  },
+  {
+    "id": 365,
+    "word": "coal",
+    "pos": "n.",
+    "level": 1,
+    "translation": "煤炭",
+    "sentence": "Coal was widely used as fuel during the industrial revolution."
+  },
+  {
+    "id": 366,
+    "word": "coast",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "海岸；沿海地區",
+    "sentence": "The scenic highway runs along the eastern coast of Taiwan."
+  },
+  {
+    "id": 367,
+    "word": "coat",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "外套；塗層；塗上",
+    "sentence": "Apply a thin coat of anti-rust oil on metal components."
+  },
+  {
+    "id": 368,
+    "word": "cockroach",
+    "pos": "n.",
+    "level": 1,
+    "translation": "蟑螂",
+    "sentence": "Regular cleaning prevents cockroaches from appearing in the kitchen."
+  },
+  {
+    "id": 369,
+    "word": "coffee",
+    "pos": "n.",
+    "level": 1,
+    "translation": "咖啡",
+    "sentence": "He drinks a hot cup of black coffee every morning."
+  },
+  {
+    "id": 370,
+    "word": "coin",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "硬幣；鑄造（硬幣）",
+    "sentence": "Insert a coin into the vending machine to get a drink."
+  },
+  {
+    "id": 371,
+    "word": "coke",
+    "pos": "n.",
+    "level": 1,
+    "translation": "可樂；焦炭",
+    "sentence": "He ordered an ice-cold coke with his hamburger."
+  },
+  {
+    "id": 372,
+    "word": "cold",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "寒烈的；冷的；感冒",
+    "sentence": "Wear a thick coat to stay warm in cold weather."
+  },
+  {
+    "id": 373,
+    "word": "collect",
+    "pos": "v.",
+    "level": 1,
+    "translation": "收集；聚集",
+    "sentence": "The system will collect data on machine performance automatically."
+  },
+  {
+    "id": 374,
+    "word": "collection",
+    "pos": "n.",
+    "level": 1,
+    "translation": "收藏品；收集；聚集",
+    "sentence": "The library has an extensive collection of engineering books."
+  },
+  {
+    "id": 375,
+    "word": "college",
+    "pos": "n.",
+    "level": 1,
+    "translation": "學院；大學",
+    "sentence": "She graduated from a top engineering college with honors."
+  },
+  {
+    "id": 376,
+    "word": "color",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "顏色；著色",
+    "sentence": "Different colors are used to distinguish safety hazard levels."
+  },
+  {
+    "id": 377,
+    "word": "colorful",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "色彩繽紛的；精彩的",
+    "sentence": "The dashboard displays colorful charts for easy data analysis."
+  },
+  {
+    "id": 378,
+    "word": "comb",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "梳子；梳理",
+    "sentence": "She used a wooden comb to smooth her hair."
+  },
+  {
+    "id": 379,
+    "word": "come",
+    "pos": "v.",
+    "level": 1,
+    "translation": "來；到達",
+    "sentence": "Please come to the meeting room at two o'clock."
+  },
+  {
+    "id": 380,
+    "word": "comfortable",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "舒適的；舒服的",
+    "sentence": "Ergonomic chairs make working long hours much more comfortable."
+  },
+  {
+    "id": 381,
+    "word": "comic",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "滑稽的；漫畫",
+    "sentence": "My son enjoys reading Japanese comic books during weekends."
+  },
+  {
+    "id": 382,
+    "word": "command",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "命令；指揮；控制",
+    "sentence": "Type the specific command into the terminal to run the script."
+  },
+  {
+    "id": 383,
+    "word": "comment",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "評論；意見；發表意見",
+    "sentence": "Feel free to leave your comments on the proposal draft."
+  },
+  {
+    "id": 384,
+    "word": "common",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "常見的；共同的",
+    "sentence": "Wear and tear is a common issue in heavy machining operations."
+  },
+  {
+    "id": 385,
+    "word": "company",
+    "pos": "n.",
+    "level": 1,
+    "translation": "公司；陪伴",
+    "sentence": "Our company expanded its overseas production facilities recently."
+  },
+  {
+    "id": 386,
+    "word": "compare",
+    "pos": "v.",
+    "level": 1,
+    "translation": "比較；對比",
+    "sentence": "We need to compare prices from different suppliers before buying."
+  },
+  {
+    "id": 387,
+    "word": "complain",
+    "pos": "v.",
+    "level": 1,
+    "translation": "抱怨；投訴",
+    "sentence": "Customers will complain if shipment deliveries are delayed."
+  },
+  {
+    "id": 388,
+    "word": "complete",
+    "pos": "adj./v.",
+    "level": 1,
+    "translation": "完整的；完成",
+    "sentence": "The team worked hard to complete the audit on schedule."
+  },
+  {
+    "id": 389,
+    "word": "complex",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "複雜的；綜合設施",
+    "sentence": "Programming industrial robots involves solving complex problems."
+  },
+  {
+    "id": 390,
+    "word": "computer",
+    "pos": "n.",
+    "level": 1,
+    "translation": "電腦",
+    "sentence": "Every engineer is equipped with a high-performance computer."
+  },
+  {
+    "id": 391,
+    "word": "concern",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "關心；關切；使擔心",
+    "sentence": "Product quality remains our primary concern during mass production."
+  },
+  {
+    "id": 392,
+    "word": "concert",
+    "pos": "n.",
+    "level": 1,
+    "translation": "音樂會；演唱會",
+    "sentence": "They bought tickets to see a live music concert."
+  },
+  {
+    "id": 393,
+    "word": "condition",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "狀況；條件；調節",
+    "sentence": "Make sure all machinery is kept in optimal operating condition."
+  },
+  {
+    "id": 394,
+    "word": "consider",
+    "pos": "v.",
+    "level": 1,
+    "translation": "考慮；認為",
+    "sentence": "Please consider all cost factors before finalizing the purchase."
+  },
+  {
+    "id": 395,
+    "word": "continue",
+    "pos": "v.",
+    "level": 1,
+    "translation": "繼續；持續",
+    "sentence": "We will continue to optimize output rates next month."
+  },
+  {
+    "id": 396,
+    "word": "control",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "控制；管理",
+    "sentence": "Quality control procedures are enforced strictly in our factory."
+  },
+  {
+    "id": 397,
+    "word": "convenient",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "方便的；便利的",
+    "sentence": "Online booking makes scheduling business trips fast and convenient."
+  },
+  {
+    "id": 398,
+    "word": "conversation",
+    "pos": "n.",
+    "level": 1,
+    "translation": "對話；交談",
+    "sentence": "They had a productive conversation regarding contract details."
+  },
+  {
+    "id": 399,
+    "word": "cook",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "烹調；煮飯；廚師",
+    "sentence": "He likes to cook dinner for his family on weekends."
+  },
+  {
+    "id": 400,
+    "word": "cookie",
+    "pos": "n.",
+    "level": 1,
+    "translation": "餅乾",
+    "sentence": "She served chocolate chip cookies with afternoon tea."
+},
+  {
+    "id": 401,
+    "word": "cool",
+    "pos": "adj./v.",
+    "level": 1,
+    "translation": "涼爽的；酷的；使冷卻",
+    "sentence": "Allow the metal part to cool down before measuring its dimensions."
+  },
+  {
+    "id": 402,
+    "word": "copy",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "複製；影印；副本",
+    "sentence": "Please print a copy of the report for each attendee."
+  },
+  {
+    "id": 403,
+    "word": "corner",
+    "pos": "n.",
+    "level": 1,
+    "translation": "角落；轉角",
+    "sentence": "Place the safety equipment in the corner of the workshop."
+  },
+  {
+    "id": 404,
+    "word": "correct",
+    "pos": "adj./v.",
+    "level": 1,
+    "translation": "正確的；改正",
+    "sentence": "Double-check the data to ensure all values are correct."
+  },
+  {
+    "id": 405,
+    "word": "cost",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "成本；費用；花費",
+    "sentence": "We need to analyze raw material costs to keep within budget."
+  },
+  {
+    "id": 406,
+    "word": "cotton",
+    "pos": "n.",
+    "level": 1,
+    "translation": "棉花；棉布",
+    "sentence": "Work gloves made of soft cotton offer comfort during long hours."
+  },
+  {
+    "id": 407,
+    "word": "couch",
+    "pos": "n.",
+    "level": 1,
+    "translation": "沙發",
+    "sentence": "He sat on the comfortable couch to read a book."
+  },
+  {
+    "id": 408,
+    "word": "cough",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "咳嗽",
+    "sentence": "If you have a persistent cough, please visit the clinic."
+  },
+  {
+    "id": 409,
+    "word": "count",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "計算；數數；總數",
+    "sentence": "Please count the remaining inventory items in stock."
+  },
+  {
+    "id": 410,
+    "word": "country",
+    "pos": "n.",
+    "level": 1,
+    "translation": "國家；鄉村",
+    "sentence": "Our product is exported to more than twenty countries."
+  },
+  {
+    "id": 411,
+    "word": "couple",
+    "pos": "n.",
+    "level": 1,
+    "translation": "夫妻；一對；幾個",
+    "sentence": "We need a couple more days to finalize the audit results."
+  },
+  {
+    "id": 412,
+    "word": "courage",
+    "pos": "n.",
+    "level": 1,
+    "translation": "勇氣；膽量",
+    "sentence": "It takes courage to accept new challenges and learn new tools."
+  },
+  {
+    "id": 413,
+    "word": "course",
+    "pos": "n.",
+    "level": 1,
+    "translation": "課程；路線；過程",
+    "sentence": "All engineers attended a course on workplace safety procedures."
+  },
+  {
+    "id": 414,
+    "word": "court",
+    "pos": "n.",
+    "level": 1,
+    "translation": "法院；球場；庭院",
+    "sentence": "Employees often play basketball on the court after work."
+  },
+  {
+    "id": 415,
+    "word": "cousin",
+    "pos": "n.",
+    "level": 1,
+    "translation": "堂/表兄弟姊妹",
+    "sentence": "My cousin works as a software developer in Taipei."
+  },
+  {
+    "id": 416,
+    "word": "cover",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "覆蓋；遮蓋；封面；蓋子",
+    "sentence": "Cover the machine when not in use to protect it from dust."
+  },
+  {
+    "id": 417,
+    "word": "cow",
+    "pos": "n.",
+    "level": 1,
+    "translation": "母牛；乳牛",
+    "sentence": "Cows were grazing peacefully in the green pasture."
+  },
+  {
+    "id": 418,
+    "word": "cowboy",
+    "pos": "n.",
+    "level": 1,
+    "translation": "牛仔",
+    "sentence": "Classic western movies often feature brave cowboys on horseback."
+  },
+  {
+    "id": 419,
+    "word": "crab",
+    "pos": "n.",
+    "level": 1,
+    "translation": "螃蟹",
+    "sentence": "Fresh crab is a specialty at seafood restaurants near the harbor."
+  },
+  {
+    "id": 420,
+    "word": "crayon",
+    "pos": "n.",
+    "level": 1,
+    "translation": "蠟筆",
+    "sentence": "Children love drawing pictures with vibrant colored crayons."
+  },
+  {
+    "id": 421,
+    "word": "crazy",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "瘋狂的；著迷的",
+    "sentence": "He is crazy about baseball and never misses a game."
+  },
+  {
+    "id": 422,
+    "word": "cream",
+    "pos": "n.",
+    "level": 1,
+    "translation": "鮮奶油；乳霜",
+    "sentence": "She added a drop of cream to her hot coffee."
+  },
+  {
+    "id": 423,
+    "word": "create",
+    "pos": "v.",
+    "level": 1,
+    "translation": "創造；建立",
+    "sentence": "Automation scripts help create formatted reports automatically."
+  },
+  {
+    "id": 424,
+    "word": "credit",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "信用；信譽；歸功於",
+    "sentence": "You can pay for the purchase using a credit card."
+  },
+  {
+    "id": 425,
+    "word": "crime",
+    "pos": "n.",
+    "level": 1,
+    "translation": "犯罪；罪行",
+    "sentence": "Security cameras help prevent crime in the facility."
+  },
+  {
+    "id": 426,
+    "word": "cross",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "穿越；跨越；十字架",
+    "sentence": "Always look both ways before you cross the busy street."
+  },
+  {
+    "id": 427,
+    "word": "crowd",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "人群；聚集",
+    "sentence": "A large crowd gathered to watch the exhibition demonstration."
+  },
+  {
+    "id": 428,
+    "word": "cruel",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "殘忍的；殘酷的",
+    "sentence": "It is cruel to treat animals poorly."
+  },
+  {
+    "id": 429,
+    "word": "cry",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "哭泣；喊叫",
+    "sentence": "The little child started to cry when he lost his toy."
+  },
+  {
+    "id": 430,
+    "word": "culture",
+    "pos": "n.",
+    "level": 1,
+    "translation": "文化",
+    "sentence": "Fostering a positive safety culture improves factory performance."
+  },
+  {
+    "id": 431,
+    "word": "cup",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "杯子；獎盃",
+    "sentence": "He poured tea into a ceramic cup for the guest."
+  },
+  {
+    "id": 432,
+    "word": "cure",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "治療；治癒；療法",
+    "sentence": "Medical researchers continue seeking a cure for rare diseases."
+  },
+  {
+    "id": 433,
+    "word": "curious",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "好奇的",
+    "sentence": "Engineers should stay curious about new technologies and techniques."
+  },
+  {
+    "id": 434,
+    "word": "curtain",
+    "pos": "n.",
+    "level": 1,
+    "translation": "窗簾；幕布",
+    "sentence": "She drew the curtain to block out the harsh afternoon sun."
+  },
+  {
+    "id": 435,
+    "word": "custom",
+    "pos": "n./adj.",
+    "level": 1,
+    "translation": "風俗；習慣；訂製的",
+    "sentence": "Respecting local business customs build better partnership."
+  },
+  {
+    "id": 436,
+    "word": "customer",
+    "pos": "n.",
+    "level": 1,
+    "translation": "顧客；客戶",
+    "sentence": "Meeting customer satisfaction is our top corporate priority."
+  },
+  {
+    "id": 437,
+    "word": "cut",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "切割；剪；削減",
+    "sentence": "High-precision tools cut metal components with exact specifications."
+  },
+  {
+    "id": 438,
+    "word": "cute",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "可愛的",
+    "sentence": "The children laughed at the cute puppy playing in the yard."
+  },
+  {
+    "id": 439,
+    "word": "daily",
+    "pos": "adj./adv./n.",
+    "level": 1,
+    "translation": "每日的；每天；日報",
+    "sentence": "Daily inspection routines help prevent sudden equipment failures."
+  },
+  {
+    "id": 440,
+    "word": "damage",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "損害；傷害；損壞",
+    "sentence": "Proper packaging protects goods from damage during transit."
+  },
+  {
+    "id": 441,
+    "word": "dance",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "跳舞；舞蹈",
+    "sentence": "They attended a dance performance at the cultural center."
+  },
+  {
+    "id": 442,
+    "word": "danger",
+    "pos": "n.",
+    "level": 1,
+    "translation": "危險",
+    "sentence": "High-voltage warning signs alert personnel to potential danger."
+  },
+  {
+    "id": 443,
+    "word": "dangerous",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "危險的",
+    "sentence": "Operating heavy equipment without safety gear is dangerous."
+  },
+  {
+    "id": 444,
+    "word": "dark",
+    "pos": "adj./n.",
+    "level": 1,
+    "translation": "黑暗的；深色的；黑暗",
+    "sentence": "Make sure emergency lights work properly in dark hallways."
+  },
+  {
+    "id": 445,
+    "word": "data",
+    "pos": "n.",
+    "level": 1,
+    "translation": "資料；數據",
+    "sentence": "We collect manufacturing data to analyze process stability."
+  },
+  {
+    "id": 446,
+    "word": "date",
+    "pos": "n./v.",
+    "level": 1,
+    "translation": "日期；約會；註明日期",
+    "sentence": "Please write the current date on top of the document."
+  },
+  {
+    "id": 447,
+    "word": "daughter",
+    "pos": "n.",
+    "level": 1,
+    "translation": "女兒",
+    "sentence": "His daughter will start attending primary school this fall."
+  },
+  {
+    "id": 448,
+    "word": "day",
+    "pos": "n.",
+    "level": 1,
+    "translation": "一天；白天",
+    "sentence": "We hope you have a productive and successful day."
+  },
+  {
+    "id": 449,
+    "word": "dead",
+    "pos": "adj.",
+    "level": 1,
+    "translation": "死的；失去作用的",
+    "sentence": "Replace the dead battery before starting the device."
+  },
+  {
+    "id": 450,
+    "word": "deal",
+    "pos": "v./n.",
+    "level": 1,
+    "translation": "處理；交易；協議",
+    "sentence": "The sales team finalized a major deal with international clients."
   }
 ]
