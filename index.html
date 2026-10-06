@@ -52,19 +52,76 @@
     .view.active { display: block; animation: fadeIn 0.4s ease-in-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .card-deck-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .flashcard { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; box-shadow: var(--card-shadow); }
-    .flashcard:hover { transform: translateY(-6px) scale(1.02); border-color: var(--primary); box-shadow: 0 15px 30px rgba(79, 70, 229, 0.15); }
-    .flashcard::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); }
-    .flashcard.level-2::before { background: var(--warning); }
-    .flashcard.level-3::before { background: var(--accent); }
+    /* 全螢幕大卡牌學習模式 */
+    .hero-card-viewport {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    }
+    .hero-card-viewport::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: var(--primary);
+    }
+    .hero-card-viewport.level-2::before { background: var(--warning); }
+    .hero-card-viewport.level-3::before { background: var(--accent); }
 
-    .word-title { font-size: 1.4rem; font-weight: 800; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; }
-    .word-meaning { font-size: 1.1rem; color: #1e293b; margin: 6px 0; font-weight: 700; }
-    
-    .word-example-box { background: #f8fafc; padding: 10px 12px; border-radius: 8px; border-left: 2px solid var(--accent); margin-top: 8px; }
-    .example-en { font-size: 0.85rem; color: var(--text-main); font-style: italic; margin-bottom: 2px; }
-    .example-zh { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+    .hero-word-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .hero-word-title { font-size: 3.2rem; font-weight: 900; color: var(--text-main); letter-spacing: -0.5px; line-height: 1.1; }
+    .hero-word-meaning { font-size: 1.8rem; color: var(--primary); font-weight: 800; margin-bottom: 28px; }
+
+    .hero-example-box {
+      background: rgba(248, 250, 252, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--accent);
+      padding: 24px;
+      border-radius: 16px;
+      margin-top: auto;
+    }
+    .hero-example-en { font-size: 1.2rem; color: var(--text-main); font-style: italic; line-height: 1.6; margin-bottom: 8px; font-weight: 500; }
+    .hero-example-zh { font-size: 1.05rem; color: var(--text-muted); font-weight: 600; }
+
+    /* 分頁導覽器 (Pagination & Controls) */
+    .card-pagination-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .nav-actions { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 16px; }
+    .dots-container { display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .dot:hover { background: #f1f5f9; color: var(--text-main); }
+    .dot.active { background: var(--primary); color: white; border-color: transparent; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35); transform: scale(1.15); }
 
     .btn { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25); display: inline-flex; align-items: center; gap: 8px; }
     .btn:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4); }
@@ -106,16 +163,31 @@
       <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-database"></i> 完整清單檢索 (<span id="db-count-label">0</span>)</button>
     </div>
 
-    <!-- 1. 智慧卡牌學習區 -->
+    <!-- 1. 智慧卡牌學習區（全螢幕分頁模式） -->
     <div id="view-study" class="view active">
-      <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
         <div>
-          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">今日 10 張隨機單字卡 (100% 繁體中文對照)</h2>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">從 7,000 高階商務與製造字彙庫中隨機抽取。</p>
+          <h2 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">沉浸式卡牌學習 (10 張全螢幕分頁)</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">可使用下方分頁點切換、或使用鍵盤左右方向鍵（← / →）快速閱讀。</p>
         </div>
         <button class="btn" onclick="loadStudyCards()"><i class="fa-solid fa-rotate"></i> 重新隨機抽取 10 字</button>
       </div>
-      <div id="study-cards-grid" class="card-deck-container"></div>
+
+      <!-- 全螢幕單字展示區 -->
+      <div id="hero-card-container"></div>
+
+      <!-- 下方控制與 10 分頁導覽區 -->
+      <div class="card-pagination-controls">
+        <div class="nav-actions">
+          <button class="btn btn-secondary" id="btn-prev-card" onclick="changeCardIndex(-1)">
+            <i class="fa-solid fa-chevron-left"></i> 上一張
+          </button>
+          <div class="dots-container" id="pagination-dots"></div>
+          <button class="btn btn-secondary" id="btn-next-card" onclick="changeCardIndex(1)">
+            下一張 <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- 2. 互動隨機測驗區 -->
@@ -221,6 +293,8 @@
 
   <script>
     let masterVocabDB = [];
+    let currentStudyPool = [];
+    let currentCardIndex = 0;
 
     let appState = {
       level: parseInt(localStorage.getItem('ox_ind_level')) || 1,
@@ -240,17 +314,16 @@
         if (!response.ok) throw new Error("JSON file not found");
         const rawData = await response.json();
         
-masterVocabDB = rawData.map((item, index) => ({
-  key: item.word + "_" + index,
-  word: item.word,
-  meaning: (item.pos ? `[${item.pos}] ` : '') + (item.translation || item.meaning || ''),
-  level: item.level || 1,
-  exampleEn: item.sentence || item.exampleEn || "",
-  exampleZh: item.exampleZh || "" // 若無中文例句可先留空
-}));
+        masterVocabDB = rawData.map((item, index) => ({
+          key: item.word + "_" + index,
+          word: item.word,
+          meaning: (item.pos ? `[${item.pos}] ` : '') + (item.translation || item.meaning || ''),
+          level: item.level || 1,
+          exampleEn: item.sentence || item.exampleEn || "",
+          exampleZh: item.exampleZh || ""
+        }));
       } catch (err) {
         console.warn("無法載入 vocab_7000.json，已切換至預設示範題庫：", err);
-        // Fallback 預設數據，保證專案在無伺服器環境下正常開啟
         masterVocabDB = [
           { word: "ability", meaning: "能力、才能", level: 1, exampleEn: "She has the ability to lead.", exampleZh: "她具備領導能力。" },
           { word: "efficiency", meaning: "效率、效能", level: 1, exampleEn: "Improve manufacturing efficiency.", exampleZh: "提升製造效率。" },
@@ -280,32 +353,75 @@ masterVocabDB = rawData.map((item, index) => ({
       return [...arr].sort(() => 0.5 - Math.random()).slice(0, count);
     }
 
+    // 載入 10 張卡牌並初始化分頁
     function loadStudyCards() {
       if (masterVocabDB.length === 0) return;
       const pool = masterVocabDB.filter(item => item.level === appState.level);
       const targetPool = pool.length >= 4 ? pool : masterVocabDB;
-      const selected = getRandomItems(targetPool, Math.min(10, targetPool.length));
-      const grid = document.getElementById('study-cards-grid');
-      grid.innerHTML = '';
+      currentStudyPool = getRandomItems(targetPool, Math.min(10, targetPool.length));
+      currentCardIndex = 0;
+      
+      renderStudyCard();
+    }
 
-      selected.forEach(item => {
-        grid.innerHTML += `
-          <div class="flashcard level-${item.level}">
-            <div>
-              <div class="word-title">
-                <span style="font-size: 1.1rem; word-break: break-all;">${item.word}</span>
-                <span class="enterprise-badge" style="font-size:0.65rem;">L${item.level}</span>
-              </div>
-              <div class="word-meaning">${item.meaning}</div>
+    // 渲染當前單一全螢幕卡牌與分頁按鈕
+    function renderStudyCard() {
+      if (currentStudyPool.length === 0) return;
+      const item = currentStudyPool[currentCardIndex];
+      const container = document.getElementById('hero-card-container');
+
+      container.innerHTML = `
+        <div class="hero-card-viewport level-${item.level}">
+          <div>
+            <div class="hero-word-header">
+              <span class="hero-word-title">${item.word}</span>
+              <span class="enterprise-badge" style="font-size:0.85rem; padding: 6px 14px;">Level ${item.level}</span>
             </div>
-            <div class="word-example-box">
-              <div class="example-en">"${item.exampleEn}"</div>
-              <div class="example-zh">"${item.exampleZh}"</div>
-            </div>
+            <div class="hero-word-meaning">${item.meaning}</div>
+          </div>
+          <div class="hero-example-box">
+            <div class="hero-example-en">"${item.exampleEn || 'No example sentence available.'}"</div>
+            <div class="hero-example-zh">"${item.exampleZh || '暫無例句中文翻譯'}"</div>
+          </div>
+        </div>
+      `;
+
+      // 渲染 10 個 Pagination Dots
+      const dotsContainer = document.getElementById('pagination-dots');
+      dotsContainer.innerHTML = '';
+      currentStudyPool.forEach((_, idx) => {
+        dotsContainer.innerHTML += `
+          <div class="dot ${idx === currentCardIndex ? 'active' : ''}" onclick="goToCard(${idx})">
+            ${idx + 1}
           </div>
         `;
       });
+
+      // 更新按鈕狀態
+      document.getElementById('btn-prev-card').style.opacity = currentCardIndex === 0 ? '0.5' : '1';
+      document.getElementById('btn-next-card').style.opacity = currentCardIndex === currentStudyPool.length - 1 ? '0.5' : '1';
     }
+
+    function changeCardIndex(delta) {
+      const newIndex = currentCardIndex + delta;
+      if (newIndex >= 0 && newIndex < currentStudyPool.length) {
+        currentCardIndex = newIndex;
+        renderStudyCard();
+      }
+    }
+
+    function goToCard(index) {
+      currentCardIndex = index;
+      renderStudyCard();
+    }
+
+    // 鍵盤快捷鍵切換卡牌 (← / →)
+    document.addEventListener('keydown', (e) => {
+      if (document.getElementById('view-study').classList.contains('active')) {
+        if (e.key === 'ArrowLeft') changeCardIndex(-1);
+        if (e.key === 'ArrowRight') changeCardIndex(1);
+      }
+    });
 
     let quizQuestions = [];
     let currentQIdx = 0;
@@ -442,7 +558,6 @@ masterVocabDB = rawData.map((item, index) => ({
         return matchText && matchLvl;
       });
 
-      // 效能最佳化：每次最多只渲染前 100 筆，防止 7000 筆資料造成 DOM 凍結
       const displayList = filtered.slice(0, 100);
 
       if (displayList.length === 0) {
