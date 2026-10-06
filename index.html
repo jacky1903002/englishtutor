@@ -134,6 +134,22 @@
     .option-btn { background: white; border: 1px solid var(--border); padding: 16px 20px; border-radius: 12px; color: var(--text-main); font-size: 1.05rem; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
     .option-btn:hover { background: #eff6ff; border-color: var(--primary); transform: translateX(4px); }
 
+    .input-field {
+      width: 100%;
+      max-width: 360px;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.3s;
+      margin: 16px 0 20px 0;
+      text-align: center;
+    }
+    .input-field:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); }
+
     .enterprise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
     .stat-card { background: white; border: 1px solid var(--border); padding: 20px; border-radius: 16px; text-align: center; box-shadow: var(--card-shadow); }
     .stat-num { font-size: 2rem; font-weight: 800; color: var(--primary); margin-top: 6px; }
@@ -143,6 +159,7 @@
     th { color: var(--text-muted); font-weight: 600; background: #f8fafc; }
 
     .tag { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; background: rgba(5, 150, 105, 0.1); color: var(--success); }
+    .user-pill { background: rgba(79, 70, 229, 0.08); color: var(--primary); font-weight: 700; padding: 4px 10px; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px; }
   </style>
 </head>
 <body>
@@ -163,7 +180,7 @@
       <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-database"></i> 完整清單檢索 (<span id="db-count-label">0</span>)</button>
     </div>
 
-    <!-- 1. 智慧卡牌學習區（全螢幕分頁模式） -->
+    <!-- 1. 智慧卡牌學習區 -->
     <div id="view-study" class="view active">
       <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
         <div>
@@ -194,16 +211,24 @@
     <div id="view-quiz" class="view">
       <div class="card quiz-box">
         <div id="quiz-start-screen">
-          <div style="font-size: 3rem; color: var(--primary); margin-bottom: 16px;"><i class="fa-solid fa-rocket"></i></div>
-          <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">準備好進行單字戰力評估了嗎？</h2>
-          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">系統將從 7,000 單字庫中隨機抽取 10 道測驗題。</p>
-          <button class="btn" onclick="startQuiz()" style="font-size: 1.1rem; padding: 14px 32px;">開始智能測驗</button>
+          <div style="font-size: 3rem; color: var(--primary); margin-bottom: 16px;"><i class="fa-solid fa-user-pen"></i></div>
+          <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">準備好進行單字戰力評估了嗎？</h2>
+          <p style="color: var(--text-muted); margin-bottom: 16px; font-size: 0.95rem;">請先輸入您的暱稱，測驗紀錄將會儲存至學習戰情室：</p>
+          
+          <div>
+            <input type="text" id="quiz-username-input" class="input-field" placeholder="請輸入您的暱稱 (例如: Alex)" maxlength="20">
+          </div>
+
+          <button class="btn" onclick="startQuiz()" style="font-size: 1.1rem; padding: 14px 32px;"><i class="fa-solid fa-play"></i> 開始智能測驗</button>
         </div>
 
         <div id="quiz-question-screen" style="display: none; text-align: left;">
           <div style="display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; margin-bottom: 10px;">
             <span id="quiz-progress-text">題目 1 / 10</span>
-            <span class="enterprise-badge" id="quiz-lvl-badge">Level 1</span>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span class="user-pill" id="quiz-active-user-pill"><i class="fa-solid fa-user"></i> -</span>
+              <span class="enterprise-badge" id="quiz-lvl-badge">Level 1</span>
+            </div>
           </div>
           <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: -10px;">請選出以下英文單字的正確中文含意：</div>
           <div class="quiz-word-display" id="quiz-word-el">Loading...</div>
@@ -220,26 +245,36 @@
       </div>
     </div>
 
-    <!-- 3. 學習戰情室 -->
+    <!-- 3. 學習戰情室（支援個人/全體統計切換） -->
     <div id="view-enterprise" class="view">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+        <h2 style="font-size: 1.3rem; font-weight: 800;">學習戰情室統計數據</h2>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <label for="filter-user-select" style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);"><i class="fa-solid fa-filter"></i> 依使用者統計：</label>
+          <select id="filter-user-select" onchange="renderEnterpriseHistory()" style="background: white; border: 1px solid var(--border); padding: 8px 16px; border-radius: 10px; font-weight: 700; color: var(--primary); outline: none; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+            <option value="ALL">所有使用者 (全體總覽)</option>
+          </select>
+        </div>
+      </div>
+
       <div class="enterprise-grid">
         <div class="stat-card">
           <div style="color: var(--text-muted); font-size: 0.85rem;">獨立單字庫總數</div>
           <div class="stat-num" id="stat-total-words">0</div>
         </div>
         <div class="stat-card">
-          <div style="color: var(--text-muted); font-size: 0.85rem;">已完成測驗次數</div>
+          <div style="color: var(--text-muted); font-size: 0.85rem;" id="stat-quiz-label">總測驗次數</div>
           <div class="stat-num" id="stat-quiz-count">0</div>
         </div>
         <div class="stat-card">
-          <div style="color: var(--text-muted); font-size: 0.85rem;">平均答對正確率</div>
+          <div style="color: var(--text-muted); font-size: 0.85rem;" id="stat-acc-label">平均答對正確率</div>
           <div class="stat-num" id="stat-avg-acc">0%</div>
         </div>
       </div>
 
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-          <h3 style="font-size: 1.15rem; font-weight: 800;"><i class="fa-solid fa-chart-line mr-2 text-indigo-600"></i> 個人學習歷程與測驗紀錄</h3>
+          <h3 style="font-size: 1.15rem; font-weight: 800;"><i class="fa-solid fa-chart-line text-indigo-600" style="margin-right: 6px;"></i> 個人與團體學習歷程紀錄</h3>
           <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="clearHistory()"><i class="fa-solid fa-trash-can"></i> 清除歷史</button>
         </div>
         <div style="overflow-x: auto;">
@@ -247,6 +282,7 @@
             <thead>
               <tr>
                 <th>測驗時間</th>
+                <th>使用者暱稱</th>
                 <th>難度級別</th>
                 <th>得分狀況</th>
                 <th>正確率</th>
@@ -298,6 +334,7 @@
 
     let appState = {
       level: parseInt(localStorage.getItem('ox_ind_level')) || 1,
+      lastUser: localStorage.getItem('ox_ind_last_user') || '',
       history: JSON.parse(localStorage.getItem('ox_ind_history')) || []
     };
 
@@ -334,6 +371,11 @@
       document.getElementById('db-count-label').innerText = masterVocabDB.length.toLocaleString();
       document.getElementById('stat-total-words').innerText = masterVocabDB.length.toLocaleString();
       
+      // 預填上次暱稱
+      if (appState.lastUser) {
+        document.getElementById('quiz-username-input').value = appState.lastUser;
+      }
+
       loadStudyCards();
       renderDatabase();
       renderEnterpriseHistory();
@@ -426,9 +468,24 @@
     let quizQuestions = [];
     let currentQIdx = 0;
     let currentScore = 0;
+    let currentQuizUser = "";
 
     function startQuiz() {
       if (masterVocabDB.length === 0) return;
+      
+      const inputEl = document.getElementById('quiz-username-input');
+      const username = inputEl.value.trim();
+
+      if (!username) {
+        alert("請先輸入您的暱稱再開始測驗喔！");
+        inputEl.focus();
+        return;
+      }
+
+      currentQuizUser = username;
+      appState.lastUser = username;
+      localStorage.setItem('ox_ind_last_user', username);
+
       const pool = masterVocabDB.filter(item => item.level === appState.level);
       const targetPool = pool.length >= 4 ? pool : masterVocabDB;
       quizQuestions = getRandomItems(targetPool, Math.min(10, targetPool.length));
@@ -438,6 +495,7 @@
       document.getElementById('quiz-start-screen').style.display = 'none';
       document.getElementById('quiz-result-screen').style.display = 'none';
       document.getElementById('quiz-question-screen').style.display = 'block';
+      document.getElementById('quiz-active-user-pill').innerHTML = `<i class="fa-solid fa-user"></i> ${currentQuizUser}`;
       renderQuizQuestion();
     }
 
@@ -479,7 +537,7 @@
 
       const totalQ = quizQuestions.length;
       const pct = Math.round((currentScore / totalQ) * 100);
-      document.getElementById('quiz-score-display').innerText = `最終得分：${currentScore} / ${totalQ} 分 (${pct}%)`;
+      document.getElementById('quiz-score-display').innerText = `${currentQuizUser} 的最終得分：${currentScore} / ${totalQ} 分 (${pct}%)`;
 
       let feedback = "";
       const oldLvl = appState.level;
@@ -498,6 +556,7 @@
       updateHeaderUI();
 
       appState.history.unshift({
+        user: currentQuizUser,
         date: new Date().toLocaleString(),
         score: `${currentScore}/${totalQ}`,
         pct: pct,
@@ -514,23 +573,41 @@
 
     function renderEnterpriseHistory() {
       const tbody = document.getElementById('enterprise-history-tbody');
-      document.getElementById('stat-quiz-count').innerText = appState.history.length;
+      const selectEl = document.getElementById('filter-user-select');
+
+      // 更新暱稱下拉選單選項
+      const users = [...new Set(appState.history.map(h => h.user || '匿名'))];
+      const selectedUser = selectEl.value || 'ALL';
+
+      selectEl.innerHTML = `<option value="ALL">所有使用者 (全體總覽)</option>`;
+      users.forEach(u => {
+        selectEl.innerHTML += `<option value="${u}" ${u === selectedUser ? 'selected' : ''}>${u}</option>`;
+      });
+
+      // 根據選取的暱稱篩選資料
+      const filteredHistory = selectedUser === 'ALL' 
+        ? appState.history 
+        : appState.history.filter(h => (h.user || '匿名') === selectedUser);
+
+      // 更新統計數字
+      document.getElementById('stat-quiz-count').innerText = filteredHistory.length;
       
-      if (appState.history.length > 0) {
-        const avg = Math.round(appState.history.reduce((acc, h) => acc + h.pct, 0) / appState.history.length);
+      if (filteredHistory.length > 0) {
+        const avg = Math.round(filteredHistory.reduce((acc, h) => acc + h.pct, 0) / filteredHistory.length);
         document.getElementById('stat-avg-acc').innerText = avg + '%';
       } else {
         document.getElementById('stat-avg-acc').innerText = '0%';
       }
 
-      if (appState.history.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">尚無測驗紀錄，請前往進行測驗。</td></tr>`;
+      if (filteredHistory.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 24px;">尚無對應測驗紀錄。</td></tr>`;
         return;
       }
 
-      tbody.innerHTML = appState.history.map(h => `
+      tbody.innerHTML = filteredHistory.map(h => `
         <tr>
           <td style="color: var(--text-muted);">${h.date}</td>
+          <td><span class="user-pill"><i class="fa-solid fa-user"></i> ${h.user || '匿名'}</span></td>
           <td><span class="enterprise-badge">L${h.level}</span></td>
           <td style="font-weight: 700;">${h.score}</td>
           <td style="color: ${h.pct >= 80 ? 'var(--success)' : 'var(--primary)'}; font-weight: 700;">${h.pct}%</td>
@@ -540,7 +617,7 @@
     }
 
     function clearHistory() {
-      if (confirm("確定要清除所有學習歷程嗎？")) {
+      if (confirm("確定要清除所有學習歷程紀錄嗎？")) {
         appState.history = [];
         localStorage.removeItem('ox_ind_history');
         renderEnterpriseHistory();
