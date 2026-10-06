@@ -240,14 +240,14 @@
         if (!response.ok) throw new Error("JSON file not found");
         const rawData = await response.json();
         
-        masterVocabDB = rawData.map((item, index) => ({
-          key: item.word + "_" + index,
-          word: item.word,
-          meaning: item.meaning,
-          level: item.level || 1,
-          exampleEn: item.exampleEn || "",
-          exampleZh: item.exampleZh || ""
-        }));
+masterVocabDB = rawData.map((item, index) => ({
+  key: item.word + "_" + index,
+  word: item.word,
+  meaning: (item.pos ? `[${item.pos}] ` : '') + (item.translation || item.meaning || ''),
+  level: item.level || 1,
+  exampleEn: item.sentence || item.exampleEn || "",
+  exampleZh: item.exampleZh || "" // 若無中文例句可先留空
+}));
       } catch (err) {
         console.warn("無法載入 vocab_7000.json，已切換至預設示範題庫：", err);
         // Fallback 預設數據，保證專案在無伺服器環境下正常開啟
