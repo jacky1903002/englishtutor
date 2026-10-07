@@ -413,13 +413,13 @@
         const response = await fetch('./vocab_7000.json');
         if (!response.ok) throw new Error("JSON file not found");
         const rawData = await response.json();
-        masterVocabDB = rawData.map((item, index) => ({
+masterVocabDB = rawData.map((item, index) => ({
           key: item.word + "_" + index,
           word: item.word,
           meaning: (item.pos ? `[${item.pos}] ` : '') + (item.translation || item.meaning || ''),
           level: item.level || 1,
           exampleEn: item.sentence || item.exampleEn || "",
-          exampleZh: item.exampleZh || ""
+          exampleZh: item.sentence_zh || item.exampleZh || "" // <--- 改成對應 JSON 的 sentence_zh
         }));
       } catch (err) {
         masterVocabDB = [
