@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enterprise Vocab Pro - Duolingo 旗艦雲端版</title>
   
-  <!-- PWA Manifest 宣告 -->
-  <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22Enterprise%20Vocab%20Pro%22%2C%22short_name%22%3A%22VocabPro%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f7f9fa%22%2C%22theme_color%22%3A%22%2358cc02%22%7D">
+  <!-- PWA 外部 Manifest 宣告 -->
+  <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#58cc02">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -429,10 +429,10 @@
     let isRegisterMode = false;
     let countdownTimer = null;
 
-    // 註冊 PWA Service Worker 支援手機安裝
+    // 註冊正式的 Service Worker (sw.js) 支援手機 PWA 安裝
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('data:text/javascript;base64,').catch(() => {});
+        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW registration failed: ', err));
       });
     }
 
