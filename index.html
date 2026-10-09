@@ -572,14 +572,11 @@
     }
     window.speakWord = speakWord;
 
-async function initDatabase() {
+    async function initDatabase() {
       try {
         const response = await fetch('./vocab_7000.json');
         if (!response.ok) throw new Error("JSON not found");
         const rawData = await response.json();
-        
-        console.log("原始 JSON 載入的筆數：", rawData.length); // 檢查這裡
-
         masterVocabDB = rawData.map((item, index) => ({
           key: item.word + "_" + index,
           word: item.word,
@@ -588,12 +585,12 @@ async function initDatabase() {
           exampleEn: item.sentence || item.exampleEn || "",
           exampleZh: item.sentence_zh || item.exampleZh || ""
         }));
-
-        window.masterVocabDB = masterVocabDB; // 讓以後在 F12 可以直接查
-        console.log("實際轉換後的總單字數：", masterVocabDB.length);
-
       } catch (err) {
-        // ... (原本的 catch 程式碼)
+        masterVocabDB = [
+          { word: "ability", meaning: "[n.] 能力、才能", level: 1, exampleEn: "She has the ability to lead.", exampleZh: "她具備領導能力。" },
+          { word: "efficiency", meaning: "[n.] 效率、效能", level: 1, exampleEn: "Improve manufacturing efficiency.", exampleZh: "提升製造效率。" },
+          { word: "precision", meaning: "[n.] 精密度", level: 2, exampleEn: "CNC machining requires precision.", exampleZh: "CNC 加工需要精密度。" }
+        ];
       }
 
       document.getElementById('db-count-label').innerText = masterVocabDB.length;
