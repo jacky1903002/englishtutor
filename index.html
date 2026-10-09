@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Enterprise Vocab Pro - Duolingo 旗艦雲端版</title>
   
   <!-- PWA 外部 Manifest 宣告 -->
@@ -33,21 +33,18 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Din Round', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: var(--bg-main); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
-    /* 版面容器：透過 mobile-mode class 控制手機寬度模擬 */
+    /* 版面容器：手機版模式（移除黑色外框，改為純淨自適應寬度） */
     body.mobile-mode main {
-      max-width: 420px !important;
-      border: 10px solid #333;
-      border-radius: 36px;
-      margin: 20px auto;
-      box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+      max-width: 480px !important;
+      margin: 16px auto;
       background: var(--bg-main);
-      overflow: hidden;
+      padding: 0 12px;
     }
 
     header {
       background: white;
       border-bottom: 2px solid var(--duo-gray);
-      padding: 12px 32px;
+      padding: 12px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -55,23 +52,23 @@
       top: 0;
       z-index: 100;
     }
-    .logo { font-size: 1.4rem; font-weight: 900; color: var(--duo-green); display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
+    .logo { font-size: 1.3rem; font-weight: 900; color: var(--duo-green); display: flex; align-items: center; gap: 8px; letter-spacing: -0.5px; }
     
-    .status-bar { display: flex; align-items: center; gap: 16px; font-weight: 800; font-size: 1.05rem; }
+    .status-bar { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1rem; }
     .status-item { display: flex; align-items: center; gap: 6px; }
     .xp { color: var(--duo-yellow); }
 
     main { max-width: 900px; width: 100%; margin: 24px auto; padding: 0 16px; flex: 1; transition: all 0.3s ease; }
 
-    .nav-tabs { display: flex; gap: 12px; margin-bottom: 24px; justify-content: center; flex-wrap: wrap; }
+    .nav-tabs { display: flex; gap: 8px; margin-bottom: 24px; justify-content: center; flex-wrap: wrap; }
     .tab-btn {
       background: white;
       border: 2px solid var(--duo-gray);
       border-bottom: 5px solid var(--duo-dark-gray);
       color: #777;
-      padding: 12px 20px;
+      padding: 10px 16px;
       border-radius: 16px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 800;
       cursor: pointer;
       transition: all 0.1s ease;
@@ -88,7 +85,7 @@
       box-shadow: 0 4px 0 var(--duo-blue-shadow);
     }
 
-    .card { background: var(--card-bg); border: 2px solid var(--duo-gray); border-radius: 24px; padding: 32px; box-shadow: 0 8px 0 var(--duo-gray); margin-bottom: 24px; position: relative; }
+    .card { background: var(--card-bg); border: 2px solid var(--duo-gray); border-radius: 24px; padding: 24px; box-shadow: 0 8px 0 var(--duo-gray); margin-bottom: 24px; position: relative; }
 
     .view { display: none; }
     .view.active { display: block; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
@@ -99,17 +96,16 @@
       color: white;
       border: none;
       border-bottom: 5px solid var(--duo-green-shadow);
-      padding: 14px 28px;
+      padding: 12px 24px;
       border-radius: 16px;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 800;
       cursor: pointer;
       transition: all 0.1s;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      letter-spacing: 0.5px;
+      gap: 8px;
     }
     .btn-3d:hover { filter: brightness(1.05); }
     .btn-3d:active { transform: translateY(3px); border-bottom-width: 2px; }
@@ -124,7 +120,7 @@
 
     .badge-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 16px;
       margin-top: 16px;
     }
@@ -132,14 +128,12 @@
       background: #f8fafc;
       border: 2px solid var(--duo-gray);
       border-radius: 20px;
-      padding: 20px;
+      padding: 16px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      position: relative;
-      overflow: hidden;
     }
     .achievement-badge.locked { filter: grayscale(1); opacity: 0.5; background: #eee; }
     .achievement-badge:not(.locked) {
@@ -148,48 +142,48 @@
       background: linear-gradient(135deg, #fffdf4 0%, #fff 100%);
     }
     .badge-icon-box {
-      width: 64px; height: 64px; border-radius: 50%; background: white;
-      display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+      width: 56px; height: 56px; border-radius: 50%; background: white;
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
       border: 3px solid var(--duo-gray); box-shadow: 0 4px 0 var(--duo-gray); margin-bottom: 4px;
     }
     .achievement-badge:not(.locked) .badge-icon-box {
       border-color: var(--duo-yellow); background: var(--duo-yellow); color: white; box-shadow: 0 4px 0 #e5b200;
     }
-    .badge-title { font-size: 1.05rem; font-weight: 900; color: #3c3c3c; }
-    .badge-desc { font-size: 0.82rem; font-weight: 700; color: #777; }
+    .badge-title { font-size: 1rem; font-weight: 900; color: #3c3c3c; }
+    .badge-desc { font-size: 0.8rem; font-weight: 700; color: #777; }
 
-    .progress-bar-wrap { width: 100%; height: 16px; background: var(--duo-gray); border-radius: 10px; overflow: hidden; margin: 16px 0; }
+    .progress-bar-wrap { width: 100%; height: 14px; background: var(--duo-gray); border-radius: 10px; overflow: hidden; margin: 16px 0; }
     .progress-bar-fill { height: 100%; background: var(--duo-green); width: 0%; transition: width 0.3s ease; border-radius: 10px; }
 
     .hero-card-viewport {
-      background: white; border: 3px solid var(--duo-gray); border-radius: 24px; padding: 36px;
-      min-height: 380px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 0 var(--duo-gray);
+      background: white; border: 3px solid var(--duo-gray); border-radius: 24px; padding: 24px;
+      min-height: 320px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 0 var(--duo-gray);
     }
     .hero-word-header { display: flex; justify-content: space-between; align-items: center; }
-    .hero-word-title { font-size: 3.2rem; font-weight: 900; color: #3c3c3c; }
-    .hero-word-meaning { font-size: 1.8rem; color: var(--duo-blue); font-weight: 800; margin-top: 8px; }
+    .hero-word-title { font-size: 2.6rem; font-weight: 900; color: #3c3c3c; }
+    .hero-word-meaning { font-size: 1.5rem; color: var(--duo-blue); font-weight: 800; margin-top: 6px; }
     
     .audio-btn {
-      width: 50px; height: 50px; border-radius: 50%; background: var(--duo-blue); color: white;
-      border: none; border-bottom: 4px solid var(--duo-blue-shadow); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; cursor: pointer;
+      width: 44px; height: 44px; border-radius: 50%; background: var(--duo-blue); color: white;
+      border: none; border-bottom: 4px solid var(--duo-blue-shadow); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer;
     }
     .audio-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
 
-    .hero-example-box { background: #f1f5f9; border-left: 6px solid var(--duo-yellow); padding: 20px; border-radius: 16px; margin-top: 24px; }
+    .hero-example-box { background: #f1f5f9; border-left: 6px solid var(--duo-yellow); padding: 16px; border-radius: 14px; margin-top: 20px; }
 
-    .dots-container { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+    .dots-container { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
     .dot {
-      width: 38px; height: 38px; border-radius: 12px; background: white; border: 2px solid var(--duo-gray);
-      border-bottom: 4px solid var(--duo-dark-gray); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #888; cursor: pointer;
+      width: 32px; height: 32px; border-radius: 10px; background: white; border: 2px solid var(--duo-gray);
+      border-bottom: 4px solid var(--duo-dark-gray); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #888; cursor: pointer; font-size: 0.9rem;
     }
     .dot.active { background: var(--duo-green); color: white; border-color: var(--duo-green-shadow); }
 
-    .quiz-word-display { font-size: 2.8rem; font-weight: 900; color: #3c3c3c; text-align: center; margin: 20px 0; }
-    .options-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
+    .quiz-word-display { font-size: 2.4rem; font-weight: 900; color: #3c3c3c; text-align: center; margin: 16px 0; }
+    .options-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 16px; }
     
     .option-btn {
       background: white; border: 2px solid var(--duo-gray); border-bottom: 5px solid var(--duo-dark-gray);
-      padding: 18px 24px; border-radius: 18px; color: #3c3c3c; font-size: 1.15rem; font-weight: 800; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px; border-radius: 16px; color: #3c3c3c; font-size: 1.05rem; font-weight: 800; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
     }
     .option-btn:hover { background: #f7f9fa; border-color: var(--duo-blue); }
     .option-btn:active { transform: translateY(3px); border-bottom-width: 2px; }
@@ -198,7 +192,7 @@
     .option-btn.wrong { background: #ffdfe0 !important; border-color: var(--duo-red) !important; color: #c62828 !important; }
 
     .feedback-footer {
-      position: fixed; bottom: 0; left: 0; width: 100%; padding: 24px 32px;
+      position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px 24px;
       display: flex; justify-content: space-between; align-items: center; z-index: 200;
       transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
@@ -207,8 +201,8 @@
     .feedback-footer.wrong-bg { background: #ffdfe0; border-top: 3px solid var(--duo-red); color: #c62828; }
 
     .input-field {
-      width: 100%; max-width: 340px; padding: 14px; border: 2px solid var(--duo-gray);
-      border-radius: 16px; font-size: 1.1rem; font-weight: 800; outline: none; margin: 10px 0;
+      width: 100%; max-width: 320px; padding: 12px 16px; border: 2px solid var(--duo-gray);
+      border-radius: 16px; font-size: 1rem; font-weight: 800; outline: none; margin: 8px 0;
     }
     .input-field:focus { border-color: var(--duo-blue); }
 
@@ -218,12 +212,12 @@
       display: flex; justify-content: center; align-items: center; z-index: 9999;
     }
     .auth-box {
-      background: white; padding: 40px; border-radius: 28px; width: 420px; max-width: 90%;
-      border: 3px solid var(--duo-gray); box-shadow: 0 12px 0 var(--duo-gray); text-align: center;
+      background: white; padding: 32px; border-radius: 24px; width: 400px; max-width: 90%;
+      border: 3px solid var(--duo-gray); box-shadow: 0 10px 0 var(--duo-gray); text-align: center;
     }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-    th, td { padding: 14px; border-bottom: 2px solid var(--duo-gray); text-align: left; font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.95rem; }
+    th, td { padding: 12px; border-bottom: 2px solid var(--duo-gray); text-align: left; font-weight: 700; }
     th { color: #888; background: #f8fafc; }
   </style>
 </head>
@@ -232,8 +226,8 @@
   <!-- 登入與註冊 Modal -->
   <div id="auth-modal">
     <div class="auth-box">
-      <div style="font-size: 3rem; color: var(--duo-green); margin-bottom: 12px;"><i class="fa-solid fa-feather-pointed"></i></div>
-      <h2 id="auth-title" style="font-size: 1.6rem; font-weight: 900; margin-bottom: 16px;">歡迎登入 Enterprise Vocab</h2>
+      <div style="font-size: 2.8rem; color: var(--duo-green); margin-bottom: 10px;"><i class="fa-solid fa-feather-pointed"></i></div>
+      <h2 id="auth-title" style="font-size: 1.5rem; font-weight: 900; margin-bottom: 14px;">歡迎登入 Enterprise Vocab</h2>
       
       <div id="auth-form-container" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
         <div id="nickname-group" style="display: none; width: 100%;">
@@ -242,9 +236,9 @@
         <input type="email" id="auth-email" class="input-field" placeholder="電子郵件 (Email)" style="max-width: 100%;">
         <input type="password" id="auth-password" class="input-field" placeholder="密碼 (Password)" style="max-width: 100%;">
 
-        <button class="btn-3d" id="auth-submit-btn" onclick="handleAuthSubmit()" style="width: 100%; margin-top: 10px;">登入系統</button>
+        <button class="btn-3d" id="auth-submit-btn" onclick="handleAuthSubmit()" style="width: 100%; margin-top: 8px;">登入系統</button>
         
-        <p id="auth-switch-text" style="margin-top: 16px; font-weight: 700; font-size: 0.95rem; color: #777; cursor: pointer;" onclick="toggleAuthMode()">
+        <p id="auth-switch-text" style="margin-top: 14px; font-weight: 700; font-size: 0.9rem; color: #777; cursor: pointer;" onclick="toggleAuthMode()">
           還沒有帳號？點此免費註冊
         </p>
       </div>
@@ -253,15 +247,15 @@
 
   <!-- 頂部狀態列 -->
   <header>
-    <div class="logo"><i class="fa-solid fa-feather-pointed"></i> Enterprise Vocab Pro</div>
+    <div class="logo"><i class="fa-solid fa-feather-pointed"></i> Vocab Pro</div>
     <div class="status-bar">
       <!-- 版面切換按鈕 -->
-      <button class="btn-3d btn-secondary-3d" id="layout-toggle-btn" onclick="toggleLayoutMode()" style="padding: 6px 12px; font-size: 0.85rem;" title="切換網頁/手機版">
+      <button class="btn-3d btn-secondary-3d" id="layout-toggle-btn" onclick="toggleLayoutMode()" style="padding: 6px 10px; font-size: 0.8rem;" title="切換網頁/手機版">
         <i class="fa-solid fa-mobile-screen"></i> <span id="layout-btn-text">手機板</span>
       </button>
-      <div class="status-item" style="color: var(--duo-blue); font-size: 0.95rem;"><i class="fa-solid fa-user"></i> <span id="current-user-tag">未登入</span></div>
+      <div class="status-item" style="color: var(--duo-blue); font-size: 0.9rem;"><i class="fa-solid fa-user"></i> <span id="current-user-tag">未登入</span></div>
       <div class="status-item xp" title="總經驗值"><i class="fa-solid fa-bolt"></i> <span id="xp-count">0 XP</span></div>
-      <button class="btn-3d btn-secondary-3d" style="padding: 6px 12px; font-size: 0.85rem;" onclick="handleLogout()">登出</button>
+      <button class="btn-3d btn-secondary-3d" style="padding: 6px 10px; font-size: 0.8rem;" onclick="handleLogout()">登出</button>
     </div>
   </header>
 
@@ -276,20 +270,20 @@
 
     <!-- 1. 卡牌學習區 -->
     <div id="view-study" class="view active">
-      <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+      <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
         <div>
-          <h2 style="font-size: 1.4rem; font-weight: 900;">🎯 每日單字特訓</h2>
-          <p style="color: #888; font-size: 0.95rem; font-weight: 700;">點擊喇叭發音，點擊下方切換。</p>
+          <h2 style="font-size: 1.3rem; font-weight: 900;">🎯 每日單字特訓</h2>
+          <p style="color: #888; font-size: 0.9rem; font-weight: 700;">點擊喇叭發音，下方可切換卡牌。</p>
         </div>
-        <button class="btn-3d" onclick="loadStudyCards()"><i class="fa-solid fa-shuffle"></i> 換一批</button>
+        <button class="btn-3d" onclick="loadStudyCards()" style="padding: 10px 16px; font-size: 0.95rem;"><i class="fa-solid fa-shuffle"></i> 換一批</button>
       </div>
 
       <div id="hero-card-container"></div>
       <div class="dots-container" id="pagination-dots"></div>
 
       <div style="display: flex; justify-content: space-between; margin-top: 16px;">
-        <button class="btn-3d btn-secondary-3d" onclick="changeCardIndex(-1)"><i class="fa-solid fa-arrow-left"></i> 上一張</button>
-        <button class="btn-3d btn-secondary-3d" onclick="changeCardIndex(1)">下一張 <i class="fa-solid fa-arrow-right"></i></button>
+        <button class="btn-3d btn-secondary-3d" onclick="changeCardIndex(-1)" style="padding: 10px 16px; font-size: 0.95rem;"><i class="fa-solid fa-arrow-left"></i> 上一張</button>
+        <button class="btn-3d btn-secondary-3d" onclick="changeCardIndex(1)" style="padding: 10px 16px; font-size: 0.95rem;">下一張 <i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
 
@@ -297,10 +291,10 @@
     <div id="view-quiz" class="view">
       <div class="card">
         <div id="quiz-start-screen" style="text-align: center; padding: 20px 0;">
-          <div style="font-size: 4rem; color: var(--duo-green); margin-bottom: 16px;"><i class="fa-solid fa-circle-play"></i></div>
-          <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">準備好開始挑戰了嗎？</h2>
-          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">答題後自動倒數 3 秒進入下一題：</p>
-          <button class="btn-3d" onclick="startQuiz()" style="font-size: 1.2rem; width: 80%; max-width: 300px;"><i class="fa-solid fa-rocket"></i> 開始測驗</button>
+          <div style="font-size: 3.5rem; color: var(--duo-green); margin-bottom: 16px;"><i class="fa-solid fa-circle-play"></i></div>
+          <h2 style="font-size: 1.6rem; font-weight: 900; margin-bottom: 8px;">準備好開始挑戰了嗎？</h2>
+          <p style="color: #777; font-size: 0.95rem; font-weight: 700; margin-bottom: 16px;">答題後自動倒數 3 秒進入下一題：</p>
+          <button class="btn-3d" onclick="startQuiz()" style="font-size: 1.1rem; width: 80%; max-width: 260px;"><i class="fa-solid fa-rocket"></i> 開始測驗</button>
         </div>
 
         <div id="quiz-question-screen" style="display: none;">
@@ -321,9 +315,9 @@
         </div>
 
         <div id="quiz-result-screen" style="display: none; text-align: center; padding: 20px 0;">
-          <div style="font-size: 5rem; color: var(--duo-yellow); margin-bottom: 16px;"><i class="fa-solid fa-crown"></i></div>
-          <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 8px;">關卡完成並已同步至雲端！</h2>
-          <p id="quiz-score-display" style="font-size: 1.3rem; font-weight: 800; color: #3c3c3c; margin-bottom: 24px;"></p>
+          <div style="font-size: 4.5rem; color: var(--duo-yellow); margin-bottom: 16px;"><i class="fa-solid fa-crown"></i></div>
+          <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">關卡完成並已同步至雲端！</h2>
+          <p id="quiz-score-display" style="font-size: 1.2rem; font-weight: 800; color: #3c3c3c; margin-bottom: 20px;"></p>
           <button class="btn-3d" onclick="resetQuiz()"><i class="fa-solid fa-rotate-right"></i> 再玩一次</button>
         </div>
       </div>
@@ -332,13 +326,13 @@
     <!-- 3. 成就徽章牆區 -->
     <div id="view-badges" class="view">
       <div class="card">
-        <h2 style="font-size: 1.4rem; font-weight: 900; margin-bottom: 8px;"><i class="fa-solid fa-award" style="color: var(--duo-yellow);"></i> 個人成就徽章牆</h2>
-        <p style="color: #777; font-size: 0.95rem; font-weight: 700; margin-bottom: 20px;">解鎖連續登入與完美通關的至高榮譽！</p>
+        <h2 style="font-size: 1.3rem; font-weight: 900; margin-bottom: 6px;"><i class="fa-solid fa-award" style="color: var(--duo-yellow);"></i> 個人成就徽章牆</h2>
+        <p style="color: #777; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px;">解鎖連續登入與完美通關的至高榮譽！</p>
 
-        <h3 style="font-size: 1.1rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark);">🔥 長期連續登入徽章</h3>
+        <h3 style="font-size: 1.05rem; font-weight: 900; margin-bottom: 10px; color: var(--text-dark);">🔥 長期連續登入徽章</h3>
         <div class="badge-grid" id="login-badges-container"></div>
 
-        <h3 style="font-size: 1.1rem; font-weight: 900; margin: 24px 0 12px 0; color: var(--text-dark);">👑 完美通關累積徽章</h3>
+        <h3 style="font-size: 1.05rem; font-weight: 900; margin: 20px 0 10px 0; color: var(--text-dark);">👑 完美通關累積徽章</h3>
         <div class="badge-grid" id="perfect-badges-container"></div>
       </div>
     </div>
@@ -346,34 +340,36 @@
     <!-- 4. 戰情排行榜 -->
     <div id="view-enterprise" class="view">
       <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h2 style="font-size: 1.4rem; font-weight: 900;"><i class="fa-solid fa-medal" style="color: var(--duo-yellow);"></i> 雲端戰情排行榜</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h2 style="font-size: 1.3rem; font-weight: 900;"><i class="fa-solid fa-medal" style="color: var(--duo-yellow);"></i> 雲端戰情排行榜</h2>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>玩家</th>
-              <th>等級</th>
-              <th>得分</th>
-              <th>正確率</th>
-              <th>時間</th>
-            </tr>
-          </thead>
-          <tbody id="enterprise-history-tbody">
-            <tr><td colspan="5" style="text-align: center; color: #888;">載入雲端排行榜中...</td></tr>
-          </tbody>
-        </table>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>玩家</th>
+                <th>等級</th>
+                <th>得分</th>
+                <th>正確率</th>
+                <th>時間</th>
+              </tr>
+            </thead>
+            <tbody id="enterprise-history-tbody">
+              <tr><td colspan="5" style="text-align: center; color: #888;">載入雲端排行榜中...</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
     <!-- 5. 單字庫完整檢索 -->
     <div id="view-database" class="view">
       <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-          <h3 style="font-size: 1.3rem; font-weight: 900;">📚 單字庫檢索</h3>
-          <input type="text" id="db-search-input" placeholder="搜尋..." oninput="renderDatabase()" class="input-field" style="margin: 0; max-width: 200px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+          <h3 style="font-size: 1.2rem; font-weight: 900;">📚 單字庫檢索 (<span id="db-count-label">0</span>)</h3>
+          <input type="text" id="db-search-input" placeholder="搜尋單字..." oninput="renderDatabase()" class="input-field" style="margin: 0; max-width: 180px;">
         </div>
-        <div style="overflow-x: auto; max-height: 480px;">
+        <div style="overflow-x: auto; max-height: 440px;">
           <table>
             <thead>
               <tr>
@@ -391,14 +387,14 @@
   </main>
 
   <div class="feedback-footer" id="feedback-footer">
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="font-size: 2.5rem;" id="feedback-icon"><i class="fa-solid fa-circle-check"></i></div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div style="font-size: 2.2rem;" id="feedback-icon"><i class="fa-solid fa-circle-check"></i></div>
       <div>
-        <h3 id="feedback-title" style="font-size: 1.4rem; font-weight: 900;">太棒了！</h3>
-        <p id="feedback-detail" style="font-size: 1rem; font-weight: 700;"></p>
+        <h3 id="feedback-title" style="font-size: 1.2rem; font-weight: 900;">太棒了！</h3>
+        <p id="feedback-detail" style="font-size: 0.9rem; font-weight: 700;"></p>
       </div>
     </div>
-    <div id="countdown-timer-text" style="font-size: 1.2rem; font-weight: 900;">3 秒後自動下一題...</div>
+    <div id="countdown-timer-text" style="font-size: 1.1rem; font-weight: 900;">3 秒後自動下一題...</div>
   </div>
 
   <!-- Firebase 核心及應用程式邏輯 -->
@@ -622,8 +618,8 @@
             <div class="hero-word-meaning">${item.meaning}</div>
           </div>
           <div class="hero-example-box">
-            <div style="font-weight: 800; font-size: 1.1rem; color: #3c3c3c;">"${item.exampleEn || 'No example.'}"</div>
-            <div style="color: #777; font-weight: 700; margin-top: 4px;">"${item.exampleZh || '暫無例句中文'}"</div>
+            <div style="font-weight: 800; font-size: 1.05rem; color: #3c3c3c;">"${item.exampleEn || 'No example.'}"</div>
+            <div style="color: #777; font-weight: 700; margin-top: 4px; font-size: 0.9rem;">"${item.exampleZh || '暫無例句中文'}"</div>
           </div>
         </div>
       `;
@@ -836,7 +832,7 @@
             <div class="badge-title">${b.title}</div>
             <div class="badge-desc">${b.desc}</div>
             <div style="font-size: 0.75rem; font-weight: 800; color: ${unlocked ? 'var(--duo-green)' : '#999'}; margin-top: auto;">
-              ${unlocked ? '✅ 已解鎖' : `🔒 需全對 ${b.count} 次 (目前 ${perfectCount} 次)`}
+              ${unlocked ? '✅ 已解鎖' : `🔒 需全對 ${b.count} 天 (目前 ${perfectCount} 次)`}
             </div>
           </div>
         `;
