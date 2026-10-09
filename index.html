@@ -384,9 +384,10 @@
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
           <h3 style="font-size: 1.2rem; font-weight: 900;">📚 單字庫檢索 (<span id="db-count-label">0</span>)</h3>
-          <input type="text" id="db-search-input" placeholder="搜尋單字..." oninput="renderDatabase()" class="input-field" style="margin: 0; max-width: 180px;">
+          <input type="text" id="db-search-input" placeholder="搜尋單字..." oninput="onSearchInput()" class="input-field" style="margin: 0; max-width: 180px;">
         </div>
-        <div style="overflow-x: auto;">
+        <!-- 限制區塊高度並加入捲動監聽，實現滾動載入更多 -->
+        <div id="db-scroll-container" style="overflow-y: auto; max-height: 500px;" onscroll="checkScrollBottom()">
           <table>
             <thead>
               <tr>
@@ -398,6 +399,7 @@
             </thead>
             <tbody id="db-tbody"></tbody>
           </table>
+          <div id="db-loading-tip" style="text-align: center; padding: 12px; color: #888; font-size: 0.85rem; font-weight: 700;">向下滾動載入更多單字...</div>
         </div>
       </div>
     </div>
@@ -441,6 +443,9 @@
     let currentUserProfile = { uid: '', email: '', nickname: '未命名', xp: 0, loginDays: 1, perfectCount: 0 };
     let isRegisterMode = false;
     let countdownTimer = null;
+
+    // 動態載入筆數控制
+    let displayLimit = 50;
 
     // 註冊正式的 Service Worker (sw.js) 支援手機 PWA 安裝
     if ('serviceWorker' in navigator) {
@@ -608,7 +613,10 @@
       });
       if (tabId === 'study') loadStudyCards();
       if (tabId === 'badges') renderBadges();
-      if (tabId === 'database') renderDatabase();
+      if (tabId === 'database') {
+        displayLimit = 50; // 切換過來時重設顯示筆數
+        renderDatabase();
+      }
     };
 
     function getRandomItems(arr, count) {
@@ -886,21 +894,40 @@
       });
     }
 
+    // 搜尋時重置顯示筆數
+    window.onSearchInput = function() {
+      displayLimit = 50;
+      renderDatabase();
+    };
+
+    // 捲動到底部時自動加載更多
+    window.checkScrollBottom = function() {
+      const container = document.getElementById('db-scroll-container');
+      if (!container) return;
+      if (container.scrollTop + container.clientHeight >= container.scrollHeight - 30) {
+        displayLimit += 50; // 每次多載入 50 筆
+        renderDatabase();
+      }
+    };
+
     window.renderDatabase = function() {
       const searchInput = document.getElementById('db-search-input');
       const query = searchInput && searchInput.value ? String(searchInput.value).toLowerCase() : "";
       const tbody = document.getElementById('db-tbody');
+      const loadingTip = document.getElementById('db-loading-tip');
       if (!tbody) return;
 
-      // 絕對安全的 String() 強制轉型防護，徹底避免 null 或 undefined 呼叫 toLowerCase 崩潰
-      const filtered = masterVocabDB.filter(item => {
+      const filteredAll = masterVocabDB.filter(item => {
         const wordStr = String(item.word || "").toLowerCase();
         const meaningStr = String(item.meaning || "").toLowerCase();
         return wordStr.includes(query) || meaningStr.includes(query);
-      }).slice(0, 50);
+      });
+
+      const filtered = filteredAll.slice(0, displayLimit);
 
       if (filtered.length === 0) {
         tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #888;">沒有找到符合的單字</td></tr>`;
+        if (loadingTip) loadingTip.style.display = 'none';
         return;
       }
 
@@ -915,6 +942,11 @@
           </td>
         </tr>
       `).join('');
+
+      if (loadingTip) {
+        loadingTip.style.display = displayLimit >= filteredAll.length ? 'none' : 'block';
+        loadingTip.innerText = displayLimit >= filteredAll.length ? '— 已顯示全部單字 —' : '向下滾動載入更多單字...';
+      }
     };
   </script>
 </body>
