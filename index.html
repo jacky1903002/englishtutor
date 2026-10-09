@@ -364,7 +364,7 @@
         <div id="quiz-start-screen" style="text-align: center; padding: 20px 0;">
           <div style="font-size: 4rem; color: var(--duo-green); margin-bottom: 16px;"><i class="fa-solid fa-circle-play"></i></div>
           <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">準備好開始挑戰了嗎？</h2>
-          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">點擊下方按鈕立即開始答題 (全對可累積完美通關)：</p>
+          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">點擊下方按鈕立即開始答題 (10題全對可累積完美通關)：</p>
           <button class="btn-3d" onclick="startQuiz()" style="font-size: 1.2rem; width: 80%; max-width: 300px;"><i class="fa-solid fa-rocket"></i> 開始測驗</button>
         </div>
 
@@ -398,7 +398,7 @@
     <div id="view-badges" class="view">
       <div class="card">
         <h2 style="font-size: 1.4rem; font-weight: 900; margin-bottom: 8px;"><i class="fa-solid fa-award" style="color: var(--duo-yellow);"></i> 個人成就徽章牆</h2>
-        <p style="color: #777; font-size: 0.95rem; font-weight: 700; margin-bottom: 20px;">解鎖從長期連續登入到 10,000 次完美通關的至高榮譽！</p>
+        <p style="color: #777; font-size: 0.95rem; font-weight: 700; margin-bottom: 20px;">解鎖從長期連續登入到 50,000 次完美通關的至高榮譽！</p>
 
         <h3 style="font-size: 1.1rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark);">🔥 長期連續登入徽章</h3>
         <div class="badge-grid" id="login-badges-container"></div>
@@ -807,7 +807,7 @@
       const loginDays = currentUserProfile.loginDays || 1;
       const perfectCount = currentUserProfile.perfectCount || 0;
 
-      // 1. 長期連續登入徽章 (擴充至 1000 天)
+      // 1. 長期連續登入徽章
       const loginBadgesConfig = [
         { days: 1, title: "初學幼苗", desc: "完成首次登入體驗", icon: "fa-seedling" },
         { days: 3, title: "持續發芽", desc: "連續登入達 3 天", icon: "fa-spa" },
@@ -835,7 +835,7 @@
         `;
       }).join('');
 
-      // 2. 完美通關（10題全對）累積徽章 (擴充至 10000 次)
+      // 2. 完美通關（10題全對）累積徽章 (已新增 3,000次 與 50,000次)
       const perfectBadgesConfig = [
         { count: 1, title: "初試啼聲", desc: "首次 10 題全對", icon: "fa-star" },
         { count: 3, title: "滿分達人", desc: "累積達成 3 次全對", icon: "fa-award" },
@@ -845,8 +845,10 @@
         { count: 200, title: "無懈可擊", desc: "累積達成 200 次全對", icon: "fa-fire-flame-curved" },
         { count: 500, title: "全知學者", desc: "累積達成 500 次全對", icon: "fa-graduation-cap" },
         { count: 1000, title: "單字宗師", desc: "累積達成 1000 次全對", icon: "fa-hat-wizard" },
+        { count: 3000, title: "三千精銳", desc: "累積達成 3000 次全對", icon: "fa-shield-heart" },
         { count: 5000, title: "至高無上", desc: "累積達成 5000 次全對", icon: "fa-gem" },
-        { count: 10000, title: "獨孤求敗", desc: "累積達成 10000 次全對", icon: "fa-dragon" }
+        { count: 10000, title: "獨孤求敗", desc: "累積達成 10000 次全對", icon: "fa-dragon" },
+        { count: 50000, title: "傳說霸主", desc: "累積達成 50000 次全對", icon: "fa-phoenix-birds" }
       ];
 
       const perfectContainer = document.getElementById('perfect-badges-container');
