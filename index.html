@@ -104,7 +104,6 @@
     }
     .btn-secondary-3d:hover { background: #f8fafc; }
 
-    /* 徽章牆樣式設計 */
     .badge-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -364,7 +363,7 @@
         <div id="quiz-start-screen" style="text-align: center; padding: 20px 0;">
           <div style="font-size: 4rem; color: var(--duo-green); margin-bottom: 16px;"><i class="fa-solid fa-circle-play"></i></div>
           <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">準備好開始挑戰了嗎？</h2>
-          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">點擊下方按鈕立即開始答題 (10題全對可累積完美通關)：</p>
+          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">答題後將自動倒數 5 秒並進入下一題：</p>
           <button class="btn-3d" onclick="startQuiz()" style="font-size: 1.2rem; width: 80%; max-width: 300px;"><i class="fa-solid fa-rocket"></i> 開始測驗</button>
         </div>
 
@@ -463,7 +462,7 @@
         <p id="feedback-detail" style="font-size: 1rem; font-weight: 700;"></p>
       </div>
     </div>
-    <button class="btn-3d" id="feedback-next-btn" onclick="nextQuizQuestion()">下一題</button>
+    <div id="countdown-timer-text" style="font-size: 1.2rem; font-weight: 900;">5 秒後自動下一題...</div>
   </div>
 
   <!-- Firebase 核心及應用程式邏輯 -->
@@ -492,6 +491,7 @@
     let currentCardIndex = 0;
     let currentUserProfile = { uid: '', email: '', nickname: '未命名', xp: 0, loginDays: 1, perfectCount: 0 };
     let isRegisterMode = false;
+    let countdownTimer = null;
 
     window.toggleAuthMode = function() {
       isRegisterMode = !isRegisterMode;
@@ -748,6 +748,22 @@
         btn.querySelector('i').className = 'fa-solid fa-circle-xmark';
         showFeedback(false, `正確答案是：${correct}`);
       }
+
+      // 啟動 5 秒倒數自動下一題
+      let timeLeft = 5;
+      const timerText = document.getElementById('countdown-timer-text');
+      timerText.innerText = `${timeLeft} 秒後自動下一題...`;
+
+      if (countdownTimer) clearInterval(countdownTimer);
+      countdownTimer = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+          timerText.innerText = `${timeLeft} 秒後自動下一題...`;
+        } else {
+          clearInterval(countdownTimer);
+          nextQuizQuestion();
+        }
+      }, 1000);
     };
 
     function showFeedback(isCorrect, text) {
@@ -756,14 +772,14 @@
       document.getElementById('feedback-icon').innerHTML = isCorrect ? `<i class="fa-solid fa-circle-check"></i>` : `<i class="fa-solid fa-circle-xmark"></i>`;
       document.getElementById('feedback-title').innerText = isCorrect ? "非常好！" : "再接再厲！";
       document.getElementById('feedback-detail').innerText = text;
-      document.getElementById('feedback-next-btn').style.background = isCorrect ? "var(--duo-green)" : "var(--duo-red)";
     }
 
-    window.nextQuizQuestion = function() {
+    function nextQuizQuestion() {
+      if (countdownTimer) clearInterval(countdownTimer);
       document.getElementById('feedback-footer').classList.remove('show');
       currentQIdx++;
       renderQuizQuestion();
-    };
+    }
 
     function finishQuiz() {
       document.getElementById('quiz-question-screen').style.display = 'none';
@@ -777,7 +793,6 @@
       currentUserProfile.xp += earnedXP;
       document.getElementById('xp-count').innerText = currentUserProfile.xp + " XP";
 
-      // 判定是否10題全對 (完美通關)
       if (currentScore === totalQ) {
         currentUserProfile.perfectCount += 1;
       }
@@ -807,7 +822,6 @@
       const loginDays = currentUserProfile.loginDays || 1;
       const perfectCount = currentUserProfile.perfectCount || 0;
 
-      // 1. 長期連續登入徽章
       const loginBadgesConfig = [
         { days: 1, title: "初學幼苗", desc: "完成首次登入體驗", icon: "fa-seedling" },
         { days: 3, title: "持續發芽", desc: "連續登入達 3 天", icon: "fa-spa" },
@@ -835,7 +849,6 @@
         `;
       }).join('');
 
-      // 2. 完美通關（10題全對）累積徽章 (已新增 3,000次 與 50,000次)
       const perfectBadgesConfig = [
         { count: 1, title: "初試啼聲", desc: "首次 10 題全對", icon: "fa-star" },
         { count: 3, title: "滿分達人", desc: "累積達成 3 次全對", icon: "fa-award" },
