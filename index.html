@@ -364,7 +364,7 @@
         <div id="quiz-start-screen" style="text-align: center; padding: 20px 0;">
           <div style="font-size: 4rem; color: var(--duo-green); margin-bottom: 16px;"><i class="fa-solid fa-circle-play"></i></div>
           <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">準備好開始挑戰了嗎？</h2>
-          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">點擊下方按鈕立即開始答題：</p>
+          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">點擊下方按鈕立即開始答題 (全對可累積完美通關)：</p>
           <button class="btn-3d" onclick="startQuiz()" style="font-size: 1.2rem; width: 80%; max-width: 300px;"><i class="fa-solid fa-rocket"></i> 開始測驗</button>
         </div>
 
@@ -398,12 +398,12 @@
     <div id="view-badges" class="view">
       <div class="card">
         <h2 style="font-size: 1.4rem; font-weight: 900; margin-bottom: 8px;"><i class="fa-solid fa-award" style="color: var(--duo-yellow);"></i> 個人成就徽章牆</h2>
-        <p style="color: #777; font-size: 0.95rem; font-weight: 700; margin-bottom: 20px;">透過持續登入與挑戰 100 分來解鎖專屬榮譽徽章！</p>
+        <p style="color: #777; font-size: 0.95rem; font-weight: 700; margin-bottom: 20px;">解鎖從長期連續登入到 10,000 次完美通關的至高榮譽！</p>
 
-        <h3 style="font-size: 1.1rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark);">🔥 連續登入天數徽章</h3>
+        <h3 style="font-size: 1.1rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark);">🔥 長期連續登入徽章</h3>
         <div class="badge-grid" id="login-badges-container"></div>
 
-        <h3 style="font-size: 1.1rem; font-weight: 900; margin: 24px 0 12px 0; color: var(--text-dark);">👑 100分完美通關徽章</h3>
+        <h3 style="font-size: 1.1rem; font-weight: 900; margin: 24px 0 12px 0; color: var(--text-dark);">👑 完美通關（10題全對）累積徽章</h3>
         <div class="badge-grid" id="perfect-badges-container"></div>
       </div>
     </div>
@@ -539,7 +539,6 @@
       signOut(auth).then(() => { location.reload(); });
     };
 
-    // 登入狀態監聽與連續登入天數計算
     onAuthStateChanged(auth, (user) => {
       const modal = document.getElementById('auth-modal');
       if (user) {
@@ -561,9 +560,9 @@
             const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
             
             if (diffDays === 1) {
-              loginDays += 1; // 連續登入天數+1
+              loginDays += 1;
             } else if (diffDays > 1) {
-              loginDays = 1; // 超過一天未登入則重置
+              loginDays = 1;
             }
             update(userRef, { loginDays: loginDays, lastLoginDate: todayStr });
           }
@@ -778,18 +777,16 @@
       currentUserProfile.xp += earnedXP;
       document.getElementById('xp-count').innerText = currentUserProfile.xp + " XP";
 
-      let isPerfect = (currentScore === totalQ);
-      if (isPerfect) {
+      // 判定是否10題全對 (完美通關)
+      if (currentScore === totalQ) {
         currentUserProfile.perfectCount += 1;
       }
 
-      // 更新雲端使用者資料
       update(ref(db, 'users/' + currentUserProfile.uid), {
         xp: currentUserProfile.xp,
         perfectCount: currentUserProfile.perfectCount
       });
 
-      // 推送成績至雲端排行榜
       push(ref(db, 'quiz_history'), {
         user: currentUserProfile.nickname,
         date: new Date().toLocaleString(),
@@ -810,13 +807,17 @@
       const loginDays = currentUserProfile.loginDays || 1;
       const perfectCount = currentUserProfile.perfectCount || 0;
 
-      // 1. 連續登入徽章設定
+      // 1. 長期連續登入徽章 (擴充至 1000 天)
       const loginBadgesConfig = [
         { days: 1, title: "初學幼苗", desc: "完成首次登入體驗", icon: "fa-seedling" },
         { days: 3, title: "持續發芽", desc: "連續登入達 3 天", icon: "fa-spa" },
         { days: 7, title: "熱情火焰", desc: "連續登入達 7 天", icon: "fa-fire" },
         { days: 14, title: "閃耀鑽石", desc: "連續登入達 14 天", icon: "fa-gem" },
-        { days: 30, title: "傳奇皇冠", desc: "連續登入滿 30 天", icon: "fa-crown" }
+        { days: 30, title: "月度菁英", desc: "連續登入滿 30 天", icon: "fa-calendar-check" },
+        { days: 100, title: "百日維新", desc: "連續登入滿 100 天", icon: "fa-medal" },
+        { days: 300, title: "年度淬鍊", desc: "連續登入滿 300 天", icon: "fa-award" },
+        { days: 500, title: "半千大師", desc: "連續登入滿 500 天", icon: "fa-shield-halved" },
+        { days: 1000, title: "千日傳奇", desc: "連續登入滿 1000 天", icon: "fa-crown" }
       ];
 
       const loginContainer = document.getElementById('login-badges-container');
@@ -834,13 +835,18 @@
         `;
       }).join('');
 
-      // 2. 100分完美通關徽章設定
+      // 2. 完美通關（10題全對）累積徽章 (擴充至 10000 次)
       const perfectBadgesConfig = [
-        { count: 1, title: "初試啼聲", desc: "首次獲得 100 分滿分", icon: "fa-star" },
-        { count: 3, title: "滿分達人", desc: "累積達成 3 次 100 分", icon: "fa-medal" },
-        { count: 5, title: "卓越菁英", desc: "累積達成 5 次 100 分", icon: "fa-award" },
-        { count: 10, title: "百分之王", desc: "累積達成 10 次 100 分", icon: "fa-trophy" },
-        { count: 20, title: "獨孤求敗", desc: "累積達成 20 次 100 分", icon: "fa-fire-flame-curved" }
+        { count: 1, title: "初試啼聲", desc: "首次 10 題全對", icon: "fa-star" },
+        { count: 3, title: "滿分達人", desc: "累積達成 3 次全對", icon: "fa-award" },
+        { count: 5, title: "卓越菁英", desc: "累積達成 5 次全對", icon: "fa-medal" },
+        { count: 10, title: "百分之王", desc: "累積達成 10 次全對", icon: "fa-trophy" },
+        { count: 50, title: "答題神手", desc: "累積達成 50 次全對", icon: "fa-bolt" },
+        { count: 200, title: "無懈可擊", desc: "累積達成 200 次全對", icon: "fa-fire-flame-curved" },
+        { count: 500, title: "全知學者", desc: "累積達成 500 次全對", icon: "fa-graduation-cap" },
+        { count: 1000, title: "單字宗師", desc: "累積達成 1000 次全對", icon: "fa-hat-wizard" },
+        { count: 5000, title: "至高無上", desc: "累積達成 5000 次全對", icon: "fa-gem" },
+        { count: 10000, title: "獨孤求敗", desc: "累積達成 10000 次全對", icon: "fa-dragon" }
       ];
 
       const perfectContainer = document.getElementById('perfect-badges-container');
@@ -852,7 +858,7 @@
             <div class="badge-title">${b.title}</div>
             <div class="badge-desc">${b.desc}</div>
             <div style="font-size: 0.75rem; font-weight: 800; color: ${unlocked ? 'var(--duo-green)' : '#999'}; margin-top: auto;">
-              ${unlocked ? '✅ 已解鎖' : `🔒 需 100分 ${b.count} 次 (目前 ${perfectCount} 次)`}
+              ${unlocked ? '✅ 已解鎖' : `🔒 需全對 ${b.count} 次 (目前 ${perfectCount} 次)`}
             </div>
           </div>
         `;
