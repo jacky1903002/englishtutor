@@ -40,11 +40,7 @@
     .logo { font-size: 1.4rem; font-weight: 900; color: var(--duo-green); display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
     
     .status-bar { display: flex; align-items: center; gap: 20px; font-weight: 800; font-size: 1.05rem; }
-    .status-item { display: flex; align-items: center; gap: 6px; cursor: pointer; transition: transform 0.2s; }
-    .status-item:hover { transform: scale(1.1); }
-    .fire { color: var(--duo-orange); }
-    .gem { color: var(--duo-blue); }
-    .heart { color: var(--duo-red); }
+    .status-item { display: flex; align-items: center; gap: 6px; }
     .xp { color: var(--duo-yellow); }
 
     main { max-width: 900px; width: 100%; margin: 24px auto; padding: 0 16px; flex: 1; }
@@ -108,6 +104,59 @@
     }
     .btn-secondary-3d:hover { background: #f8fafc; }
 
+    /* 徽章牆樣式設計 */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .achievement-badge {
+      background: #f8fafc;
+      border: 2px solid var(--duo-gray);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .achievement-badge.locked {
+      filter: grayscale(1);
+      opacity: 0.5;
+      background: #eee;
+    }
+    .achievement-badge:not(.locked) {
+      border-color: var(--duo-yellow);
+      box-shadow: 0 6px 0 rgba(255, 200, 0, 0.3);
+      background: linear-gradient(135deg, #fffdf4 0%, #fff 100%);
+    }
+    .badge-icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      border: 3px solid var(--duo-gray);
+      box-shadow: 0 4px 0 var(--duo-gray);
+      margin-bottom: 4px;
+    }
+    .achievement-badge:not(.locked) .badge-icon-box {
+      border-color: var(--duo-yellow);
+      background: var(--duo-yellow);
+      color: white;
+      box-shadow: 0 4px 0 #e5b200;
+    }
+    .badge-title { font-size: 1.05rem; font-weight: 900; color: #3c3c3c; }
+    .badge-desc { font-size: 0.82rem; font-weight: 700; color: #777; }
+
     .progress-bar-wrap { width: 100%; height: 16px; background: var(--duo-gray); border-radius: 10px; overflow: hidden; margin: 16px 0; }
     .progress-bar-fill { height: 100%; background: var(--duo-green); width: 0%; transition: width 0.3s ease; border-radius: 10px; }
 
@@ -120,7 +169,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
       box-shadow: 0 10px 0 var(--duo-gray);
     }
     .hero-word-header { display: flex; justify-content: space-between; align-items: center; }
@@ -222,7 +270,6 @@
     }
     .input-field:focus { border-color: var(--duo-blue); }
 
-    /* 全螢幕登入/註冊 Modal */
     #auth-modal {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -251,14 +298,13 @@
 </head>
 <body>
 
-  <!-- 登入與註冊 Modal 畫面 -->
+  <!-- 登入與註冊 Modal -->
   <div id="auth-modal">
     <div class="auth-box">
       <div style="font-size: 3rem; color: var(--duo-green); margin-bottom: 12px;"><i class="fa-solid fa-feather-pointed"></i></div>
       <h2 id="auth-title" style="font-size: 1.6rem; font-weight: 900; margin-bottom: 16px;">歡迎登入 Enterprise Vocab</h2>
       
       <div id="auth-form-container" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-        <!-- 註冊專用暱稱欄位 -->
         <div id="nickname-group" style="display: none; width: 100%;">
           <input type="text" id="auth-nickname" class="input-field" placeholder="請輸入您的遊戲暱稱" style="max-width: 100%;">
         </div>
@@ -274,7 +320,7 @@
     </div>
   </div>
 
-  <!-- 頂部 Duo 遊戲狀態列 -->
+  <!-- 頂部狀態列 -->
   <header>
     <div class="logo"><i class="fa-solid fa-feather-pointed"></i> Enterprise Vocab Pro</div>
     <div class="status-bar">
@@ -288,6 +334,7 @@
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchTab('study')"><i class="fa-solid fa-book-open"></i> 卡牌學習</button>
       <button class="tab-btn" onclick="switchTab('quiz')"><i class="fa-solid fa-gamepad"></i> 闖關測驗</button>
+      <button class="tab-btn" onclick="switchTab('badges')"><i class="fa-solid fa-award"></i> 成就徽章牆</button>
       <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-trophy"></i> 雲端戰情排行榜</button>
       <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-list-check"></i> 單字總庫 (<span id="db-count-label">0</span>)</button>
     </div>
@@ -347,7 +394,21 @@
       </div>
     </div>
 
-    <!-- 3. 戰情排行榜 -->
+    <!-- 3. 成就徽章牆區 -->
+    <div id="view-badges" class="view">
+      <div class="card">
+        <h2 style="font-size: 1.4rem; font-weight: 900; margin-bottom: 8px;"><i class="fa-solid fa-award" style="color: var(--duo-yellow);"></i> 個人成就徽章牆</h2>
+        <p style="color: #777; font-size: 0.95rem; font-weight: 700; margin-bottom: 20px;">透過持續登入與挑戰 100 分來解鎖專屬榮譽徽章！</p>
+
+        <h3 style="font-size: 1.1rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark);">🔥 連續登入天數徽章</h3>
+        <div class="badge-grid" id="login-badges-container"></div>
+
+        <h3 style="font-size: 1.1rem; font-weight: 900; margin: 24px 0 12px 0; color: var(--text-dark);">👑 100分完美通關徽章</h3>
+        <div class="badge-grid" id="perfect-badges-container"></div>
+      </div>
+    </div>
+
+    <!-- 4. 戰情排行榜 -->
     <div id="view-enterprise" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
@@ -370,7 +431,7 @@
       </div>
     </div>
 
-    <!-- 4. 單字庫完整檢索 -->
+    <!-- 5. 單字庫完整檢索 -->
     <div id="view-database" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
@@ -405,11 +466,11 @@
     <button class="btn-3d" id="feedback-next-btn" onclick="nextQuizQuestion()">下一題</button>
   </div>
 
-  <!-- Firebase 核心及應用程式邏輯 (使用 ES Module) -->
+  <!-- Firebase 核心及應用程式邏輯 -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, set, push, onValue, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDjBHf2C07wTyZjLC5ek1pIStEZBTrMCQc",
@@ -429,10 +490,9 @@
     let masterVocabDB = [];
     let currentStudyPool = [];
     let currentCardIndex = 0;
-    let currentUserProfile = { uid: '', email: '', nickname: '未命名', xp: 0 };
+    let currentUserProfile = { uid: '', email: '', nickname: '未命名', xp: 0, loginDays: 1, perfectCount: 0 };
     let isRegisterMode = false;
 
-    // 將重要函式掛載至 window 供 HTML 事件呼叫
     window.toggleAuthMode = function() {
       isRegisterMode = !isRegisterMode;
       document.getElementById('auth-title').innerText = isRegisterMode ? '註冊新帳號' : '歡迎登入 Enterprise Vocab';
@@ -459,48 +519,64 @@
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
-            // 將使用者的暱稱存入 Realtime Database 內的 users 資料夾
             set(ref(db, 'users/' + user.uid), {
               nickname: nickname,
               email: email,
-              xp: 0
+              xp: 0,
+              loginDays: 1,
+              perfectCount: 0,
+              lastLoginDate: new Date().toDateString()
             });
           })
-          .catch((error) => {
-            alert("註冊失敗：" + error.message);
-          });
+          .catch((error) => { alert("註冊失敗：" + error.message); });
       } else {
         signInWithEmailAndPassword(auth, email, password)
-          .catch((error) => {
-            alert("登入失敗：" + error.message);
-          });
+          .catch((error) => { alert("登入失敗：" + error.message); });
       }
     };
 
     window.handleLogout = function() {
-      signOut(auth).then(() => {
-        location.reload();
-      });
+      signOut(auth).then(() => { location.reload(); });
     };
 
-    // 監聽登入狀態
+    // 登入狀態監聽與連續登入天數計算
     onAuthStateChanged(auth, (user) => {
       const modal = document.getElementById('auth-modal');
       if (user) {
         modal.style.display = 'none';
-        // 讀取該使用者的暱稱與個人資料
-        onValue(ref(db, 'users/' + user.uid), (snapshot) => {
+        const userRef = ref(db, 'users/' + user.uid);
+        onValue(userRef, (snapshot) => {
           const data = snapshot.val();
           currentUserProfile.uid = user.uid;
           currentUserProfile.email = user.email;
-          if (data) {
-            currentUserProfile.nickname = data.nickname || "玩家";
-            currentUserProfile.xp = data.xp || 0;
-          } else {
-            currentUserProfile.nickname = user.email.split('@')[0];
+          
+          const todayStr = new Date().toDateString();
+          let loginDays = data?.loginDays || 1;
+          let lastLogin = data?.lastLoginDate || "";
+
+          if (lastLogin !== todayStr) {
+            const lastDateObj = new Date(lastLogin);
+            const todayObj = new Date(todayStr);
+            const diffTime = todayObj - lastDateObj;
+            const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays === 1) {
+              loginDays += 1; // 連續登入天數+1
+            } else if (diffDays > 1) {
+              loginDays = 1; // 超過一天未登入則重置
+            }
+            update(userRef, { loginDays: loginDays, lastLoginDate: todayStr });
           }
+
+          currentUserProfile.nickname = data?.nickname || user.email.split('@')[0];
+          currentUserProfile.xp = data?.xp || 0;
+          currentUserProfile.loginDays = loginDays;
+          currentUserProfile.perfectCount = data?.perfectCount || 0;
+
           document.getElementById('current-user-tag').innerText = currentUserProfile.nickname;
           document.getElementById('xp-count').innerText = currentUserProfile.xp + " XP";
+          
+          renderBadges();
         }, { onlyOnce: true });
 
         initDatabase();
@@ -548,11 +624,12 @@
     }
 
     window.switchTab = function(tabId) {
-      ['study', 'quiz', 'enterprise', 'database'].forEach((id, idx) => {
+      ['study', 'quiz', 'badges', 'enterprise', 'database'].forEach((id, idx) => {
         document.getElementById(`view-${id}`).classList.toggle('active', id === tabId);
         document.querySelectorAll('.tab-btn')[idx].classList.toggle('active', id === tabId);
       });
       if (tabId === 'study') loadStudyCards();
+      if (tabId === 'badges') renderBadges();
       if (tabId === 'database') renderDatabase();
     };
 
@@ -562,8 +639,7 @@
 
     window.loadStudyCards = function() {
       if (masterVocabDB.length === 0) return;
-      const targetPool = masterVocabDB;
-      currentStudyPool = getRandomItems(targetPool, Math.min(10, targetPool.length));
+      currentStudyPool = getRandomItems(masterVocabDB, Math.min(10, masterVocabDB.length));
       currentCardIndex = 0;
       renderStudyCard();
     };
@@ -592,9 +668,7 @@
       const dotsContainer = document.getElementById('pagination-dots');
       dotsContainer.innerHTML = '';
       currentStudyPool.forEach((_, idx) => {
-        dotsContainer.innerHTML += `
-          <div class="dot ${idx === currentCardIndex ? 'active' : ''}" onclick="goToCard(${idx})">${idx + 1}</div>
-        `;
+        dotsContainer.innerHTML += `<div class="dot ${idx === currentCardIndex ? 'active' : ''}" onclick="goToCard(${idx})">${idx + 1}</div>`;
       });
     }
 
@@ -617,8 +691,7 @@
     let currentScore = 0;
 
     window.startQuiz = function() {
-      const targetPool = masterVocabDB;
-      quizQuestions = getRandomItems(targetPool, Math.min(10, targetPool.length));
+      quizQuestions = getRandomItems(masterVocabDB, Math.min(10, masterVocabDB.length));
       currentQIdx = 0;
       currentScore = 0;
 
@@ -684,8 +757,7 @@
       document.getElementById('feedback-icon').innerHTML = isCorrect ? `<i class="fa-solid fa-circle-check"></i>` : `<i class="fa-solid fa-circle-xmark"></i>`;
       document.getElementById('feedback-title').innerText = isCorrect ? "非常好！" : "再接再厲！";
       document.getElementById('feedback-detail').innerText = text;
-      const btn = document.getElementById('feedback-next-btn');
-      btn.style.background = isCorrect ? "var(--duo-green)" : "var(--duo-red)";
+      document.getElementById('feedback-next-btn').style.background = isCorrect ? "var(--duo-green)" : "var(--duo-red)";
     }
 
     window.nextQuizQuestion = function() {
@@ -706,10 +778,18 @@
       currentUserProfile.xp += earnedXP;
       document.getElementById('xp-count').innerText = currentUserProfile.xp + " XP";
 
-      // 更新使用者的總 XP
-      set(ref(db, 'users/' + currentUserProfile.uid + '/xp'), currentUserProfile.xp);
+      let isPerfect = (currentScore === totalQ);
+      if (isPerfect) {
+        currentUserProfile.perfectCount += 1;
+      }
 
-      // 推送成績記錄到 Realtime Database 的 quiz_history 中
+      // 更新雲端使用者資料
+      update(ref(db, 'users/' + currentUserProfile.uid), {
+        xp: currentUserProfile.xp,
+        perfectCount: currentUserProfile.perfectCount
+      });
+
+      // 推送成績至雲端排行榜
       push(ref(db, 'quiz_history'), {
         user: currentUserProfile.nickname,
         date: new Date().toLocaleString(),
@@ -724,6 +804,60 @@
       document.getElementById('quiz-result-screen').style.display = 'none';
       document.getElementById('quiz-start-screen').style.display = 'block';
     };
+
+    // 渲染成就徽章牆
+    function renderBadges() {
+      const loginDays = currentUserProfile.loginDays || 1;
+      const perfectCount = currentUserProfile.perfectCount || 0;
+
+      // 1. 連續登入徽章設定
+      const loginBadgesConfig = [
+        { days: 1, title: "初學幼苗", desc: "完成首次登入體驗", icon: "fa-seedling" },
+        { days: 3, title: "持續發芽", desc: "連續登入達 3 天", icon: "fa-spa" },
+        { days: 7, title: "熱情火焰", desc: "連續登入達 7 天", icon: "fa-fire" },
+        { days: 14, title: "閃耀鑽石", desc: "連續登入達 14 天", icon: "fa-gem" },
+        { days: 30, title: "傳奇皇冠", desc: "連續登入滿 30 天", icon: "fa-crown" }
+      ];
+
+      const loginContainer = document.getElementById('login-badges-container');
+      loginContainer.innerHTML = loginBadgesConfig.map(b => {
+        const unlocked = loginDays >= b.days;
+        return `
+          <div class="achievement-badge ${unlocked ? '' : 'locked'}">
+            <div class="badge-icon-box"><i class="fa-solid ${b.icon}"></i></div>
+            <div class="badge-title">${b.title}</div>
+            <div class="badge-desc">${b.desc}</div>
+            <div style="font-size: 0.75rem; font-weight: 800; color: ${unlocked ? 'var(--duo-green)' : '#999'}; margin-top: auto;">
+              ${unlocked ? '✅ 已解鎖' : `🔒 需登入 ${b.days} 天 (目前 ${loginDays} 天)`}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // 2. 100分完美通關徽章設定
+      const perfectBadgesConfig = [
+        { count: 1, title: "初試啼聲", desc: "首次獲得 100 分滿分", icon: "fa-star" },
+        { count: 3, title: "滿分達人", desc: "累積達成 3 次 100 分", icon: "fa-medal" },
+        { count: 5, title: "卓越菁英", desc: "累積達成 5 次 100 分", icon: "fa-award" },
+        { count: 10, title: "百分之王", desc: "累積達成 10 次 100 分", icon: "fa-trophy" },
+        { count: 20, title: "獨孤求敗", desc: "累積達成 20 次 100 分", icon: "fa-fire-flame-curved" }
+      ];
+
+      const perfectContainer = document.getElementById('perfect-badges-container');
+      perfectContainer.innerHTML = perfectBadgesConfig.map(b => {
+        const unlocked = perfectCount >= b.count;
+        return `
+          <div class="achievement-badge ${unlocked ? '' : 'locked'}">
+            <div class="badge-icon-box"><i class="fa-solid ${b.icon}"></i></div>
+            <div class="badge-title">${b.title}</div>
+            <div class="badge-desc">${b.desc}</div>
+            <div style="font-size: 0.75rem; font-weight: 800; color: ${unlocked ? 'var(--duo-green)' : '#999'}; margin-top: auto;">
+              ${unlocked ? '✅ 已解鎖' : `🔒 需 100分 ${b.count} 次 (目前 ${perfectCount} 次)`}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
 
     function listenEnterpriseHistory() {
       const historyRef = ref(db, 'quiz_history');
