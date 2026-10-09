@@ -33,12 +33,17 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Din Round', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: var(--bg-main); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
-    /* 版面容器：手機版模式（移除黑色外框，改為純淨自適應寬度） */
-    body.mobile-mode main {
-      max-width: 480px !important;
-      margin: 16px auto;
-      background: var(--bg-main);
-      padding: 0 12px;
+    /* 只有在「電腦螢幕 (寬度大於 768px)」且開啟 mobile-mode 時，才限制手機模擬寬度與加上卡片陰影 */
+    @media (min-width: 768px) {
+      body.mobile-mode main {
+        max-width: 420px !important;
+        margin: 24px auto;
+        background: var(--card-bg);
+        border: 2px solid var(--duo-gray);
+        border-radius: 28px;
+        padding: 24px;
+        box-shadow: 0 12px 0 var(--duo-gray);
+      }
     }
 
     header {
@@ -832,7 +837,7 @@
             <div class="badge-title">${b.title}</div>
             <div class="badge-desc">${b.desc}</div>
             <div style="font-size: 0.75rem; font-weight: 800; color: ${unlocked ? 'var(--duo-green)' : '#999'}; margin-top: auto;">
-              ${unlocked ? '✅ 已解鎖' : `🔒 需全對 ${b.count} 天 (目前 ${perfectCount} 次)`}
+              ${unlocked ? '✅ 已解鎖' : `🔒 需全對 ${b.count} 次 (目前 ${perfectCount} 次)`}
             </div>
           </div>
         `;
