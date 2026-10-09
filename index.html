@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enterprise Vocab Pro - Duolingo 旗艦雲端版</title>
+  
+  <!-- PWA Manifest 宣告 -->
+  <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22Enterprise%20Vocab%20Pro%22%2C%22short_name%22%3A%22VocabPro%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f7f9fa%22%2C%22theme_color%22%3A%22%2358cc02%22%7D">
+  <meta name="theme-color" content="#58cc02">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -26,6 +33,17 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Din Round', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: var(--bg-main); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
+    /* 版面容器：透過 mobile-mode class 控制手機寬度模擬 */
+    body.mobile-mode main {
+      max-width: 420px !important;
+      border: 10px solid #333;
+      border-radius: 36px;
+      margin: 20px auto;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+      background: var(--bg-main);
+      overflow: hidden;
+    }
+
     header {
       background: white;
       border-bottom: 2px solid var(--duo-gray);
@@ -39,11 +57,11 @@
     }
     .logo { font-size: 1.4rem; font-weight: 900; color: var(--duo-green); display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
     
-    .status-bar { display: flex; align-items: center; gap: 20px; font-weight: 800; font-size: 1.05rem; }
+    .status-bar { display: flex; align-items: center; gap: 16px; font-weight: 800; font-size: 1.05rem; }
     .status-item { display: flex; align-items: center; gap: 6px; }
     .xp { color: var(--duo-yellow); }
 
-    main { max-width: 900px; width: 100%; margin: 24px auto; padding: 0 16px; flex: 1; }
+    main { max-width: 900px; width: 100%; margin: 24px auto; padding: 0 16px; flex: 1; transition: all 0.3s ease; }
 
     .nav-tabs { display: flex; gap: 12px; margin-bottom: 24px; justify-content: center; flex-wrap: wrap; }
     .tab-btn {
@@ -51,15 +69,15 @@
       border: 2px solid var(--duo-gray);
       border-bottom: 5px solid var(--duo-dark-gray);
       color: #777;
-      padding: 12px 24px;
+      padding: 12px 20px;
       border-radius: 16px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 800;
       cursor: pointer;
       transition: all 0.1s ease;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       text-transform: uppercase;
     }
     .tab-btn:active { transform: translateY(3px); border-bottom-width: 2px; }
@@ -106,7 +124,7 @@
 
     .badge-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
       margin-top: 16px;
     }
@@ -122,36 +140,20 @@
       gap: 8px;
       position: relative;
       overflow: hidden;
-      transition: transform 0.2s;
     }
-    .achievement-badge.locked {
-      filter: grayscale(1);
-      opacity: 0.5;
-      background: #eee;
-    }
+    .achievement-badge.locked { filter: grayscale(1); opacity: 0.5; background: #eee; }
     .achievement-badge:not(.locked) {
       border-color: var(--duo-yellow);
       box-shadow: 0 6px 0 rgba(255, 200, 0, 0.3);
       background: linear-gradient(135deg, #fffdf4 0%, #fff 100%);
     }
     .badge-icon-box {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      border: 3px solid var(--duo-gray);
-      box-shadow: 0 4px 0 var(--duo-gray);
-      margin-bottom: 4px;
+      width: 64px; height: 64px; border-radius: 50%; background: white;
+      display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+      border: 3px solid var(--duo-gray); box-shadow: 0 4px 0 var(--duo-gray); margin-bottom: 4px;
     }
     .achievement-badge:not(.locked) .badge-icon-box {
-      border-color: var(--duo-yellow);
-      background: var(--duo-yellow);
-      color: white;
-      box-shadow: 0 4px 0 #e5b200;
+      border-color: var(--duo-yellow); background: var(--duo-yellow); color: white; box-shadow: 0 4px 0 #e5b200;
     }
     .badge-title { font-size: 1.05rem; font-weight: 900; color: #3c3c3c; }
     .badge-desc { font-size: 0.82rem; font-weight: 700; color: #777; }
@@ -160,58 +162,25 @@
     .progress-bar-fill { height: 100%; background: var(--duo-green); width: 0%; transition: width 0.3s ease; border-radius: 10px; }
 
     .hero-card-viewport {
-      background: white;
-      border: 3px solid var(--duo-gray);
-      border-radius: 24px;
-      padding: 36px;
-      min-height: 380px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 10px 0 var(--duo-gray);
+      background: white; border: 3px solid var(--duo-gray); border-radius: 24px; padding: 36px;
+      min-height: 380px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 0 var(--duo-gray);
     }
     .hero-word-header { display: flex; justify-content: space-between; align-items: center; }
     .hero-word-title { font-size: 3.2rem; font-weight: 900; color: #3c3c3c; }
     .hero-word-meaning { font-size: 1.8rem; color: var(--duo-blue); font-weight: 800; margin-top: 8px; }
     
     .audio-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--duo-blue);
-      color: white;
-      border: none;
-      border-bottom: 4px solid var(--duo-blue-shadow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      cursor: pointer;
+      width: 50px; height: 50px; border-radius: 50%; background: var(--duo-blue); color: white;
+      border: none; border-bottom: 4px solid var(--duo-blue-shadow); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; cursor: pointer;
     }
     .audio-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
 
-    .hero-example-box {
-      background: #f1f5f9;
-      border-left: 6px solid var(--duo-yellow);
-      padding: 20px;
-      border-radius: 16px;
-      margin-top: 24px;
-    }
+    .hero-example-box { background: #f1f5f9; border-left: 6px solid var(--duo-yellow); padding: 20px; border-radius: 16px; margin-top: 24px; }
 
     .dots-container { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
     .dot {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: white;
-      border: 2px solid var(--duo-gray);
-      border-bottom: 4px solid var(--duo-dark-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: #888;
-      cursor: pointer;
+      width: 38px; height: 38px; border-radius: 12px; background: white; border: 2px solid var(--duo-gray);
+      border-bottom: 4px solid var(--duo-dark-gray); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #888; cursor: pointer;
     }
     .dot.active { background: var(--duo-green); color: white; border-color: var(--duo-green-shadow); }
 
@@ -219,19 +188,8 @@
     .options-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
     
     .option-btn {
-      background: white;
-      border: 2px solid var(--duo-gray);
-      border-bottom: 5px solid var(--duo-dark-gray);
-      padding: 18px 24px;
-      border-radius: 18px;
-      color: #3c3c3c;
-      font-size: 1.15rem;
-      font-weight: 800;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: white; border: 2px solid var(--duo-gray); border-bottom: 5px solid var(--duo-dark-gray);
+      padding: 18px 24px; border-radius: 18px; color: #3c3c3c; font-size: 1.15rem; font-weight: 800; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
     }
     .option-btn:hover { background: #f7f9fa; border-color: var(--duo-blue); }
     .option-btn:active { transform: translateY(3px); border-bottom-width: 2px; }
@@ -240,54 +198,28 @@
     .option-btn.wrong { background: #ffdfe0 !important; border-color: var(--duo-red) !important; color: #c62828 !important; }
 
     .feedback-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 24px 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 200;
-      transform: translateY(100%);
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: fixed; bottom: 0; left: 0; width: 100%; padding: 24px 32px;
+      display: flex; justify-content: space-between; align-items: center; z-index: 200;
+      transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .feedback-footer.show { transform: translateY(0); }
     .feedback-footer.correct-bg { background: #d7ffb8; border-top: 3px solid var(--duo-green); color: #2e7d32; }
     .feedback-footer.wrong-bg { background: #ffdfe0; border-top: 3px solid var(--duo-red); color: #c62828; }
 
     .input-field {
-      width: 100%;
-      max-width: 340px;
-      padding: 14px;
-      border: 2px solid var(--duo-gray);
-      border-radius: 16px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      outline: none;
-      margin: 10px 0;
+      width: 100%; max-width: 340px; padding: 14px; border: 2px solid var(--duo-gray);
+      border-radius: 16px; font-size: 1.1rem; font-weight: 800; outline: none; margin: 10px 0;
     }
     .input-field:focus { border-color: var(--duo-blue); }
 
     #auth-modal {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(5px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+      display: flex; justify-content: center; align-items: center; z-index: 9999;
     }
     .auth-box {
-      background: white;
-      padding: 40px;
-      border-radius: 28px;
-      width: 420px;
-      max-width: 90%;
-      border: 3px solid var(--duo-gray);
-      box-shadow: 0 12px 0 var(--duo-gray);
-      text-align: center;
+      background: white; padding: 40px; border-radius: 28px; width: 420px; max-width: 90%;
+      border: 3px solid var(--duo-gray); box-shadow: 0 12px 0 var(--duo-gray); text-align: center;
     }
 
     table { width: 100%; border-collapse: collapse; margin-top: 12px; }
@@ -323,29 +255,33 @@
   <header>
     <div class="logo"><i class="fa-solid fa-feather-pointed"></i> Enterprise Vocab Pro</div>
     <div class="status-bar">
+      <!-- 版面切換按鈕 -->
+      <button class="btn-3d btn-secondary-3d" id="layout-toggle-btn" onclick="toggleLayoutMode()" style="padding: 6px 12px; font-size: 0.85rem;" title="切換網頁/手機版">
+        <i class="fa-solid fa-mobile-screen"></i> <span id="layout-btn-text">手機板</span>
+      </button>
       <div class="status-item" style="color: var(--duo-blue); font-size: 0.95rem;"><i class="fa-solid fa-user"></i> <span id="current-user-tag">未登入</span></div>
       <div class="status-item xp" title="總經驗值"><i class="fa-solid fa-bolt"></i> <span id="xp-count">0 XP</span></div>
-      <button class="btn-3d btn-secondary-3d" style="padding: 6px 14px; font-size: 0.85rem;" onclick="handleLogout()">登出</button>
+      <button class="btn-3d btn-secondary-3d" style="padding: 6px 12px; font-size: 0.85rem;" onclick="handleLogout()">登出</button>
     </div>
   </header>
 
   <main>
     <div class="nav-tabs">
-      <button class="tab-btn active" onclick="switchTab('study')"><i class="fa-solid fa-book-open"></i> 卡牌學習</button>
-      <button class="tab-btn" onclick="switchTab('quiz')"><i class="fa-solid fa-gamepad"></i> 闖關測驗</button>
-      <button class="tab-btn" onclick="switchTab('badges')"><i class="fa-solid fa-award"></i> 成就徽章牆</button>
-      <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-trophy"></i> 雲端戰情排行榜</button>
-      <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-list-check"></i> 單字總庫 (<span id="db-count-label">0</span>)</button>
+      <button class="tab-btn active" onclick="switchTab('study')"><i class="fa-solid fa-book-open"></i> 學習</button>
+      <button class="tab-btn" onclick="switchTab('quiz')"><i class="fa-solid fa-gamepad"></i> 測驗</button>
+      <button class="tab-btn" onclick="switchTab('badges')"><i class="fa-solid fa-award"></i> 徽章</button>
+      <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-trophy"></i> 排行</button>
+      <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-list-check"></i> 單字庫</button>
     </div>
 
     <!-- 1. 卡牌學習區 -->
     <div id="view-study" class="view active">
       <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
         <div>
-          <h2 style="font-size: 1.4rem; font-weight: 900;">🎯 每日單字特訓 (抽取 10 字)</h2>
-          <p style="color: #888; font-size: 0.95rem; font-weight: 700;">點擊喇叭發音，點擊卡牌下方切換。</p>
+          <h2 style="font-size: 1.4rem; font-weight: 900;">🎯 每日單字特訓</h2>
+          <p style="color: #888; font-size: 0.95rem; font-weight: 700;">點擊喇叭發音，點擊下方切換。</p>
         </div>
-        <button class="btn-3d" onclick="loadStudyCards()"><i class="fa-solid fa-shuffle"></i> 換一批單字</button>
+        <button class="btn-3d" onclick="loadStudyCards()"><i class="fa-solid fa-shuffle"></i> 換一批</button>
       </div>
 
       <div id="hero-card-container"></div>
@@ -363,7 +299,7 @@
         <div id="quiz-start-screen" style="text-align: center; padding: 20px 0;">
           <div style="font-size: 4rem; color: var(--duo-green); margin-bottom: 16px;"><i class="fa-solid fa-circle-play"></i></div>
           <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">準備好開始挑戰了嗎？</h2>
-          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">答題後將自動倒數 3 秒並進入下一題：</p>
+          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">答題後自動倒數 3 秒進入下一題：</p>
           <button class="btn-3d" onclick="startQuiz()" style="font-size: 1.2rem; width: 80%; max-width: 300px;"><i class="fa-solid fa-rocket"></i> 開始測驗</button>
         </div>
 
@@ -397,12 +333,12 @@
     <div id="view-badges" class="view">
       <div class="card">
         <h2 style="font-size: 1.4rem; font-weight: 900; margin-bottom: 8px;"><i class="fa-solid fa-award" style="color: var(--duo-yellow);"></i> 個人成就徽章牆</h2>
-        <p style="color: #777; font-size: 0.95rem; font-weight: 700; margin-bottom: 20px;">解鎖從長期連續登入到 50,000 次完美通關的至高榮譽！</p>
+        <p style="color: #777; font-size: 0.95rem; font-weight: 700; margin-bottom: 20px;">解鎖連續登入與完美通關的至高榮譽！</p>
 
         <h3 style="font-size: 1.1rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark);">🔥 長期連續登入徽章</h3>
         <div class="badge-grid" id="login-badges-container"></div>
 
-        <h3 style="font-size: 1.1rem; font-weight: 900; margin: 24px 0 12px 0; color: var(--text-dark);">👑 完美通關（10題全對）累積徽章</h3>
+        <h3 style="font-size: 1.1rem; font-weight: 900; margin: 24px 0 12px 0; color: var(--text-dark);">👑 完美通關累積徽章</h3>
         <div class="badge-grid" id="perfect-badges-container"></div>
       </div>
     </div>
@@ -416,8 +352,8 @@
         <table>
           <thead>
             <tr>
-              <th>玩家暱稱</th>
-              <th>挑戰等級</th>
+              <th>玩家</th>
+              <th>等級</th>
               <th>得分</th>
               <th>正確率</th>
               <th>時間</th>
@@ -434,8 +370,8 @@
     <div id="view-database" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-          <h3 style="font-size: 1.3rem; font-weight: 900;">📚 7000 單字庫檢索</h3>
-          <input type="text" id="db-search-input" placeholder="搜尋英文或中文..." oninput="renderDatabase()" class="input-field" style="margin: 0; max-width: 240px;">
+          <h3 style="font-size: 1.3rem; font-weight: 900;">📚 單字庫檢索</h3>
+          <input type="text" id="db-search-input" placeholder="搜尋..." oninput="renderDatabase()" class="input-field" style="margin: 0; max-width: 200px;">
         </div>
         <div style="overflow-x: auto; max-height: 480px;">
           <table>
@@ -492,6 +428,34 @@
     let currentUserProfile = { uid: '', email: '', nickname: '未命名', xp: 0, loginDays: 1, perfectCount: 0 };
     let isRegisterMode = false;
     let countdownTimer = null;
+
+    // 註冊 PWA Service Worker 支援手機安裝
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('data:text/javascript;base64,').catch(() => {});
+      });
+    }
+
+    // 版面切換邏輯 (網頁版 / 手機版)
+    let isMobileView = localStorage.getItem('ox_ind_mobile_view') === 'true';
+    applyLayoutMode();
+
+    window.toggleLayoutMode = function() {
+      isMobileView = !isMobileView;
+      localStorage.setItem('ox_ind_mobile_view', isMobileView);
+      applyLayoutMode();
+    };
+
+    function applyLayoutMode() {
+      const btnText = document.getElementById('layout-btn-text');
+      if (isMobileView) {
+        document.body.classList.add('mobile-mode');
+        if (btnText) btnText.innerText = '網頁版';
+      } else {
+        document.body.classList.remove('mobile-mode');
+        if (btnText) btnText.innerText = '手機板';
+      }
+    }
 
     window.toggleAuthMode = function() {
       isRegisterMode = !isRegisterMode;
@@ -749,7 +713,6 @@
         showFeedback(false, `正確答案是：${correct}`);
       }
 
-      // 啟動 3 秒倒數自動下一題
       let timeLeft = 3;
       const timerText = document.getElementById('countdown-timer-text');
       timerText.innerText = `${timeLeft} 秒後自動下一題...`;
