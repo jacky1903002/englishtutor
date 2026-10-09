@@ -386,7 +386,6 @@
           <h3 style="font-size: 1.2rem; font-weight: 900;">📚 單字庫檢索 (<span id="db-count-label">0</span>)</h3>
           <input type="text" id="db-search-input" placeholder="搜尋單字..." oninput="renderDatabase()" class="input-field" style="margin: 0; max-width: 180px;">
         </div>
-        <!-- 修正處：移除 max-height 限制，讓表格內容正常撐開顯示 -->
         <div style="overflow-x: auto;">
           <table>
             <thead>
@@ -578,15 +577,17 @@
         const response = await fetch('./vocab_7000.json');
         if (!response.ok) throw new Error("JSON not found");
         const rawData = await response.json();
+        
         masterVocabDB = rawData.map((item, index) => ({
-          key: item.word + "_" + index,
-          word: item.word,
-          meaning: (item.pos ? `[${item.pos}] ` : '') + (item.translation || item.meaning || ''),
-          level: item.level || 1,
-          exampleEn: item.sentence || item.exampleEn || "",
-          exampleZh: item.sentence_zh || item.exampleZh || ""
+          key: (item.word || item.vocab || String(index)) + "_" + index,
+          word: item.word || item.vocab || "",
+          meaning: (item.pos ? `[${item.pos}] ` : '') + (item.translation || item.meaning || item.definition || ''),
+          level: item.level || item.lvl || 1,
+          exampleEn: item.sentence || item.exampleEn || item.en || "",
+          exampleZh: item.sentence_zh || item.exampleZh || item.zh || ""
         }));
       } catch (err) {
+        console.error("載入 vocab_7000.json 失敗：", err);
         masterVocabDB = [
           { word: "ability", meaning: "[n.] 能力、才能", level: 1, exampleEn: "She has the ability to lead.", exampleZh: "她具備領導能力。" },
           { word: "efficiency", meaning: "[n.] 效率、效能", level: 1, exampleEn: "Improve manufacturing efficiency.", exampleZh: "提升製造效率。" },
@@ -886,18 +887,31 @@
     }
 
     window.renderDatabase = function() {
-      const query = document.getElementById('db-search-input').value.toLowerCase();
+      const searchInput = document.getElementById('db-search-input');
+      const query = (searchInput && searchInput.value ? searchInput.value : "").toLowerCase();
       const tbody = document.getElementById('db-tbody');
-      const filtered = masterVocabDB.filter(item => item.word.toLowerCase().includes(query) || item.meaning.toLowerCase().includes(query)).slice(0, 50);
+      if (!tbody) return;
+
+      // 修正處：嚴格防範欄位為空或 null 導致 toLowerCase 報錯
+      const filtered = masterVocabDB.filter(item => {
+        const wordStr = (item.word || "").toLowerCase();
+        const meaningStr = (item.meaning || "").toLowerCase();
+        return wordStr.includes(query) || meaningStr.includes(query);
+      }).slice(0, 50);
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #888;">沒有找到符合的單字</td></tr>`;
+        return;
+      }
 
       tbody.innerHTML = filtered.map(item => `
         <tr>
-          <td style="color: var(--duo-blue); font-weight: bold;">${item.word}</td>
-          <td>${item.meaning}</td>
-          <td>L${item.level}</td>
+          <td style="color: var(--duo-blue); font-weight: bold;">${item.word || ''}</td>
+          <td>${item.meaning || ''}</td>
+          <td>L${item.level || 1}</td>
           <td style="font-size: 0.85rem; color: #666;">
-            <div>${item.exampleEn}</div>
-            <div style="color: #888; margin-top: 2px;">${item.exampleZh}</div>
+            <div>${item.exampleEn || ''}</div>
+            <div style="color: #888; margin-top: 2px;">${item.exampleZh || ''}</div>
           </td>
         </tr>
       `).join('');
