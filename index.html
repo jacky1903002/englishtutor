@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Vocab Pro - Duolingo 旗艦版</title>
+  <title>Enterprise Vocab Pro - Duolingo 旗艦雲端版</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -26,7 +26,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Din Round', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: var(--bg-main); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
-    /* 頂部 Duolingo 遊戲化 Header */
     header {
       background: white;
       border-bottom: 2px solid var(--duo-gray);
@@ -40,7 +39,6 @@
     }
     .logo { font-size: 1.4rem; font-weight: 900; color: var(--duo-green); display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
     
-    /* 頂部 gamification 狀態欄 */
     .status-bar { display: flex; align-items: center; gap: 20px; font-weight: 800; font-size: 1.05rem; }
     .status-item { display: flex; align-items: center; gap: 6px; cursor: pointer; transition: transform 0.2s; }
     .status-item:hover { transform: scale(1.1); }
@@ -51,7 +49,6 @@
 
     main { max-width: 900px; width: 100%; margin: 24px auto; padding: 0 16px; flex: 1; }
 
-    /* 遊戲選單頁籤 */
     .nav-tabs { display: flex; gap: 12px; margin-bottom: 24px; justify-content: center; flex-wrap: wrap; }
     .tab-btn {
       background: white;
@@ -83,7 +80,6 @@
     .view.active { display: block; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     @keyframes popIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-    /* 3D 遊戲按鈕 */
     .btn-3d {
       background: var(--duo-green);
       color: white;
@@ -112,11 +108,9 @@
     }
     .btn-secondary-3d:hover { background: #f8fafc; }
 
-    /* 進度條 */
     .progress-bar-wrap { width: 100%; height: 16px; background: var(--duo-gray); border-radius: 10px; overflow: hidden; margin: 16px 0; }
     .progress-bar-fill { height: 100%; background: var(--duo-green); width: 0%; transition: width 0.3s ease; border-radius: 10px; }
 
-    /* 學習卡牌模式 */
     .hero-card-viewport {
       background: white;
       border: 3px solid var(--duo-gray);
@@ -128,7 +122,6 @@
       justify-content: space-between;
       position: relative;
       box-shadow: 0 10px 0 var(--duo-gray);
-      transition: all 0.3s;
     }
     .hero-word-header { display: flex; justify-content: space-between; align-items: center; }
     .hero-word-title { font-size: 3.2rem; font-weight: 900; color: #3c3c3c; }
@@ -147,7 +140,6 @@
       justify-content: center;
       font-size: 1.3rem;
       cursor: pointer;
-      transition: all 0.1s;
     }
     .audio-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
 
@@ -159,7 +151,6 @@
       margin-top: 24px;
     }
 
-    /* 分頁 Dots */
     .dots-container { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
     .dot {
       width: 38px;
@@ -177,7 +168,6 @@
     }
     .dot.active { background: var(--duo-green); color: white; border-color: var(--duo-green-shadow); }
 
-    /* 測驗區 */
     .quiz-word-display { font-size: 2.8rem; font-weight: 900; color: #3c3c3c; text-align: center; margin: 20px 0; }
     .options-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
     
@@ -192,7 +182,6 @@
       font-weight: 800;
       text-align: left;
       cursor: pointer;
-      transition: all 0.1s;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -200,11 +189,9 @@
     .option-btn:hover { background: #f7f9fa; border-color: var(--duo-blue); }
     .option-btn:active { transform: translateY(3px); border-bottom-width: 2px; }
     
-    /* 正確與錯誤狀態 */
     .option-btn.correct { background: #d7ffb8 !important; border-color: var(--duo-green) !important; color: #2e7d32 !important; }
     .option-btn.wrong { background: #ffdfe0 !important; border-color: var(--duo-red) !important; color: #c62828 !important; }
 
-    /* 答題完成底欄反饋 (Duolingo Footer Style) */
     .feedback-footer {
       position: fixed;
       bottom: 0;
@@ -224,19 +211,39 @@
 
     .input-field {
       width: 100%;
-      max-width: 320px;
+      max-width: 340px;
       padding: 14px;
       border: 2px solid var(--duo-gray);
       border-radius: 16px;
       font-size: 1.1rem;
       font-weight: 800;
-      text-align: center;
       outline: none;
-      margin: 16px 0;
+      margin: 10px 0;
     }
     .input-field:focus { border-color: var(--duo-blue); }
 
-    /* 表格 styles */
+    /* 全螢幕登入/註冊 Modal */
+    #auth-modal {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .auth-box {
+      background: white;
+      padding: 40px;
+      border-radius: 28px;
+      width: 420px;
+      max-width: 90%;
+      border: 3px solid var(--duo-gray);
+      box-shadow: 0 12px 0 var(--duo-gray);
+      text-align: center;
+    }
+
     table { width: 100%; border-collapse: collapse; margin-top: 12px; }
     th, td { padding: 14px; border-bottom: 2px solid var(--duo-gray); text-align: left; font-weight: 700; }
     th { color: #888; background: #f8fafc; }
@@ -244,14 +251,36 @@
 </head>
 <body>
 
+  <!-- 登入與註冊 Modal 畫面 -->
+  <div id="auth-modal">
+    <div class="auth-box">
+      <div style="font-size: 3rem; color: var(--duo-green); margin-bottom: 12px;"><i class="fa-solid fa-feather-pointed"></i></div>
+      <h2 id="auth-title" style="font-size: 1.6rem; font-weight: 900; margin-bottom: 16px;">歡迎登入 Enterprise Vocab</h2>
+      
+      <div id="auth-form-container" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <!-- 註冊專用暱稱欄位 -->
+        <div id="nickname-group" style="display: none; width: 100%;">
+          <input type="text" id="auth-nickname" class="input-field" placeholder="請輸入您的遊戲暱稱" style="max-width: 100%;">
+        </div>
+        <input type="email" id="auth-email" class="input-field" placeholder="電子郵件 (Email)" style="max-width: 100%;">
+        <input type="password" id="auth-password" class="input-field" placeholder="密碼 (Password)" style="max-width: 100%;">
+
+        <button class="btn-3d" id="auth-submit-btn" onclick="handleAuthSubmit()" style="width: 100%; margin-top: 10px;">登入系統</button>
+        
+        <p id="auth-switch-text" style="margin-top: 16px; font-weight: 700; font-size: 0.95rem; color: #777; cursor: pointer;" onclick="toggleAuthMode()">
+          還沒有帳號？點此免費註冊
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- 頂部 Duo 遊戲狀態列 -->
   <header>
     <div class="logo"><i class="fa-solid fa-feather-pointed"></i> Enterprise Vocab Pro</div>
     <div class="status-bar">
-      <div class="status-item fire" title="連續學習天數"><i class="fa-solid fa-fire"></i> <span id="streak-count">7</span></div>
-      <div class="status-item gem" title="獲得寶石"><i class="fa-solid fa-gem"></i> <span id="gem-count">1,250</span></div>
-      <div class="status-item xp" title="總經驗值"><i class="fa-solid fa-bolt"></i> <span id="xp-count">340 XP</span></div>
-      <div class="status-item heart" title="剩餘體力"><i class="fa-solid fa-heart"></i> 5</div>
+      <div class="status-item" style="color: var(--duo-blue); font-size: 0.95rem;"><i class="fa-solid fa-user"></i> <span id="current-user-tag">未登入</span></div>
+      <div class="status-item xp" title="總經驗值"><i class="fa-solid fa-bolt"></i> <span id="xp-count">0 XP</span></div>
+      <button class="btn-3d btn-secondary-3d" style="padding: 6px 14px; font-size: 0.85rem;" onclick="handleLogout()">登出</button>
     </div>
   </header>
 
@@ -259,7 +288,7 @@
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchTab('study')"><i class="fa-solid fa-book-open"></i> 卡牌學習</button>
       <button class="tab-btn" onclick="switchTab('quiz')"><i class="fa-solid fa-gamepad"></i> 闖關測驗</button>
-      <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-trophy"></i> 戰情排行榜</button>
+      <button class="tab-btn" onclick="switchTab('enterprise')"><i class="fa-solid fa-trophy"></i> 雲端戰情排行榜</button>
       <button class="tab-btn" onclick="switchTab('database')"><i class="fa-solid fa-list-check"></i> 單字總庫 (<span id="db-count-label">0</span>)</button>
     </div>
 
@@ -268,36 +297,30 @@
       <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
         <div>
           <h2 style="font-size: 1.4rem; font-weight: 900;">🎯 每日單字特訓 (抽取 10 字)</h2>
-          <p style="color: #888; font-size: 0.95rem; font-weight: 700;">點擊喇叭發音，點擊卡牌切換下一張。</p>
+          <p style="color: #888; font-size: 0.95rem; font-weight: 700;">點擊喇叭發音，點擊卡牌下方切換。</p>
         </div>
         <button class="btn-3d" onclick="loadStudyCards()"><i class="fa-solid fa-shuffle"></i> 換一批單字</button>
       </div>
 
       <div id="hero-card-container"></div>
-
       <div class="dots-container" id="pagination-dots"></div>
 
       <div style="display: flex; justify-content: space-between; margin-top: 16px;">
-        <button class="btn-3d btn-secondary-3d" id="btn-prev-card" onclick="changeCardIndex(-1)"><i class="fa-solid fa-arrow-left"></i> 上一張</button>
-        <button class="btn-3d btn-secondary-3d" id="btn-next-card" onclick="changeCardIndex(1)">下一張 <i class="fa-solid fa-arrow-right"></i></button>
+        <button class="btn-3d btn-secondary-3d" onclick="changeCardIndex(-1)"><i class="fa-solid fa-arrow-left"></i> 上一張</button>
+        <button class="btn-3d btn-secondary-3d" onclick="changeCardIndex(1)">下一張 <i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
 
     <!-- 2. 闖關測驗區 -->
     <div id="view-quiz" class="view">
       <div class="card">
-        <!-- 開始畫面 -->
         <div id="quiz-start-screen" style="text-align: center; padding: 20px 0;">
           <div style="font-size: 4rem; color: var(--duo-green); margin-bottom: 16px;"><i class="fa-solid fa-circle-play"></i></div>
-          <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">準備好開始英文挑戰了嗎？</h2>
-          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">輸入玩家暱稱開始關卡挑戰：</p>
-          <div>
-            <input type="text" id="quiz-username-input" class="input-field" placeholder="輸入暱稱" maxlength="20">
-          </div>
+          <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">準備好開始挑戰了嗎？</h2>
+          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">點擊下方按鈕立即開始答題：</p>
           <button class="btn-3d" onclick="startQuiz()" style="font-size: 1.2rem; width: 80%; max-width: 300px;"><i class="fa-solid fa-rocket"></i> 開始測驗</button>
         </div>
 
-        <!-- 題目畫面 -->
         <div id="quiz-question-screen" style="display: none;">
           <div style="display: flex; justify-content: space-between; align-items: center; font-weight: 800; color: #888;">
             <span id="quiz-progress-text">題目 1 / 10</span>
@@ -309,18 +332,16 @@
 
           <div style="display: flex; justify-content: center; align-items: center; gap: 12px;">
             <div class="quiz-word-display" id="quiz-word-el">Loading...</div>
-            <button class="audio-btn" id="quiz-speak-btn" onclick="speakCurrentWord()"><i class="fa-solid fa-volume-high"></i></button>
+            <button class="audio-btn" onclick="speakCurrentWord()"><i class="fa-solid fa-volume-high"></i></button>
           </div>
 
           <div class="options-grid" id="quiz-options-container"></div>
         </div>
 
-        <!-- 結算畫面 -->
         <div id="quiz-result-screen" style="display: none; text-align: center; padding: 20px 0;">
           <div style="font-size: 5rem; color: var(--duo-yellow); margin-bottom: 16px;"><i class="fa-solid fa-crown"></i></div>
-          <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 8px;">關卡完成！</h2>
-          <p id="quiz-score-display" style="font-size: 1.3rem; font-weight: 800; color: #3c3c3c; margin-bottom: 12px;"></p>
-          <p id="quiz-feedback-display" style="font-size: 1.1rem; color: var(--duo-blue); font-weight: 800; margin-bottom: 24px;"></p>
+          <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 8px;">關卡完成並已同步至雲端！</h2>
+          <p id="quiz-score-display" style="font-size: 1.3rem; font-weight: 800; color: #3c3c3c; margin-bottom: 24px;"></p>
           <button class="btn-3d" onclick="resetQuiz()"><i class="fa-solid fa-rotate-right"></i> 再玩一次</button>
         </div>
       </div>
@@ -330,10 +351,7 @@
     <div id="view-enterprise" class="view">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h2 style="font-size: 1.4rem; font-weight: 900;"><i class="fa-solid fa-medal" style="color: var(--duo-yellow);"></i> 學習戰情排行榜</h2>
-          <select id="filter-user-select" onchange="renderEnterpriseHistory()" style="padding: 8px 16px; border-radius: 12px; font-weight: 800; border: 2px solid var(--duo-gray);">
-            <option value="ALL">全體排行榜</option>
-          </select>
+          <h2 style="font-size: 1.4rem; font-weight: 900;"><i class="fa-solid fa-medal" style="color: var(--duo-yellow);"></i> 雲端戰情排行榜</h2>
         </div>
         <table>
           <thead>
@@ -345,7 +363,9 @@
               <th>時間</th>
             </tr>
           </thead>
-          <tbody id="enterprise-history-tbody"></tbody>
+          <tbody id="enterprise-history-tbody">
+            <tr><td colspan="5" style="text-align: center; color: #888;">載入雲端排行榜中...</td></tr>
+          </tbody>
         </table>
       </div>
     </div>
@@ -374,7 +394,6 @@
     </div>
   </main>
 
-  <!-- 底部 Duolingo 答題反饋彈窗 -->
   <div class="feedback-footer" id="feedback-footer">
     <div style="display: flex; align-items: center; gap: 16px;">
       <div style="font-size: 2.5rem;" id="feedback-icon"><i class="fa-solid fa-circle-check"></i></div>
@@ -386,18 +405,110 @@
     <button class="btn-3d" id="feedback-next-btn" onclick="nextQuizQuestion()">下一題</button>
   </div>
 
-  <script>
+  <!-- Firebase 核心及應用程式邏輯 (使用 ES Module) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDjBHf2C07wTyZjLC5ek1pIStEZBTrMCQc",
+      authDomain: "englishtutor-2505f.firebaseapp.com",
+      databaseURL: "https://englishtutor-2505f-default-rtdb.firebaseio.com",
+      projectId: "englishtutor-2505f",
+      storageBucket: "englishtutor-2505f.firebasestorage.app",
+      messagingSenderId: "372456895281",
+      appId: "1:372456895281:web:f47bf92e3e1495e5fcb610",
+      measurementId: "G-E7DJB640V5"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
     let masterVocabDB = [];
     let currentStudyPool = [];
     let currentCardIndex = 0;
+    let currentUserProfile = { uid: '', email: '', nickname: '未命名', xp: 0 };
+    let isRegisterMode = false;
 
-    let appState = {
-      level: parseInt(localStorage.getItem('ox_ind_level')) || 1,
-      lastUser: localStorage.getItem('ox_ind_last_user') || '',
-      history: JSON.parse(localStorage.getItem('ox_ind_history')) || []
+    // 將重要函式掛載至 window 供 HTML 事件呼叫
+    window.toggleAuthMode = function() {
+      isRegisterMode = !isRegisterMode;
+      document.getElementById('auth-title').innerText = isRegisterMode ? '註冊新帳號' : '歡迎登入 Enterprise Vocab';
+      document.getElementById('nickname-group').style.display = isRegisterMode ? 'block' : 'none';
+      document.getElementById('auth-submit-btn').innerText = isRegisterMode ? '立即註冊並登入' : '登入系統';
+      document.getElementById('auth-switch-text').innerText = isRegisterMode ? '已有帳號？點此直接登入' : '還沒有帳號？點此免費註冊';
     };
 
-    // 語音朗讀
+    window.handleAuthSubmit = function() {
+      const email = document.getElementById('auth-email').value.trim();
+      const password = document.getElementById('auth-password').value;
+      const nickname = document.getElementById('auth-nickname').value.trim();
+
+      if (!email || !password) {
+        alert("請填寫完整的電子郵件與密碼！");
+        return;
+      }
+
+      if (isRegisterMode) {
+        if (!nickname) {
+          alert("註冊時請輸入您的遊戲暱稱！");
+          return;
+        }
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            // 將使用者的暱稱存入 Realtime Database 內的 users 資料夾
+            set(ref(db, 'users/' + user.uid), {
+              nickname: nickname,
+              email: email,
+              xp: 0
+            });
+          })
+          .catch((error) => {
+            alert("註冊失敗：" + error.message);
+          });
+      } else {
+        signInWithEmailAndPassword(auth, email, password)
+          .catch((error) => {
+            alert("登入失敗：" + error.message);
+          });
+      }
+    };
+
+    window.handleLogout = function() {
+      signOut(auth).then(() => {
+        location.reload();
+      });
+    };
+
+    // 監聽登入狀態
+    onAuthStateChanged(auth, (user) => {
+      const modal = document.getElementById('auth-modal');
+      if (user) {
+        modal.style.display = 'none';
+        // 讀取該使用者的暱稱與個人資料
+        onValue(ref(db, 'users/' + user.uid), (snapshot) => {
+          const data = snapshot.val();
+          currentUserProfile.uid = user.uid;
+          currentUserProfile.email = user.email;
+          if (data) {
+            currentUserProfile.nickname = data.nickname || "玩家";
+            currentUserProfile.xp = data.xp || 0;
+          } else {
+            currentUserProfile.nickname = user.email.split('@')[0];
+          }
+          document.getElementById('current-user-tag').innerText = currentUserProfile.nickname;
+          document.getElementById('xp-count').innerText = currentUserProfile.xp + " XP";
+        }, { onlyOnce: true });
+
+        initDatabase();
+      } else {
+        modal.style.display = 'flex';
+      }
+    });
+
     function speakWord(word) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
@@ -407,19 +518,20 @@
         window.speechSynthesis.speak(utterance);
       }
     }
+    window.speakWord = speakWord;
 
     async function initDatabase() {
       try {
         const response = await fetch('./vocab_7000.json');
-        if (!response.ok) throw new Error("JSON file not found");
+        if (!response.ok) throw new Error("JSON not found");
         const rawData = await response.json();
-masterVocabDB = rawData.map((item, index) => ({
+        masterVocabDB = rawData.map((item, index) => ({
           key: item.word + "_" + index,
           word: item.word,
           meaning: (item.pos ? `[${item.pos}] ` : '') + (item.translation || item.meaning || ''),
           level: item.level || 1,
           exampleEn: item.sentence || item.exampleEn || "",
-          exampleZh: item.sentence_zh || item.exampleZh || "" // <--- 改成對應 JSON 的 sentence_zh
+          exampleZh: item.sentence_zh || item.exampleZh || ""
         }));
       } catch (err) {
         masterVocabDB = [
@@ -430,37 +542,31 @@ masterVocabDB = rawData.map((item, index) => ({
       }
 
       document.getElementById('db-count-label').innerText = masterVocabDB.length;
-      if (appState.lastUser) {
-        document.getElementById('quiz-username-input').value = appState.lastUser;
-      }
-
       loadStudyCards();
       renderDatabase();
-      renderEnterpriseHistory();
+      listenEnterpriseHistory();
     }
 
-    function switchTab(tabId) {
+    window.switchTab = function(tabId) {
       ['study', 'quiz', 'enterprise', 'database'].forEach((id, idx) => {
         document.getElementById(`view-${id}`).classList.toggle('active', id === tabId);
         document.querySelectorAll('.tab-btn')[idx].classList.toggle('active', id === tabId);
       });
       if (tabId === 'study') loadStudyCards();
-      if (tabId === 'enterprise') renderEnterpriseHistory();
       if (tabId === 'database') renderDatabase();
-    }
+    };
 
     function getRandomItems(arr, count) {
       return [...arr].sort(() => 0.5 - Math.random()).slice(0, count);
     }
 
-    function loadStudyCards() {
+    window.loadStudyCards = function() {
       if (masterVocabDB.length === 0) return;
-      const pool = masterVocabDB.filter(item => item.level === appState.level);
-      const targetPool = pool.length >= 4 ? pool : masterVocabDB;
+      const targetPool = masterVocabDB;
       currentStudyPool = getRandomItems(targetPool, Math.min(10, targetPool.length));
       currentCardIndex = 0;
       renderStudyCard();
-    }
+    };
 
     function renderStudyCard() {
       if (currentStudyPool.length === 0) return;
@@ -477,7 +583,7 @@ masterVocabDB = rawData.map((item, index) => ({
             <div class="hero-word-meaning">${item.meaning}</div>
           </div>
           <div class="hero-example-box">
-            <div style="font-weight: 800; font-size: 1.1rem; color: #3c3c3c;">"${item.exampleEn || 'No example sentence.'}"</div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: #3c3c3c;">"${item.exampleEn || 'No example.'}"</div>
             <div style="color: #777; font-weight: 700; margin-top: 4px;">"${item.exampleZh || '暫無例句中文'}"</div>
           </div>
         </div>
@@ -492,36 +598,26 @@ masterVocabDB = rawData.map((item, index) => ({
       });
     }
 
-    function changeCardIndex(delta) {
+    window.changeCardIndex = function(delta) {
       const newIndex = currentCardIndex + delta;
       if (newIndex >= 0 && newIndex < currentStudyPool.length) {
         currentCardIndex = newIndex;
         renderStudyCard();
       }
-    }
+    };
 
-    function goToCard(index) {
+    window.goToCard = function(index) {
       currentCardIndex = index;
       renderStudyCard();
-    }
+    };
 
     /* 闖關測驗邏輯 */
     let quizQuestions = [];
     let currentQIdx = 0;
     let currentScore = 0;
-    let currentQuizUser = "";
 
-    function startQuiz() {
-      const inputEl = document.getElementById('quiz-username-input');
-      const username = inputEl.value.trim();
-      if (!username) { alert("請輸入暱稱！"); return; }
-
-      currentQuizUser = username;
-      appState.lastUser = username;
-      localStorage.setItem('ox_ind_last_user', username);
-
-      const pool = masterVocabDB.filter(item => item.level === appState.level);
-      const targetPool = pool.length >= 4 ? pool : masterVocabDB;
+    window.startQuiz = function() {
+      const targetPool = masterVocabDB;
       quizQuestions = getRandomItems(targetPool, Math.min(10, targetPool.length));
       currentQIdx = 0;
       currentScore = 0;
@@ -530,7 +626,7 @@ masterVocabDB = rawData.map((item, index) => ({
       document.getElementById('quiz-result-screen').style.display = 'none';
       document.getElementById('quiz-question-screen').style.display = 'block';
       renderQuizQuestion();
-    }
+    };
 
     function renderQuizQuestion() {
       if (currentQIdx >= quizQuestions.length) {
@@ -561,15 +657,14 @@ masterVocabDB = rawData.map((item, index) => ({
       });
     }
 
-    function speakCurrentWord() {
+    window.speakCurrentWord = function() {
       const q = quizQuestions[currentQIdx];
       if (q) speakWord(q.word);
-    }
+    };
 
-    function checkAnswer(btn, selected, correct) {
+    window.checkAnswer = function(btn, selected, correct) {
       const isCorrect = selected === correct;
-      const allBtns = document.querySelectorAll('.option-btn');
-      allBtns.forEach(b => b.style.pointerEvents = 'none');
+      document.querySelectorAll('.option-btn').forEach(b => b.style.pointerEvents = 'none');
 
       if (isCorrect) {
         btn.classList.add('correct');
@@ -581,28 +676,23 @@ masterVocabDB = rawData.map((item, index) => ({
         btn.querySelector('i').className = 'fa-solid fa-circle-xmark';
         showFeedback(false, `正確答案是：${correct}`);
       }
-    }
+    };
 
     function showFeedback(isCorrect, text) {
       const footer = document.getElementById('feedback-footer');
-      const icon = document.getElementById('feedback-icon');
-      const title = document.getElementById('feedback-title');
-      const detail = document.getElementById('feedback-detail');
-      const btn = document.getElementById('feedback-next-btn');
-
       footer.className = `feedback-footer show ${isCorrect ? 'correct-bg' : 'wrong-bg'}`;
-      icon.innerHTML = isCorrect ? `<i class="fa-solid fa-circle-check"></i>` : `<i class="fa-solid fa-circle-xmark"></i>`;
-      title.innerText = isCorrect ? "非常好！" : "再接再厲！";
-      detail.innerText = text;
+      document.getElementById('feedback-icon').innerHTML = isCorrect ? `<i class="fa-solid fa-circle-check"></i>` : `<i class="fa-solid fa-circle-xmark"></i>`;
+      document.getElementById('feedback-title').innerText = isCorrect ? "非常好！" : "再接再厲！";
+      document.getElementById('feedback-detail').innerText = text;
+      const btn = document.getElementById('feedback-next-btn');
       btn.style.background = isCorrect ? "var(--duo-green)" : "var(--duo-red)";
-      btn.style.borderColor = isCorrect ? "var(--duo-green-shadow)" : "var(--duo-red-shadow)";
     }
 
-    function nextQuizQuestion() {
+    window.nextQuizQuestion = function() {
       document.getElementById('feedback-footer').classList.remove('show');
       currentQIdx++;
       renderQuizQuestion();
-    }
+    };
 
     function finishQuiz() {
       document.getElementById('quiz-question-screen').style.display = 'none';
@@ -610,43 +700,57 @@ masterVocabDB = rawData.map((item, index) => ({
 
       const totalQ = quizQuestions.length;
       const pct = Math.round((currentScore / totalQ) * 100);
-      document.getElementById('quiz-score-display').innerText = `${currentQuizUser} 獲得得分：${currentScore} / ${totalQ} (${pct}%)`;
+      document.getElementById('quiz-score-display').innerText = `${currentUserProfile.nickname} 獲得得分：${currentScore} / ${totalQ} (${pct}%)`;
 
-      // 增加經驗值
-      const currentXP = parseInt(document.getElementById('xp-count').innerText) || 0;
-      document.getElementById('xp-count').innerText = `${currentXP + (currentScore * 10)} XP`;
+      const earnedXP = currentScore * 10;
+      currentUserProfile.xp += earnedXP;
+      document.getElementById('xp-count').innerText = currentUserProfile.xp + " XP";
 
-      appState.history.unshift({
-        user: currentQuizUser,
-        date: new Date().toLocaleTimeString(),
+      // 更新使用者的總 XP
+      set(ref(db, 'users/' + currentUserProfile.uid + '/xp'), currentUserProfile.xp);
+
+      // 推送成績記錄到 Realtime Database 的 quiz_history 中
+      push(ref(db, 'quiz_history'), {
+        user: currentUserProfile.nickname,
+        date: new Date().toLocaleString(),
         score: `${currentScore}/${totalQ}`,
         pct: pct,
-        level: appState.level
+        level: 1,
+        timestamp: Date.now()
       });
-      localStorage.setItem('ox_ind_history', JSON.stringify(appState.history));
-      renderEnterpriseHistory();
     }
 
-    function resetQuiz() {
+    window.resetQuiz = function() {
       document.getElementById('quiz-result-screen').style.display = 'none';
       document.getElementById('quiz-start-screen').style.display = 'block';
+    };
+
+    function listenEnterpriseHistory() {
+      const historyRef = ref(db, 'quiz_history');
+      onValue(historyRef, (snapshot) => {
+        const data = snapshot.val();
+        const tbody = document.getElementById('enterprise-history-tbody');
+        if (!tbody) return;
+
+        if (!data) {
+          tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #888;">尚無測驗紀錄</td></tr>`;
+          return;
+        }
+
+        const historyArray = Object.values(data).sort((a, b) => b.timestamp - a.timestamp);
+        tbody.innerHTML = historyArray.slice(0, 20).map(h => `
+          <tr>
+            <td>${h.user}</td>
+            <td>Level ${h.level || 1}</td>
+            <td>${h.score}</td>
+            <td style="color: var(--duo-green);">${h.pct}%</td>
+            <td style="color: #888;">${h.date}</td>
+          </tr>
+        `).join('');
+      });
     }
 
-    function renderEnterpriseHistory() {
-      const tbody = document.getElementById('enterprise-history-tbody');
-      if (!tbody) return;
-      tbody.innerHTML = appState.history.map(h => `
-        <tr>
-          <td>${h.user}</td>
-          <td>Level ${h.level}</td>
-          <td>${h.score}</td>
-          <td style="color: var(--duo-green);">${h.pct}%</td>
-          <td style="color: #888;">${h.date}</td>
-        </tr>
-      `).join('');
-    }
-
-    function renderDatabase() {
+    window.renderDatabase = function() {
       const query = document.getElementById('db-search-input').value.toLowerCase();
       const tbody = document.getElementById('db-tbody');
       const filtered = masterVocabDB.filter(item => item.word.toLowerCase().includes(query) || item.meaning.toLowerCase().includes(query)).slice(0, 50);
@@ -659,9 +763,7 @@ masterVocabDB = rawData.map((item, index) => ({
           <td style="font-size: 0.85rem; color: #666;">${item.exampleEn}</td>
         </tr>
       `).join('');
-    }
-
-    initDatabase();
+    };
   </script>
 </body>
 </html>
