@@ -363,7 +363,7 @@
         <div id="quiz-start-screen" style="text-align: center; padding: 20px 0;">
           <div style="font-size: 4rem; color: var(--duo-green); margin-bottom: 16px;"><i class="fa-solid fa-circle-play"></i></div>
           <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">準備好開始挑戰了嗎？</h2>
-          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">答題後將自動倒數 5 秒並進入下一題：</p>
+          <p style="color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 16px;">答題後將自動倒數 3 秒並進入下一題：</p>
           <button class="btn-3d" onclick="startQuiz()" style="font-size: 1.2rem; width: 80%; max-width: 300px;"><i class="fa-solid fa-rocket"></i> 開始測驗</button>
         </div>
 
@@ -462,7 +462,7 @@
         <p id="feedback-detail" style="font-size: 1rem; font-weight: 700;"></p>
       </div>
     </div>
-    <div id="countdown-timer-text" style="font-size: 1.2rem; font-weight: 900;">5 秒後自動下一題...</div>
+    <div id="countdown-timer-text" style="font-size: 1.2rem; font-weight: 900;">3 秒後自動下一題...</div>
   </div>
 
   <!-- Firebase 核心及應用程式邏輯 -->
@@ -749,8 +749,8 @@
         showFeedback(false, `正確答案是：${correct}`);
       }
 
-      // 啟動 5 秒倒數自動下一題
-      let timeLeft = 5;
+      // 啟動 3 秒倒數自動下一題
+      let timeLeft = 3;
       const timerText = document.getElementById('countdown-timer-text');
       timerText.innerText = `${timeLeft} 秒後自動下一題...`;
 
