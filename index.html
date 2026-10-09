@@ -33,7 +33,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Din Round', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: var(--bg-main); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
-    /* 只有在「電腦螢幕 (寬度大於 768px)」且開啟 mobile-mode 時，才限制手機模擬寬度與加上卡片陰影 */
+    /* 只有在「電腦螢幕 (寬度大於 768px)」且「非 PWA 獨立 App 模式」下，才限制手機模擬寬度 */
     @media (min-width: 768px) {
       body.mobile-mode main {
         max-width: 420px !important;
@@ -43,6 +43,18 @@
         border-radius: 28px;
         padding: 24px;
         box-shadow: 0 12px 0 var(--duo-gray);
+      }
+    }
+
+    /* 如果是以手機桌面 PWA 獨立 App 模式開啟，強制滿版，絕不出現模擬框框或邊框 */
+    @media all and (display-mode: standalone), all and (display-mode: fullscreen) {
+      body.mobile-mode main {
+        max-width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 auto !important;
+        padding: 0 16px !important;
+        background: var(--bg-main) !important;
       }
     }
 
