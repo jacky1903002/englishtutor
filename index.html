@@ -888,14 +888,14 @@
 
     window.renderDatabase = function() {
       const searchInput = document.getElementById('db-search-input');
-      const query = (searchInput && searchInput.value ? searchInput.value : "").toLowerCase();
+      const query = searchInput && searchInput.value ? String(searchInput.value).toLowerCase() : "";
       const tbody = document.getElementById('db-tbody');
       if (!tbody) return;
 
-      // 修正處：嚴格防範欄位為空或 null 導致 toLowerCase 報錯
+      // 絕對安全的 String() 強制轉型防護，徹底避免 null 或 undefined 呼叫 toLowerCase 崩潰
       const filtered = masterVocabDB.filter(item => {
-        const wordStr = (item.word || "").toLowerCase();
-        const meaningStr = (item.meaning || "").toLowerCase();
+        const wordStr = String(item.word || "").toLowerCase();
+        const meaningStr = String(item.meaning || "").toLowerCase();
         return wordStr.includes(query) || meaningStr.includes(query);
       }).slice(0, 50);
 
