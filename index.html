@@ -386,7 +386,8 @@
           <h3 style="font-size: 1.2rem; font-weight: 900;">📚 單字庫檢索 (<span id="db-count-label">0</span>)</h3>
           <input type="text" id="db-search-input" placeholder="搜尋單字..." oninput="renderDatabase()" class="input-field" style="margin: 0; max-width: 180px;">
         </div>
-        <div style="overflow-x: auto; max-height: 440px;">
+        <!-- 修正處：移除 max-height 限制，讓表格內容正常撐開顯示 -->
+        <div style="overflow-x: auto;">
           <table>
             <thead>
               <tr>
@@ -889,10 +890,9 @@
       const tbody = document.getElementById('db-tbody');
       const filtered = masterVocabDB.filter(item => item.word.toLowerCase().includes(query) || item.meaning.toLowerCase().includes(query)).slice(0, 50);
 
-      // 修正處：同時渲染英文與中文例句
       tbody.innerHTML = filtered.map(item => `
         <tr>
-          <td style="color: var(--duo-blue);">${item.word}</td>
+          <td style="color: var(--duo-blue); font-weight: bold;">${item.word}</td>
           <td>${item.meaning}</td>
           <td>L${item.level}</td>
           <td style="font-size: 0.85rem; color: #666;">
